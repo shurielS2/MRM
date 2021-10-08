@@ -13,7 +13,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("성적서 매칭 프로그램")>
 <Assembly: AssemblyCompany("MitutoyoKorea")>
 <Assembly: AssemblyProduct("Mitutoyo Result Matcher")>
-<Assembly: AssemblyCopyright("Copyright ©  2020")>
+<Assembly: AssemblyCopyright("CopyRight 2021. Mitutoyokorea Corp all right reserved.")>
 <Assembly: AssemblyTrademark("MitutoyoKorea")>
 
 <Assembly: ComVisible(False)>
@@ -30,8 +30,8 @@ Imports System.Runtime.InteropServices
 '
 ' 모든 값을 지정하거나 아래와 같이 '*'를 사용하여 빌드 번호 및 수정 번호를
 ' 기본값으로 할 수 있습니다.
-' <Assembly: AssemblyVersion("1.0.*")>
+' <Assembly: AssemblyVersion("1.0.0.*")>
 
-<Assembly: AssemblyVersion("1.0.3.2")>
-<Assembly: AssemblyFileVersion("1.0.3.2")>
+<Assembly: AssemblyVersion("1.2.02.*")>
+'<Assembly: AssemblyFileVersion("1.0.0.0")>
 <Assembly: NeutralResourcesLanguage("ko-KR")>

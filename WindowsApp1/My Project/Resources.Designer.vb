@@ -26,7 +26,7 @@ Namespace My.Resources
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
      Global.Microsoft.VisualBasic.HideModuleNameAttribute()>  _
-    Friend Module Resources
+    Public Module Resources
         
         Private resourceMan As Global.System.Resources.ResourceManager
         
@@ -36,7 +36,7 @@ Namespace My.Resources
         '''  이 클래스에서 사용하는 캐시된 ResourceManager 인스턴스를 반환합니다.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
+        Public ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
                     Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Mitutoyo_Result_Matcher.Resources", GetType(Resources).Assembly)
@@ -51,7 +51,7 @@ Namespace My.Resources
         '''  재정의합니다.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend Property Culture() As Global.System.Globalization.CultureInfo
+        Public Property Culture() As Global.System.Globalization.CultureInfo
             Get
                 Return resourceCulture
             End Get
@@ -63,7 +63,7 @@ Namespace My.Resources
         '''<summary>
         '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         '''</summary>
-        Friend ReadOnly Property _1920px_Mitutoyo_company_logo() As System.Drawing.Bitmap
+        Public ReadOnly Property _1920px_Mitutoyo_company_logo() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("1920px-Mitutoyo_company_logo", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
@@ -71,11 +71,231 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  (아이콘)과(와) 유사한 System.Drawing.Icon 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property _1920px_mitutoyo_company_logo_m_lcon() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("_1920px_mitutoyo_company_logo_m_lcon", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         '''</summary>
-        Friend ReadOnly Property 성적서_캡쳐1() As System.Drawing.Bitmap
+        Public ReadOnly Property _1920px_Mitutoyo_company_logo_sample() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("성적서 캡쳐1", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("_1920px_Mitutoyo_company_logo_sample", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property MRM_Logo_하단_200px() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MRM_Logo_하단_200px", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property MRM_사용_설명서() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MRM_사용_설명서", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property MRM_정보창() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MRM_정보창", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property MRM상단_200px() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MRM상단_200px", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property sample_work() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("sample_work", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 기본폼2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("기본폼2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 기본폼2_정보창() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("기본폼2_정보창", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 기본폼3() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("기본폼3", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 기본폼3_정보창() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("기본폼3_정보창", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 로딩페이지_수정() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("로딩페이지_수정", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 배경화면() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("배경화면", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 배경화면_1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("배경화면_1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 버튼_1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("버튼_1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 버튼_2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("버튼_2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 버튼_3() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("버튼_3", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 버튼_4() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("버튼_4", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 버튼_5() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("버튼_5", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 버튼_6() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("버튼_6", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 성적서_기본폼() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("성적서_기본폼", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 아이콘_큐브__100px() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("아이콘_큐브__100px", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property 전용프로그램만들기() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("전용프로그램만들기", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

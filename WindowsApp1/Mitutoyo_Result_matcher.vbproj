@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,8 +14,10 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <Deterministic>false</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>게시\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,9 +32,10 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
@@ -40,9 +44,11 @@
     <DocumentationFile>Mitutoyo Result Matcher.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <UseVSHostingProcess>true</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>CppCoreCheckRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
@@ -50,7 +56,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>Mitutoyo Result Matcher.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -65,7 +71,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>1920px_mitutoyo_company_logo_m_lcon.ico</ApplicationIcon>
+    <ApplicationIcon>아이콘_큐브__100px.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -73,7 +79,18 @@
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>
+    </ManifestCertificateThumbprint>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Costura, Version=4.1.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.4.1.0\lib\net40\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -84,6 +101,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="transparentpanel">
+      <HintPath>..\..\transparentpanel\transparentpanel\bin\Debug\transparentpanel.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -99,6 +119,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Class1.vb" />
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
@@ -106,16 +127,81 @@
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.vb">
-      <DependentUpon>Form3.vb</DependentUpon>
+    <Compile Include="Add_str_dialog.Designer.vb">
+      <DependentUpon>Add_str_dialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form3.vb">
+    <Compile Include="Add_str_dialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form6.Designer.vb">
-      <DependentUpon>Form6.vb</DependentUpon>
+    <Compile Include="위치지정_추가기입_new.Designer.vb">
+      <DependentUpon>위치지정_추가기입_new.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form6.vb">
+    <Compile Include="위치지정_추가기입_new.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="기본폼 머릿말 -3.Designer.vb">
+      <DependentUpon>기본폼 머릿말 -3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="기본폼 머릿말 -3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="위치지정_추가기입.Designer.vb">
+      <DependentUpon>위치지정_추가기입.vb</DependentUpon>
+    </Compile>
+    <Compile Include="위치지정_추가기입.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="활성화키.Designer.vb">
+      <DependentUpon>활성화키.vb</DependentUpon>
+    </Compile>
+    <Compile Include="활성화키.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="사진 변경.Designer.vb">
+      <DependentUpon>사진 변경.vb</DependentUpon>
+    </Compile>
+    <Compile Include="사진 변경.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="수정창.Designer.vb">
+      <DependentUpon>수정창.vb</DependentUpon>
+    </Compile>
+    <Compile Include="수정창.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="프로그레스바.Designer.vb">
+      <DependentUpon>프로그레스바.vb</DependentUpon>
+    </Compile>
+    <Compile Include="프로그레스바.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="기본폼 머릿말 -1.Designer.vb">
+      <DependentUpon>기본폼 머릿말 -1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="기본폼 머릿말 -1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="전용프로그램 생성창.Designer.vb">
+      <DependentUpon>전용프로그램 생성창.vb</DependentUpon>
+    </Compile>
+    <Compile Include="전용프로그램 생성창.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="기본폼 머릿말 -2.Designer.vb">
+      <DependentUpon>기본폼 머릿말 -2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="기본폼 머릿말 -2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MkNew.Designer.vb">
@@ -130,38 +216,65 @@
       <DependentUpon>Application.myapp</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="My Project\app.manifest" />
+    <None Include="NanumGothic.ttf" />
+    <None Include="packages.config" />
     <None Include="Resources\1920px-Mitutoyo_company_logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Add_str_dialog.resx">
+      <DependentUpon>Add_str_dialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.vb</DependentUpon>
+    <EmbeddedResource Include="위치지정_추가기입_new.resx">
+      <DependentUpon>위치지정_추가기입_new.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form6.resx">
-      <DependentUpon>Form6.vb</DependentUpon>
+    <EmbeddedResource Include="SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="기본폼 머릿말 -3.resx">
+      <DependentUpon>기본폼 머릿말 -3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="위치지정_추가기입.resx">
+      <DependentUpon>위치지정_추가기입.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="활성화키.resx">
+      <DependentUpon>활성화키.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="사진 변경.resx">
+      <DependentUpon>사진 변경.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="수정창.resx">
+      <DependentUpon>수정창.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="프로그레스바.resx">
+      <DependentUpon>프로그레스바.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="기본폼 머릿말 -1.resx">
+      <DependentUpon>기본폼 머릿말 -1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="전용프로그램 생성창.resx">
+      <DependentUpon>전용프로그램 생성창.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="기본폼 머릿말 -2.resx">
+      <DependentUpon>기본폼 머릿말 -2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MkNew.resx">
       <DependentUpon>MkNew.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <Generator>PublicVbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -245,10 +358,53 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\성적서 캡쳐1.JPG" />
+    <Content Include="1920px_mitutoyo_company_logo_m_lcon.ico" />
+    <None Include="Resources\버튼_1.png" />
+    <None Include="Resources\버튼_2.png" />
+    <None Include="Resources\버튼_3.png" />
+    <None Include="Resources\버튼_4.png" />
+    <None Include="Resources\버튼_5.png" />
+    <None Include="Resources\버튼_6.png" />
+    <None Include="Resources\MRM_Logo_하단_200px.png" />
+    <Content Include="아이콘_큐브__100px.ico" />
+    <None Include="Resources\아이콘%28큐브%29_100px.png" />
+    <None Include="Resources\로딩페이지_수정.png" />
+    <None Include="Resources\MRM상단_200px.png" />
+    <None Include="Resources\배경화면_1.png" />
+    <None Include="Resources\배경화면.jpg" />
+    <None Include="Resources\전용프로그램만들기.jpg" />
+    <None Include="Resources\MRM-정보창.JPG" />
+    <None Include="Resources\기본폼3-정보창.JPG" />
+    <None Include="Resources\MRM 사용 설명서.pdf" />
+    <None Include="Resources\sample work.JPG" />
+    <None Include="Resources\기본폼2-정보창.JPG" />
+    <None Include="Resources\기본폼1.JPG" />
+    <None Include="Resources\기본폼3.JPG" />
+    <None Include="Resources\기본폼2.JPG" />
+    <None Include="Resources\성적서 기본폼.JPG" />
+    <None Include="Resources\1920px_mitutoyo_company_logo_m_lcon.ico" />
+    <None Include="Resources\1920px-Mitutoyo_company_logo_sample.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="1920px_mitutoyo_company_logo_m_lcon.ico" />
+    <Folder Include="bin\Debug\MRM\Data\Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MID_CHECK\MID.vbproj">
+      <Project>{4888cdbc-db89-4ee0-b8cb-a094e625590e}</Project>
+      <Name>MID</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.6.2.4\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.2.4\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props'))" />
+  </Target>
+  <Import Project="..\packages\Fody.6.2.4\build\Fody.targets" Condition="Exists('..\packages\Fody.6.2.4\build\Fody.targets')" />
 </Project>

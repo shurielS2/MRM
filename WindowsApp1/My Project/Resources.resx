@@ -121,7 +121,73 @@
   <data name="1920px-Mitutoyo_company_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1920px-Mitutoyo_company_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="성적서 캡쳐1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\성적서 캡쳐1.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MRM_Logo_하단_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MRM_Logo_하단_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MRM_사용_설명서" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MRM 사용 설명서.pdf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MRM_정보창" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MRM-정보창.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MRM상단_200px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MRM상단_200px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sample_work" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sample work.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1920px_mitutoyo_company_logo_m_lcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1920px_mitutoyo_company_logo_m_lcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1920px_Mitutoyo_company_logo_sample" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1920px-Mitutoyo_company_logo_sample.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="기본폼2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\기본폼2.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="기본폼2_정보창" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\기본폼2-정보창.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="기본폼3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\기본폼3.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="기본폼3_정보창" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\기본폼3-정보창.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="로딩페이지_수정" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\로딩페이지_수정.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="배경화면" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\배경화면.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="배경화면_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\배경화면_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="버튼_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\버튼_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="버튼_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\버튼_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="버튼_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\버튼_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="버튼_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\버튼_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="버튼_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\버튼_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="버튼_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\버튼_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="성적서_기본폼" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\성적서 기본폼.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="아이콘_큐브__100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\아이콘(큐브)_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="전용프로그램만들기" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\전용프로그램만들기.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
