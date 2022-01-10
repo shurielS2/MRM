@@ -52,30 +52,9 @@ Partial Class Form1
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.CheckBox10 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Label36 = New System.Windows.Forms.Label()
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.폴더위치열기ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.원본성적서열기ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
@@ -101,17 +80,13 @@ Partial Class Form1
         Me.PictureBox38 = New System.Windows.Forms.PictureBox()
         Me.PictureBox40 = New System.Windows.Forms.PictureBox()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.Label47 = New System.Windows.Forms.Label()
-        Me.Label48 = New System.Windows.Forms.Label()
-        Me.Label49 = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
@@ -139,8 +114,6 @@ Partial Class Form1
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
-        Me.TabControl2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -152,9 +125,9 @@ Partial Class Form1
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Image = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.버튼_1
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(600, 480)
+        Me.Button1.Location = New System.Drawing.Point(626, 486)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(150, 30)
+        Me.Button1.Size = New System.Drawing.Size(153, 26)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "성적서 생성(&S)"
         Me.Button1.UseVisualStyleBackColor = False
@@ -163,11 +136,11 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("나눔고딕", 18.0!)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!)
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(53, 100)
+        Me.Label1.Location = New System.Drawing.Point(57, 115)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(164, 28)
+        Me.Label1.Size = New System.Drawing.Size(153, 29)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Matching List"
         '
@@ -177,12 +150,12 @@ Partial Class Form1
         Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("나눔고딕", 9.0!)
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.Button2.Image = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.버튼_2
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(290, 480)
+        Me.Button2.Location = New System.Drawing.Point(302, 486)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(150, 30)
+        Me.Button2.Size = New System.Drawing.Size(153, 26)
         Me.Button2.TabIndex = 5
         Me.Button2.Text = "매칭 리스트 추가"
         Me.Button2.UseVisualStyleBackColor = False
@@ -195,9 +168,9 @@ Partial Class Form1
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Image = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.버튼_3
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(290, 515)
+        Me.Button3.Location = New System.Drawing.Point(302, 518)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(150, 30)
+        Me.Button3.Size = New System.Drawing.Size(153, 26)
         Me.Button3.TabIndex = 6
         Me.Button3.Text = "수정"
         Me.Button3.UseVisualStyleBackColor = False
@@ -210,9 +183,9 @@ Partial Class Form1
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Image = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.버튼_5
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(445, 515)
+        Me.Button4.Location = New System.Drawing.Point(464, 518)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(150, 30)
+        Me.Button4.Size = New System.Drawing.Size(153, 26)
         Me.Button4.TabIndex = 7
         Me.Button4.Text = "종료"
         Me.Button4.UseVisualStyleBackColor = False
@@ -221,9 +194,9 @@ Partial Class Form1
         '
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Location = New System.Drawing.Point(478, 562)
+        Me.Label10.Location = New System.Drawing.Point(479, 563)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(305, 14)
+        Me.Label10.Size = New System.Drawing.Size(299, 15)
         Me.Label10.TabIndex = 9
         Me.Label10.Text = "CopyRight 2021. Mitutoyokorea Corp all right reserved"
         '
@@ -231,9 +204,9 @@ Partial Class Form1
         '
         Me.Label11.AutoSize = True
         Me.Label11.BackColor = System.Drawing.Color.Transparent
-        Me.Label11.Location = New System.Drawing.Point(478, 581)
+        Me.Label11.Location = New System.Drawing.Point(479, 581)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(122, 14)
+        Me.Label11.Size = New System.Drawing.Size(116, 15)
         Me.Label11.TabIndex = 10
         Me.Label11.Text = "Ver. {0}.{1:00}.{2:00}"
         '
@@ -241,9 +214,9 @@ Partial Class Form1
         '
         Me.Label12.AutoSize = True
         Me.Label12.BackColor = System.Drawing.Color.Transparent
-        Me.Label12.Location = New System.Drawing.Point(147, 562)
+        Me.Label12.Location = New System.Drawing.Point(148, 563)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(196, 14)
+        Me.Label12.Size = New System.Drawing.Size(201, 15)
         Me.Label12.TabIndex = 11
         Me.Label12.Text = "Mitutoyokorea 성적서 매칭 프로그램"
         '
@@ -251,11 +224,11 @@ Partial Class Form1
         '
         Me.Label13.AutoSize = True
         Me.Label13.BackColor = System.Drawing.Color.Transparent
-        Me.Label13.Location = New System.Drawing.Point(147, 581)
+        Me.Label13.Location = New System.Drawing.Point(148, 581)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(310, 14)
+        Me.Label13.Size = New System.Drawing.Size(323, 15)
         Me.Label13.TabIndex = 12
-        Me.Label13.Text = "※문의 사항  :  한국미쓰도요 영업기술부  Tel.031-361-4270"
+        Me.Label13.Text = "※문의 사항  :  한국미쓰도요 영업기술부   Tel.031-361-4270"
         '
         'Button6
         '
@@ -265,9 +238,9 @@ Partial Class Form1
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button6.Image = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.버튼_4
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(445, 480)
+        Me.Button6.Location = New System.Drawing.Point(464, 486)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(150, 30)
+        Me.Button6.Size = New System.Drawing.Size(153, 26)
         Me.Button6.TabIndex = 14
         Me.Button6.Text = "선택 리스트 삭제"
         Me.Button6.UseVisualStyleBackColor = False
@@ -275,44 +248,44 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("나눔고딕", 10.0!)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label2.Location = New System.Drawing.Point(298, 113)
+        Me.Label2.Location = New System.Drawing.Point(296, 112)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(150, 20)
+        Me.Label2.Size = New System.Drawing.Size(120, 16)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "데이터 파일 경로"
         '
         'Label3
         '
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("나눔고딕", 10.0!)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(298, 187)
+        Me.Label3.Location = New System.Drawing.Point(296, 189)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(113, 23)
+        Me.Label3.Size = New System.Drawing.Size(120, 18)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "성적서 저장 경로"
         '
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("나눔고딕", 10.0!)
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label4.Location = New System.Drawing.Point(298, 262)
+        Me.Label4.Location = New System.Drawing.Point(296, 262)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(109, 20)
+        Me.Label4.Size = New System.Drawing.Size(100, 14)
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "성적서 이름"
         '
         'Label5
         '
         Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("나눔고딕", 10.0!)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Label5.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label5.Location = New System.Drawing.Point(608, 108)
+        Me.Label5.Location = New System.Drawing.Point(612, 48)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(150, 20)
+        Me.Label5.Size = New System.Drawing.Size(120, 16)
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "성적서 서식"
         '
@@ -320,20 +293,20 @@ Partial Class Form1
         '
         Me.Label191.AutoSize = True
         Me.Label191.BackColor = System.Drawing.Color.Transparent
-        Me.Label191.Font = New System.Drawing.Font("나눔고딕", 10.0!)
-        Me.Label191.Location = New System.Drawing.Point(298, 337)
+        Me.Label191.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.Label191.Location = New System.Drawing.Point(296, 411)
         Me.Label191.Name = "Label191"
-        Me.Label191.Size = New System.Drawing.Size(107, 16)
+        Me.Label191.Size = New System.Drawing.Size(100, 17)
         Me.Label191.TabIndex = 19
         Me.Label191.Text = "성적서 저장 유형"
         '
         'ListBox1
         '
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 14
-        Me.ListBox1.Location = New System.Drawing.Point(50, 150)
+        Me.ListBox1.ItemHeight = 15
+        Me.ListBox1.Location = New System.Drawing.Point(48, 186)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(170, 298)
+        Me.ListBox1.Size = New System.Drawing.Size(171, 259)
         Me.ListBox1.TabIndex = 0
         '
         'Label16
@@ -342,10 +315,10 @@ Partial Class Form1
         Me.Label16.AutoSize = True
         Me.Label16.BackColor = System.Drawing.Color.Transparent
         Me.Label16.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.Label16.Location = New System.Drawing.Point(312, 145)
+        Me.Label16.Location = New System.Drawing.Point(299, 142)
         Me.Label16.MaximumSize = New System.Drawing.Size(300, 30)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(30, 14)
+        Me.Label16.Size = New System.Drawing.Size(26, 15)
         Me.Label16.TabIndex = 20
         Me.Label16.Text = "N/A"
         '
@@ -374,10 +347,10 @@ Partial Class Form1
         Me.Label17.AutoSize = True
         Me.Label17.BackColor = System.Drawing.Color.Transparent
         Me.Label17.ContextMenuStrip = Me.ContextMenuStrip2
-        Me.Label17.Location = New System.Drawing.Point(312, 221)
+        Me.Label17.Location = New System.Drawing.Point(299, 218)
         Me.Label17.MaximumSize = New System.Drawing.Size(300, 30)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(30, 14)
+        Me.Label17.Size = New System.Drawing.Size(26, 15)
         Me.Label17.TabIndex = 22
         Me.Label17.Text = "N/A"
         '
@@ -399,9 +372,9 @@ Partial Class Form1
         Me.Label18.AutoEllipsis = True
         Me.Label18.AutoSize = True
         Me.Label18.BackColor = System.Drawing.Color.Transparent
-        Me.Label18.Location = New System.Drawing.Point(312, 295)
+        Me.Label18.Location = New System.Drawing.Point(299, 292)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(30, 14)
+        Me.Label18.Size = New System.Drawing.Size(26, 15)
         Me.Label18.TabIndex = 23
         Me.Label18.Text = "N/A"
         '
@@ -410,9 +383,9 @@ Partial Class Form1
         Me.Label19.AutoEllipsis = True
         Me.Label19.AutoSize = True
         Me.Label19.BackColor = System.Drawing.Color.Transparent
-        Me.Label19.Location = New System.Drawing.Point(312, 369)
+        Me.Label19.Location = New System.Drawing.Point(299, 441)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(30, 14)
+        Me.Label19.Size = New System.Drawing.Size(26, 15)
         Me.Label19.TabIndex = 24
         Me.Label19.Text = "N/A"
         '
@@ -421,19 +394,19 @@ Partial Class Form1
         Me.Label20.AutoEllipsis = True
         Me.Label20.AutoSize = True
         Me.Label20.BackColor = System.Drawing.Color.Transparent
-        Me.Label20.Location = New System.Drawing.Point(612, 128)
+        Me.Label20.Location = New System.Drawing.Point(618, 70)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(30, 14)
+        Me.Label20.Size = New System.Drawing.Size(26, 15)
         Me.Label20.TabIndex = 25
         Me.Label20.Text = "N/A"
         '
         'Label23
         '
         Me.Label23.BackColor = System.Drawing.Color.Transparent
-        Me.Label23.Font = New System.Drawing.Font("나눔고딕", 10.0!)
-        Me.Label23.Location = New System.Drawing.Point(298, 411)
+        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.Label23.Location = New System.Drawing.Point(296, 337)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(98, 16)
+        Me.Label23.Size = New System.Drawing.Size(120, 17)
         Me.Label23.TabIndex = 29
         Me.Label23.Text = "자동저장 여부"
         '
@@ -441,237 +414,12 @@ Partial Class Form1
         '
         Me.Label22.AutoSize = True
         Me.Label22.BackColor = System.Drawing.Color.Transparent
-        Me.Label22.Font = New System.Drawing.Font("나눔고딕", 9.0!)
-        Me.Label22.Location = New System.Drawing.Point(312, 443)
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.Label22.Location = New System.Drawing.Point(299, 367)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(30, 14)
+        Me.Label22.Size = New System.Drawing.Size(26, 15)
         Me.Label22.TabIndex = 30
         Me.Label22.Text = "N/A"
-        '
-        'CheckBox4
-        '
-        Me.CheckBox4.AutoCheck = False
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox4.Location = New System.Drawing.Point(18, 55)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(91, 18)
-        Me.CheckBox4.TabIndex = 84
-        Me.CheckBox4.TabStop = False
-        Me.CheckBox4.Text = "요소            : "
-        Me.CheckBox4.UseVisualStyleBackColor = False
-        '
-        'Label24
-        '
-        Me.Label24.BackColor = System.Drawing.Color.Transparent
-        Me.Label24.Font = New System.Drawing.Font("굴림", 10.0!)
-        Me.Label24.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label24.Location = New System.Drawing.Point(18, 264)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(145, 20)
-        Me.Label24.TabIndex = 83
-        Me.Label24.Text = "사용 성적서 경로:"
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.BackColor = System.Drawing.Color.Transparent
-        Me.Label25.Location = New System.Drawing.Point(18, 216)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(72, 14)
-        Me.Label25.TabIndex = 82
-        Me.Label25.Text = "페이지 줄수 :"
-        '
-        'CheckBox10
-        '
-        Me.CheckBox10.AutoCheck = False
-        Me.CheckBox10.AutoSize = True
-        Me.CheckBox10.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox10.Location = New System.Drawing.Point(18, 193)
-        Me.CheckBox10.Name = "CheckBox10"
-        Me.CheckBox10.Size = New System.Drawing.Size(88, 18)
-        Me.CheckBox10.TabIndex = 81
-        Me.CheckBox10.TabStop = False
-        Me.CheckBox10.Text = "판정            :"
-        Me.CheckBox10.UseVisualStyleBackColor = False
-        '
-        'CheckBox9
-        '
-        Me.CheckBox9.AutoCheck = False
-        Me.CheckBox9.AutoSize = True
-        Me.CheckBox9.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox9.Location = New System.Drawing.Point(18, 170)
-        Me.CheckBox9.Name = "CheckBox9"
-        Me.CheckBox9.Size = New System.Drawing.Size(88, 18)
-        Me.CheckBox9.TabIndex = 80
-        Me.CheckBox9.TabStop = False
-        Me.CheckBox9.Text = "오차            :"
-        Me.CheckBox9.UseVisualStyleBackColor = False
-        '
-        'CheckBox8
-        '
-        Me.CheckBox8.AutoCheck = False
-        Me.CheckBox8.AutoSize = True
-        Me.CheckBox8.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox8.Location = New System.Drawing.Point(18, 147)
-        Me.CheckBox8.Name = "CheckBox8"
-        Me.CheckBox8.Size = New System.Drawing.Size(89, 18)
-        Me.CheckBox8.TabIndex = 79
-        Me.CheckBox8.TabStop = False
-        Me.CheckBox8.Text = "하한 공차    :"
-        Me.CheckBox8.UseVisualStyleBackColor = False
-        '
-        'CheckBox7
-        '
-        Me.CheckBox7.AutoCheck = False
-        Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox7.Location = New System.Drawing.Point(18, 124)
-        Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(89, 18)
-        Me.CheckBox7.TabIndex = 78
-        Me.CheckBox7.TabStop = False
-        Me.CheckBox7.Text = "상한 공차    :"
-        Me.CheckBox7.UseVisualStyleBackColor = False
-        '
-        'CheckBox6
-        '
-        Me.CheckBox6.AutoCheck = False
-        Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox6.Location = New System.Drawing.Point(18, 101)
-        Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(90, 18)
-        Me.CheckBox6.TabIndex = 77
-        Me.CheckBox6.TabStop = False
-        Me.CheckBox6.Text = "설계치        : "
-        Me.CheckBox6.UseVisualStyleBackColor = False
-        '
-        'CheckBox5
-        '
-        Me.CheckBox5.AutoCheck = False
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox5.Location = New System.Drawing.Point(18, 78)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(90, 18)
-        Me.CheckBox5.TabIndex = 76
-        Me.CheckBox5.TabStop = False
-        Me.CheckBox5.Text = "측정값        : "
-        Me.CheckBox5.UseVisualStyleBackColor = False
-        '
-        'Label26
-        '
-        Me.Label26.AutoSize = True
-        Me.Label26.BackColor = System.Drawing.Color.Transparent
-        Me.Label26.Font = New System.Drawing.Font("굴림", 12.0!)
-        Me.Label26.Location = New System.Drawing.Point(129, 11)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(61, 16)
-        Me.Label26.TabIndex = 74
-        Me.Label26.Text = "셀 주소"
-        '
-        'Label27
-        '
-        Me.Label27.AutoSize = True
-        Me.Label27.BackColor = System.Drawing.Color.Transparent
-        Me.Label27.Location = New System.Drawing.Point(144, 32)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(30, 14)
-        Me.Label27.TabIndex = 85
-        Me.Label27.Text = "N/A"
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.BackColor = System.Drawing.Color.Transparent
-        Me.Label28.Location = New System.Drawing.Point(144, 55)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(30, 14)
-        Me.Label28.TabIndex = 86
-        Me.Label28.Text = "N/A"
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.BackColor = System.Drawing.Color.Transparent
-        Me.Label29.Location = New System.Drawing.Point(144, 78)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(30, 14)
-        Me.Label29.TabIndex = 87
-        Me.Label29.Text = "N/A"
-        '
-        'Label30
-        '
-        Me.Label30.AutoSize = True
-        Me.Label30.BackColor = System.Drawing.Color.Transparent
-        Me.Label30.Location = New System.Drawing.Point(144, 101)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(30, 14)
-        Me.Label30.TabIndex = 88
-        Me.Label30.Text = "N/A"
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.BackColor = System.Drawing.Color.Transparent
-        Me.Label31.Location = New System.Drawing.Point(144, 124)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(30, 14)
-        Me.Label31.TabIndex = 89
-        Me.Label31.Text = "N/A"
-        '
-        'Label32
-        '
-        Me.Label32.AutoSize = True
-        Me.Label32.BackColor = System.Drawing.Color.Transparent
-        Me.Label32.Location = New System.Drawing.Point(144, 147)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(30, 14)
-        Me.Label32.TabIndex = 90
-        Me.Label32.Text = "N/A"
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.BackColor = System.Drawing.Color.Transparent
-        Me.Label33.Location = New System.Drawing.Point(144, 170)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(30, 14)
-        Me.Label33.TabIndex = 91
-        Me.Label33.Text = "N/A"
-        '
-        'Label34
-        '
-        Me.Label34.AutoSize = True
-        Me.Label34.BackColor = System.Drawing.Color.Transparent
-        Me.Label34.Location = New System.Drawing.Point(144, 193)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(30, 14)
-        Me.Label34.TabIndex = 92
-        Me.Label34.Text = "N/A"
-        '
-        'Label35
-        '
-        Me.Label35.AutoSize = True
-        Me.Label35.BackColor = System.Drawing.Color.Transparent
-        Me.Label35.Location = New System.Drawing.Point(144, 216)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(30, 14)
-        Me.Label35.TabIndex = 93
-        Me.Label35.Text = "N/A"
-        '
-        'Label36
-        '
-        Me.Label36.AutoSize = True
-        Me.Label36.BackColor = System.Drawing.Color.Transparent
-        Me.Label36.ContextMenuStrip = Me.ContextMenuStrip3
-        Me.Label36.Location = New System.Drawing.Point(18, 284)
-        Me.Label36.MaximumSize = New System.Drawing.Size(180, 30)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(30, 14)
-        Me.Label36.TabIndex = 94
-        Me.Label36.Text = "N/A"
         '
         'ContextMenuStrip3
         '
@@ -692,27 +440,13 @@ Partial Class Form1
         Me.원본성적서열기ToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.원본성적서열기ToolStripMenuItem.Text = "원본성적서 열기"
         '
-        'CheckBox3
-        '
-        Me.CheckBox3.AutoCheck = False
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.CheckBox3.Location = New System.Drawing.Point(18, 32)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(90, 18)
-        Me.CheckBox3.TabIndex = 75
-        Me.CheckBox3.TabStop = False
-        Me.CheckBox3.Text = "라벨명        : "
-        Me.CheckBox3.UseVisualStyleBackColor = False
-        '
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox1.Location = New System.Drawing.Point(601, 521)
+        Me.CheckBox1.Location = New System.Drawing.Point(626, 522)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(148, 18)
+        Me.CheckBox1.Size = New System.Drawing.Size(158, 19)
         Me.CheckBox1.TabIndex = 97
         Me.CheckBox1.Text = "성적서 생성 후 자동 종료"
         Me.CheckBox1.UseVisualStyleBackColor = False
@@ -726,10 +460,10 @@ Partial Class Form1
         Me.TabControl1.Controls.Add(Me.TabPage10)
         Me.TabControl1.Enabled = False
         Me.TabControl1.ItemSize = New System.Drawing.Size(1, 1)
-        Me.TabControl1.Location = New System.Drawing.Point(611, 157)
+        Me.TabControl1.Location = New System.Drawing.Point(608, 133)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(194, 264)
+        Me.TabControl1.Size = New System.Drawing.Size(204, 323)
         Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.TabControl1.TabIndex = 212
         Me.TabControl1.TabStop = False
@@ -744,7 +478,7 @@ Partial Class Form1
         Me.TabPage6.Location = New System.Drawing.Point(4, 5)
         Me.TabPage6.Name = "TabPage6"
         Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage6.Size = New System.Drawing.Size(186, 255)
+        Me.TabPage6.Size = New System.Drawing.Size(196, 314)
         Me.TabPage6.TabIndex = 0
         '
         'PictureBox23
@@ -790,7 +524,7 @@ Partial Class Form1
         Me.TabPage7.Location = New System.Drawing.Point(4, 5)
         Me.TabPage7.Name = "TabPage7"
         Me.TabPage7.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage7.Size = New System.Drawing.Size(186, 255)
+        Me.TabPage7.Size = New System.Drawing.Size(196, 314)
         Me.TabPage7.TabIndex = 1
         '
         'Label40
@@ -798,7 +532,7 @@ Partial Class Form1
         Me.Label40.AutoSize = True
         Me.Label40.Location = New System.Drawing.Point(61, 248)
         Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(0, 14)
+        Me.Label40.Size = New System.Drawing.Size(0, 15)
         Me.Label40.TabIndex = 35
         '
         'PictureBox27
@@ -844,7 +578,7 @@ Partial Class Form1
         Me.TabPage8.Location = New System.Drawing.Point(4, 5)
         Me.TabPage8.Name = "TabPage8"
         Me.TabPage8.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage8.Size = New System.Drawing.Size(186, 255)
+        Me.TabPage8.Size = New System.Drawing.Size(196, 314)
         Me.TabPage8.TabIndex = 2
         '
         'Label41
@@ -852,7 +586,7 @@ Partial Class Form1
         Me.Label41.AutoSize = True
         Me.Label41.Location = New System.Drawing.Point(238, 247)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(0, 14)
+        Me.Label41.Size = New System.Drawing.Size(0, 15)
         Me.Label41.TabIndex = 36
         '
         'PictureBox31
@@ -897,7 +631,7 @@ Partial Class Form1
         Me.TabPage9.Location = New System.Drawing.Point(4, 5)
         Me.TabPage9.Name = "TabPage9"
         Me.TabPage9.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage9.Size = New System.Drawing.Size(186, 255)
+        Me.TabPage9.Size = New System.Drawing.Size(196, 314)
         Me.TabPage9.TabIndex = 3
         '
         'PictureBox35
@@ -942,7 +676,7 @@ Partial Class Form1
         Me.TabPage10.Location = New System.Drawing.Point(4, 5)
         Me.TabPage10.Name = "TabPage10"
         Me.TabPage10.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage10.Size = New System.Drawing.Size(186, 255)
+        Me.TabPage10.Size = New System.Drawing.Size(196, 314)
         Me.TabPage10.TabIndex = 4
         '
         'PictureBox39
@@ -984,65 +718,35 @@ Partial Class Form1
         Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Font = New System.Drawing.Font("나눔고딕", 9.0!)
+        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.Button7.Image = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.버튼_6
         Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.Location = New System.Drawing.Point(687, 12)
+        Me.Button7.Location = New System.Drawing.Point(672, 12)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(118, 32)
+        Me.Button7.Size = New System.Drawing.Size(140, 26)
         Me.Button7.TabIndex = 213
         Me.Button7.Text = "사용 설명서"
         Me.Button7.UseVisualStyleBackColor = False
-        '
-        'Label47
-        '
-        Me.Label47.AutoSize = True
-        Me.Label47.BackColor = System.Drawing.Color.Transparent
-        Me.Label47.Location = New System.Drawing.Point(18, 235)
-        Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(64, 14)
-        Me.Label47.TabIndex = 215
-        Me.Label47.Text = "입력 방향  :"
-        '
-        'Label48
-        '
-        Me.Label48.AutoSize = True
-        Me.Label48.BackColor = System.Drawing.Color.Transparent
-        Me.Label48.Location = New System.Drawing.Point(144, 235)
-        Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(30, 14)
-        Me.Label48.TabIndex = 216
-        Me.Label48.Text = "N/A"
-        '
-        'Label49
-        '
-        Me.Label49.AutoSize = True
-        Me.Label49.BackColor = System.Drawing.Color.Transparent
-        Me.Label49.Location = New System.Drawing.Point(622, 581)
-        Me.Label49.Name = "Label49"
-        Me.Label49.Size = New System.Drawing.Size(166, 14)
-        Me.Label49.TabIndex = 217
-        Me.Label49.Text = "Trial Version Until 2021/9/30"
         '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.LinkLabel1.Location = New System.Drawing.Point(147, 597)
+        Me.LinkLabel1.Location = New System.Drawing.Point(148, 597)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(150, 14)
+        Me.LinkLabel1.Size = New System.Drawing.Size(147, 15)
         Me.LinkLabel1.TabIndex = 218
         Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "www.Mitutoyokorea.com"
+        Me.LinkLabel1.Text = "WWW.Mitutoyokorea.com"
         '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImage = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.전용프로그램만들기
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(25, 470)
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 470)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(230, 50)
+        Me.PictureBox1.Size = New System.Drawing.Size(265, 53)
         Me.PictureBox1.TabIndex = 220
         Me.PictureBox1.TabStop = False
         '
@@ -1051,9 +755,9 @@ Partial Class Form1
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox2.BackgroundImage = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.MRM상단_200px
         Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox2.Location = New System.Drawing.Point(50, 25)
+        Me.PictureBox2.Location = New System.Drawing.Point(40, 28)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(170, 70)
+        Me.PictureBox2.Size = New System.Drawing.Size(186, 75)
         Me.PictureBox2.TabIndex = 221
         Me.PictureBox2.TabStop = False
         '
@@ -1062,74 +766,45 @@ Partial Class Form1
         Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox3.BackgroundImage = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.MRM_Logo_하단_200px
         Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox3.Location = New System.Drawing.Point(20, 562)
+        Me.PictureBox3.Location = New System.Drawing.Point(12, 561)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(100, 45)
+        Me.PictureBox3.Size = New System.Drawing.Size(122, 49)
         Me.PictureBox3.TabIndex = 222
         Me.PictureBox3.TabStop = False
         '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.TabControl2)
-        Me.Panel1.Controls.Add(Me.Label48)
-        Me.Panel1.Controls.Add(Me.Label35)
-        Me.Panel1.Controls.Add(Me.Label34)
-        Me.Panel1.Controls.Add(Me.Label33)
-        Me.Panel1.Controls.Add(Me.Label32)
-        Me.Panel1.Controls.Add(Me.Label31)
-        Me.Panel1.Controls.Add(Me.CheckBox10)
-        Me.Panel1.Controls.Add(Me.CheckBox9)
-        Me.Panel1.Controls.Add(Me.CheckBox7)
-        Me.Panel1.Controls.Add(Me.Label47)
-        Me.Panel1.Controls.Add(Me.CheckBox6)
-        Me.Panel1.Controls.Add(Me.Label36)
-        Me.Panel1.Controls.Add(Me.CheckBox8)
-        Me.Panel1.Controls.Add(Me.Label24)
-        Me.Panel1.Controls.Add(Me.CheckBox5)
-        Me.Panel1.Controls.Add(Me.Label25)
-        Me.Panel1.Controls.Add(Me.CheckBox3)
-        Me.Panel1.Controls.Add(Me.Label30)
-        Me.Panel1.Controls.Add(Me.Label29)
-        Me.Panel1.Controls.Add(Me.Label28)
-        Me.Panel1.Controls.Add(Me.Label27)
-        Me.Panel1.Controls.Add(Me.Label26)
-        Me.Panel1.Controls.Add(Me.CheckBox4)
-        Me.Panel1.Location = New System.Drawing.Point(607, 151)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(199, 323)
-        Me.Panel1.TabIndex = 223
-        Me.Panel1.Visible = False
-        '
         'TabControl2
         '
-        Me.TabControl2.Controls.Add(Me.TabPage1)
-        Me.TabControl2.Controls.Add(Me.TabPage2)
-        Me.TabControl2.Location = New System.Drawing.Point(8, 6)
+        Me.TabControl2.Location = New System.Drawing.Point(608, 97)
         Me.TabControl2.Name = "TabControl2"
         Me.TabControl2.SelectedIndex = 0
-        Me.TabControl2.Size = New System.Drawing.Size(186, 314)
+        Me.TabControl2.Size = New System.Drawing.Size(204, 383)
         Me.TabControl2.TabIndex = 224
         '
-        'TabPage1
+        'Button5
         '
-        Me.TabPage1.Location = New System.Drawing.Point(4, 23)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(178, 287)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.Button5.BackColor = System.Drawing.Color.White
+        Me.Button5.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.Location = New System.Drawing.Point(48, 151)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(81, 24)
+        Me.Button5.TabIndex = 225
+        Me.Button5.Text = "일반"
+        Me.Button5.UseVisualStyleBackColor = False
         '
-        'TabPage2
+        'Button8
         '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 23)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(178, 287)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.Button8.BackColor = System.Drawing.Color.White
+        Me.Button8.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.Location = New System.Drawing.Point(138, 151)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(81, 24)
+        Me.Button8.TabIndex = 226
+        Me.Button8.Text = "전용"
+        Me.Button8.UseVisualStyleBackColor = False
         '
         'Form1
         '
@@ -1140,11 +815,13 @@ Partial Class Form1
         Me.BackgroundImage = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.배경화면_1
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(824, 616)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.TabControl2)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.LinkLabel1)
-        Me.Controls.Add(Me.Label49)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Label22)
@@ -1161,6 +838,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.Button3)
@@ -1170,9 +848,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.TabControl1)
-        Me.Font = New System.Drawing.Font("나눔고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(840, 655)
@@ -1207,9 +883,6 @@ Partial Class Form1
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.TabControl2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1236,27 +909,6 @@ Partial Class Form1
     Friend WithEvents Label20 As Label
     Friend WithEvents Label23 As Label
     Friend WithEvents Label22 As Label
-    Friend WithEvents CheckBox4 As CheckBox
-    Friend WithEvents Label24 As Label
-    Friend WithEvents Label25 As Label
-    Friend WithEvents CheckBox10 As CheckBox
-    Friend WithEvents CheckBox9 As CheckBox
-    Friend WithEvents CheckBox8 As CheckBox
-    Friend WithEvents CheckBox7 As CheckBox
-    Friend WithEvents CheckBox6 As CheckBox
-    Friend WithEvents CheckBox5 As CheckBox
-    Friend WithEvents Label26 As Label
-    Friend WithEvents Label27 As Label
-    Friend WithEvents Label28 As Label
-    Friend WithEvents Label29 As Label
-    Friend WithEvents Label30 As Label
-    Friend WithEvents Label31 As Label
-    Friend WithEvents Label32 As Label
-    Friend WithEvents Label33 As Label
-    Friend WithEvents Label34 As Label
-    Friend WithEvents Label35 As Label
-    Friend WithEvents Label36 As Label
-    Friend WithEvents CheckBox3 As CheckBox
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents 폴더위치열기ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContextMenuStrip2 As ContextMenuStrip
@@ -1290,17 +942,13 @@ Partial Class Form1
     Friend WithEvents PictureBox39 As PictureBox
     Friend WithEvents PictureBox40 As PictureBox
     Friend WithEvents Button7 As Button
-    Friend WithEvents Label47 As Label
-    Friend WithEvents Label48 As Label
-    Friend WithEvents Label49 As Label
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Button2 As Button
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents TabControl2 As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button8 As Button
 End Class

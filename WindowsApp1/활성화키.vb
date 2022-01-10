@@ -1,5 +1,7 @@
 ﻿Public Class 활성화키
     Private Sub Form11_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        TextBox1.Focus()
         TextBox1.PasswordChar = "*"
     End Sub
 

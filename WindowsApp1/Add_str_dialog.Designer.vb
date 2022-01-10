@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Add_str_dialog
     Inherits System.Windows.Forms.Form
 
     'Form은 Dispose를 재정의하여 구성 요소 목록을 정리합니다.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Add_str_dialog
     '참고: 다음 프로시저는 Windows Form 디자이너에 필요합니다.
     '수정하려면 Windows Form 디자이너를 사용하십시오.  
     '코드 편집기에서는 수정하지 마세요.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Add_str_dialog))
         Me.Label1 = New System.Windows.Forms.Label()
@@ -28,6 +28,7 @@ Partial Class Add_str_dialog
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -37,7 +38,7 @@ Partial Class Add_str_dialog
         Me.Label1.Location = New System.Drawing.Point(12, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(85, 12)
-        Me.Label1.TabIndex = 0
+        Me.Label1.TabIndex = 1
         Me.Label1.Text = "입력 내용 설명"
         '
         'Button1
@@ -66,18 +67,27 @@ Partial Class Add_str_dialog
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.TextBox1.Size = New System.Drawing.Size(250, 50)
-        Me.TextBox1.TabIndex = 1
+        Me.TextBox1.TabIndex = 0
         '
         'Label2
         '
         Me.Label2.AutoEllipsis = True
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(12, 33)
-        Me.Label2.MinimumSize = New System.Drawing.Size(250, 30)
+        Me.Label2.MinimumSize = New System.Drawing.Size(200, 30)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(250, 30)
+        Me.Label2.Size = New System.Drawing.Size(200, 30)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "N/A"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(148, 17)
+        Me.Label3.MinimumSize = New System.Drawing.Size(80, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(80, 12)
+        Me.Label3.TabIndex = 5
         '
         'Add_str_dialog
         '
@@ -85,6 +95,7 @@ Partial Class Add_str_dialog
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(358, 130)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button2)
@@ -103,4 +114,5 @@ Partial Class Add_str_dialog
     Friend WithEvents Button2 As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class

@@ -50,28 +50,9 @@ Partial Class 수정창
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.TextBox12 = New System.Windows.Forms.TextBox()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
-        Me.TextBox10 = New System.Windows.Forms.TextBox()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.TextBox13 = New System.Windows.Forms.TextBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.CheckBox10 = New System.Windows.Forms.CheckBox()
-        Me.TextBox14 = New System.Windows.Forms.TextBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.CheckBox11 = New System.Windows.Forms.CheckBox()
         Me.Button6 = New System.Windows.Forms.Button()
@@ -111,9 +92,7 @@ Partial Class 수정창
         Me.PictureBox39 = New System.Windows.Forms.PictureBox()
         Me.PictureBox40 = New System.Windows.Forms.PictureBox()
         Me.PictureBox41 = New System.Windows.Forms.PictureBox()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -142,7 +121,6 @@ Partial Class 수정창
         CType(Me.PictureBox39, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox40, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox41, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TextBox4
@@ -399,201 +377,31 @@ Partial Class 수정창
         Me.Button3.Text = "수정"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'TextBox12
-        '
-        Me.TextBox12.Location = New System.Drawing.Point(168, 210)
-        Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.Size = New System.Drawing.Size(83, 21)
-        Me.TextBox12.TabIndex = 87
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("굴림", 12.0!)
-        Me.Label21.Location = New System.Drawing.Point(180, 10)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(61, 16)
-        Me.Label21.TabIndex = 86
-        Me.Label21.Text = "셀 주소"
-        '
-        'TextBox11
-        '
-        Me.TextBox11.Enabled = False
-        Me.TextBox11.Location = New System.Drawing.Point(168, 188)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(83, 21)
-        Me.TextBox11.TabIndex = 86
-        '
-        'TextBox10
-        '
-        Me.TextBox10.Enabled = False
-        Me.TextBox10.Location = New System.Drawing.Point(168, 166)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(83, 21)
-        Me.TextBox10.TabIndex = 85
-        '
-        'TextBox9
-        '
-        Me.TextBox9.Enabled = False
-        Me.TextBox9.Location = New System.Drawing.Point(168, 144)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(83, 21)
-        Me.TextBox9.TabIndex = 84
-        '
-        'TextBox8
-        '
-        Me.TextBox8.Enabled = False
-        Me.TextBox8.Location = New System.Drawing.Point(168, 122)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(83, 21)
-        Me.TextBox8.TabIndex = 83
-        '
-        'TextBox7
-        '
-        Me.TextBox7.Enabled = False
-        Me.TextBox7.Location = New System.Drawing.Point(168, 100)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(83, 21)
-        Me.TextBox7.TabIndex = 82
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Enabled = False
-        Me.TextBox6.Location = New System.Drawing.Point(168, 78)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(83, 21)
-        Me.TextBox6.TabIndex = 81
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Enabled = False
-        Me.TextBox5.Location = New System.Drawing.Point(168, 34)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(83, 21)
-        Me.TextBox5.TabIndex = 79
-        '
-        'CheckBox9
-        '
-        Me.CheckBox9.AutoSize = True
-        Me.CheckBox9.Location = New System.Drawing.Point(36, 190)
-        Me.CheckBox9.Name = "CheckBox9"
-        Me.CheckBox9.Size = New System.Drawing.Size(96, 16)
-        Me.CheckBox9.TabIndex = 95
-        Me.CheckBox9.Text = "판정           :"
-        Me.CheckBox9.UseVisualStyleBackColor = True
-        '
-        'CheckBox8
-        '
-        Me.CheckBox8.AutoSize = True
-        Me.CheckBox8.Location = New System.Drawing.Point(36, 168)
-        Me.CheckBox8.Name = "CheckBox8"
-        Me.CheckBox8.Size = New System.Drawing.Size(96, 16)
-        Me.CheckBox8.TabIndex = 94
-        Me.CheckBox8.Text = "오차           :"
-        Me.CheckBox8.UseVisualStyleBackColor = True
-        '
-        'CheckBox7
-        '
-        Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.Location = New System.Drawing.Point(36, 146)
-        Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(96, 16)
-        Me.CheckBox7.TabIndex = 93
-        Me.CheckBox7.Text = "하한 공차    :"
-        Me.CheckBox7.UseVisualStyleBackColor = True
-        '
-        'CheckBox6
-        '
-        Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(36, 124)
-        Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(96, 16)
-        Me.CheckBox6.TabIndex = 92
-        Me.CheckBox6.Text = "상한 공차    :"
-        Me.CheckBox6.UseVisualStyleBackColor = True
-        '
-        'CheckBox5
-        '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(36, 102)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(100, 16)
-        Me.CheckBox5.TabIndex = 91
-        Me.CheckBox5.Text = "설계치        : "
-        Me.CheckBox5.UseVisualStyleBackColor = True
-        '
-        'CheckBox4
-        '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(36, 80)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(100, 16)
-        Me.CheckBox4.TabIndex = 90
-        Me.CheckBox4.Text = "측정값        : "
-        Me.CheckBox4.UseVisualStyleBackColor = True
-        '
-        'CheckBox3
-        '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(36, 36)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(100, 16)
-        Me.CheckBox3.TabIndex = 89
-        Me.CheckBox3.Text = "라벨명        : "
-        Me.CheckBox3.UseVisualStyleBackColor = True
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(52, 214)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(77, 12)
-        Me.Label14.TabIndex = 96
-        Me.Label14.Text = "페이지 줄수 :"
-        '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(329, 247)
+        Me.Button5.Location = New System.Drawing.Point(521, 283)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(31, 21)
         Me.Button5.TabIndex = 99
         Me.Button5.Text = "..."
         Me.Button5.UseVisualStyleBackColor = True
         '
-        'TextBox13
+        'TextBox5
         '
-        Me.TextBox13.Location = New System.Drawing.Point(168, 247)
-        Me.TextBox13.Name = "TextBox13"
-        Me.TextBox13.Size = New System.Drawing.Size(145, 21)
-        Me.TextBox13.TabIndex = 87
+        Me.TextBox5.Location = New System.Drawing.Point(173, 283)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(330, 21)
+        Me.TextBox5.TabIndex = 87
         '
         'Label15
         '
         Me.Label15.Font = New System.Drawing.Font("굴림", 10.0!)
         Me.Label15.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label15.Location = New System.Drawing.Point(17, 247)
+        Me.Label15.Location = New System.Drawing.Point(20, 283)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(150, 20)
         Me.Label15.TabIndex = 97
         Me.Label15.Text = "사용할 성적서 경로:"
-        '
-        'CheckBox10
-        '
-        Me.CheckBox10.AutoSize = True
-        Me.CheckBox10.Location = New System.Drawing.Point(36, 58)
-        Me.CheckBox10.Name = "CheckBox10"
-        Me.CheckBox10.Size = New System.Drawing.Size(100, 16)
-        Me.CheckBox10.TabIndex = 101
-        Me.CheckBox10.Text = "요소           : "
-        Me.CheckBox10.UseVisualStyleBackColor = True
-        '
-        'TextBox14
-        '
-        Me.TextBox14.Enabled = False
-        Me.TextBox14.Location = New System.Drawing.Point(168, 56)
-        Me.TextBox14.Name = "TextBox14"
-        Me.TextBox14.Size = New System.Drawing.Size(83, 21)
-        Me.TextBox14.TabIndex = 80
         '
         'PictureBox4
         '
@@ -1031,54 +839,13 @@ Partial Class 수정창
         Me.PictureBox41.TabIndex = 37
         Me.PictureBox41.TabStop = False
         '
-        'Label27
+        'TabControl2
         '
-        Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(258, 214)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(69, 12)
-        Me.Label27.TabIndex = 36
-        Me.Label27.Text = "입력 방향 : "
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Items.AddRange(New Object() {"세로", "가로"})
-        Me.ComboBox2.Location = New System.Drawing.Point(335, 210)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(79, 20)
-        Me.ComboBox2.TabIndex = 212
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.ComboBox2)
-        Me.Panel1.Controls.Add(Me.Label27)
-        Me.Panel1.Controls.Add(Me.Button5)
-        Me.Panel1.Controls.Add(Me.CheckBox10)
-        Me.Panel1.Controls.Add(Me.TextBox13)
-        Me.Panel1.Controls.Add(Me.Label21)
-        Me.Panel1.Controls.Add(Me.Label15)
-        Me.Panel1.Controls.Add(Me.TextBox5)
-        Me.Panel1.Controls.Add(Me.CheckBox3)
-        Me.Panel1.Controls.Add(Me.TextBox14)
-        Me.Panel1.Controls.Add(Me.TextBox6)
-        Me.Panel1.Controls.Add(Me.CheckBox4)
-        Me.Panel1.Controls.Add(Me.CheckBox5)
-        Me.Panel1.Controls.Add(Me.CheckBox6)
-        Me.Panel1.Controls.Add(Me.CheckBox7)
-        Me.Panel1.Controls.Add(Me.CheckBox8)
-        Me.Panel1.Controls.Add(Me.CheckBox9)
-        Me.Panel1.Controls.Add(Me.Label14)
-        Me.Panel1.Controls.Add(Me.TextBox7)
-        Me.Panel1.Controls.Add(Me.TextBox8)
-        Me.Panel1.Controls.Add(Me.TextBox9)
-        Me.Panel1.Controls.Add(Me.TextBox10)
-        Me.Panel1.Controls.Add(Me.TextBox11)
-        Me.Panel1.Controls.Add(Me.TextBox12)
-        Me.Panel1.Location = New System.Drawing.Point(14, 282)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(566, 288)
-        Me.Panel1.TabIndex = 213
+        Me.TabControl2.Location = New System.Drawing.Point(21, 315)
+        Me.TabControl2.Name = "TabControl2"
+        Me.TabControl2.SelectedIndex = 0
+        Me.TabControl2.Size = New System.Drawing.Size(556, 251)
+        Me.TabControl2.TabIndex = 212
         '
         '수정창
         '
@@ -1086,11 +853,15 @@ Partial Class 수정창
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(613, 622)
+        Me.Controls.Add(Me.TabControl2)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.CheckBox11)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.Label13)
@@ -1114,7 +885,6 @@ Partial Class 수정창
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TabControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "수정창"
@@ -1153,8 +923,6 @@ Partial Class 수정창
         CType(Me.PictureBox39, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox40, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox41, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1187,34 +955,14 @@ Partial Class 수정창
     Friend WithEvents Label1 As Label
     Friend WithEvents Button4 As Button
     Friend WithEvents Button3 As Button
-    Friend WithEvents TextBox12 As TextBox
-    Friend WithEvents Label21 As Label
-    Friend WithEvents TextBox11 As TextBox
-    Friend WithEvents TextBox10 As TextBox
-    Friend WithEvents TextBox9 As TextBox
-    Friend WithEvents TextBox8 As TextBox
-    Friend WithEvents TextBox7 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox5 As TextBox
     Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents CheckBox9 As CheckBox
-    Friend WithEvents CheckBox8 As CheckBox
-    Friend WithEvents CheckBox7 As CheckBox
-    Friend WithEvents CheckBox6 As CheckBox
-    Friend WithEvents CheckBox5 As CheckBox
-    Friend WithEvents CheckBox4 As CheckBox
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents Label14 As Label
     Friend WithEvents Button5 As Button
-    Friend WithEvents TextBox13 As TextBox
+    Friend WithEvents TextBox5 As TextBox
     Friend WithEvents Label15 As Label
-    Friend WithEvents CheckBox10 As CheckBox
-    Friend WithEvents TextBox14 As TextBox
     Friend WithEvents CheckBox11 As CheckBox
     Friend WithEvents Button6 As Button
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage6 As TabPage
-    Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label
     Friend WithEvents PictureBox22 As PictureBox
     Friend WithEvents PictureBox23 As PictureBox
@@ -1248,7 +996,6 @@ Partial Class 수정창
     Friend WithEvents PictureBox39 As PictureBox
     Friend WithEvents PictureBox40 As PictureBox
     Friend WithEvents PictureBox41 As PictureBox
-    Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents TabControl2 As TabControl
 End Class

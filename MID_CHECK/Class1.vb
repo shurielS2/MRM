@@ -6,10 +6,10 @@
         Dim i As Integer
         ReDim user_SN(5000)
 
-        user_SN(0) = "931330708"                'my com
+        user_SN(0) = "1429864061"                'my com
         user_SN(1) = "2005489994"               'M3-QV-WLI
         user_SN(2) = "2108496212"               'M3-QV-Hybrid
-        user_SN(3) = "1198022579"               'M3-CRT-AV574
+        user_SN(3) = "1729431577"               'M3-CRT-AV574
         user_SN(4) = "1243865260"               '(주)21세기  QV
         user_SN(5) = "1557817102"               '(주)21세기  CMM
         user_SN(6) = "1645236319"               'RPM STRATO
@@ -19,6 +19,11 @@
         user_SN(10) = "1523059546"             '부산 M3 - CRT-AV6168
         user_SN(11) = "796538077"               '구미 H-테크 - CRT-AV-7106
         user_SN(12) = "1290459658"             '구미 이레테크 - CRT-AS9106
+        user_SN(13) = "837651529"              '부천 대신산업 - CRT-AV9106
+        user_SN(14) = "497432293"              '부천 대신산업 - CRT-AS9168
+        user_SN(15) = "1848064147"              ' MKC 군포 5층 다목적실
+        user_SN(16) = "1887186651"              'M3-QV-Active 
+        user_SN(17) = "786381889"               'M3 CRT-AV9166 
 
         If user_SN.Contains(input_SN) Then
             For i = 0 To 5000
@@ -49,7 +54,7 @@
 
         software_chk_QV = "HKEY_LOCAL_MACHINE\SOFTWARE\MEI\QVPak"               '폴더 존재 유무 확인용 
         QV_version = My.Computer.Registry.GetValue(software_chk_QV, "Current Version", Nothing)     'QV 버전 확인
-        QV_install_chk = "SOFTWARE\MEI\QVPak\" & QV_version & "\QVClientMenu Config"                     '각 버전 폴더 진입   HKEY_LOCAL_MACHINE\
+        QV_install_chk = "SOFTWARE\MEI\QVPak\" & QV_version & "\QVClientMenu Config"                 '각 버전 폴더 진입   HKEY_LOCAL_MACHINE\
         reg_del = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(QV_install_chk, True)
         'reg_del.SetValue("MenuName12", "")
         ' reg_del.SetValue("CommandLine12", "")

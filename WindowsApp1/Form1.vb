@@ -1,66 +1,76 @@
 ﻿'===============================================================어셈블리 버전 갱신용
-'2020-07-02 ver 1.0.0.1     기본성적서 이외에 위치지정 성적서 폼 라디오 버튼 및 속성 추가
-'2020-07-14 ver 1.0.0.2     form3 -리스트 수정시 form1 리스트 재로드 수정
-'2020-07-14 ver 1.0.0.2     위치지정 성적서의 베이스가 될 성적서 파일 지정 추가
-'2020-07-15 ver 1.0.0.3     성적서 save folder 위치 지정시 지정 폴더가 없으면 생성 기능 추가
-'2020-07-15 ver 1.0.0.3     기본 성적서폼 선택시 위치지정 속성 공백 지정해서 저장하는 기능 추가
-'2020-07-15 ver 1.0.1.0     위치지정 성적서 생성 루틴 추가 
-'2020-07-15 ver 1.0.1.1     줄 수 지정 숫자만 입력하는 이벤트 추가
-'2020-07-15 ver 1.0.1.2     Form1 셀 주소 지정 영문과 숫자 분리 (ad_NUM, ad_str 함수)
-'2020-07-15 ver 1.0.1.3     수정 로드시 체크박스 상태에 따라서 텍스트 박스 비활성화
-'2020-07-15 ver 1.0.1.4     자동저장 안할시에 임시파일로 백업본 저장
-'2020-07-16 ver 1.0.1.5     기본 성적서 없을때 자동 생성시 오류 workbook >workbooks 수정
-'2020-07-16 ver 1.0.1.6     위치지정 loop문 line_count 스텍 누락 추가
-'2020-07-16 ver 1.0.1.7     성적서 생성, 수정 시 공백 확인 누락된것 추가 (csv 파일, 저장 유형)
-'2020-08-13 Ver 1.0.1.8     프로그래스바 추가 
-'2020-08-13 Ver 1.0.1.9     성적서 자동저장 체크박스 추가. -기본으로는 자동저장
-'2020-08-13 Ver 1.0.1.9     A9:I36 범위 shrinktofit = true 설정 (셀맞춤 기능)
-'2020-08-18 Ver 1.0.1.10    파일 경로 오류 수정 (False <> false 문제)
-'2020-08-18 Ver 1.0.1.11    상위 폴더 경로 (MRM) 추가
-'2020-08-19 Ver 1.0.1.12    복사방지 추가 & 액티브 키(프로그램) 제작
-'2020-08-20 Ver 1.0.2.0     3차원 측정기용 ASC 파일 매칭 추가
-'2020-08-20 Ver 1.0.2.1     fileopen - input 구현 방식으로 변경
-'2020-08-20 Ver 1.0.2.2     중복실행 방지 구문 추가
-'2020-08-21 Ver 1.0.2.3     수정시 리스트박스 리로드 구문 추가
-'2020-08-21 Ver 1.0.2.3     contexstrip 추가 - 경로 폴더 열기
-'2020-08-24 Ver 1.0.2.4     판정 사용자서식 추가
-'2020-08-25 Ver 1.0.2.5     Extention_type3 덤핑 루틴 수정 덤핑 입력후 ""(공백)으로 처리
-'2020-09-24 Ver 1.0.2.6     기본성적서 유저정보 입력 버튼 생성
-'2020-09-24 Ver 1.0.2.7     유저정보 입력 버그수정 
-'2020-09-25 Ver 1.0.2.8     유저정보 입력 세부 수정
-'2020-10-07 Ver 1.0.2.9     유저정보 입력 날자 지정 체크박스 기능 추가
-'2020-10-29 Ver 1.0.2.10    유저정보 성적서 사진 변경 기능 추가 , 페이지 자동입력 추가
-'2020-11-04 Ver 1.0.2.11    PDF저장 기능 추가 , PDF저장시 temp파일 생성 추가
-'2020-11-20 Ver 1.0.3.0     설정 하나 골라서 완전 자동화 실행 방법 추가 - ini폴더안에 실행파일과 동일한 이름을 가진 폴더 존재하면 해당폴더 안의 ini 파일 하나 읽어와서 바로 실행
-'2020-11-23 Ver 1.0.3.1     텍스트 박스에서 키코드 이벤트 Form1, Form8에 추가
-'2020-12-18 Ver 1.0.3.2     ini파일 경로 한글 사용하기위해 dir를 매번 초기값으로 반환하는 함수 적용
-'2021-01-05 Ver 1.0.3.3     매칭 삭제시 확인 메세지 추가, QV-CSV에서 형상 공차 기입 위치 '오차 -> 설계값' 으로 자동 변경 구문추가
-'2021-01-07 Ver 1.0.3.4     기본폼 3개 추가 조합폼 5개 추가하여 기본 제공 폼 5개 적용. 탭컨트롤 추가하여 각 탭마다 기본폼 선택 적용, 각 성적서 조합 마다 삽입 위치 조정
-'2021-01-11 Ver 1.0.3.5     각 기본폼 마다 유저 기본정보 입력창 내용 공유 구문 정리.
-'2021-01-15 Ver 1.0.3.6     Keycode event 추가 : delete키 - 삭제 버튼 클릭 추가
-'2021-02-03 Ver 1.0.3.7     메인폼 로드시 MRM 폴더 유무 확인후 폴더 없으면 기본 폴더 생성하는 구문 추가 / 활성화 방법 변경 - 레지스트리 등록 방법 > mysettings 값으로 등록 하기. 복사후 컴퓨터 옮기면 재등록 필요
-'2020-02-04 Ver 1.0.4.0     사용자 매뉴얼 프로그램 리소스에 추가, 다운로드 기능 추가
-'2021-03-02 Ver 1.0.4.1     샘플 사진 제거 및 우측 위 미쓰도요 로고 >  업체 사진 기입 가능하도록 수정
-'2021-03-04 Ver 1.0.4.2     사진 변경 삭제 선택폼 추가, 미세 버그 수정
-'2021-03-10 Ver 1.0.4.3     메인 화면 폼 크기 고정 및 Label 자동 줄변경 추가
-'2021-03-15 Ver 1.0.4.4     소프트웨어 설치유무 레지스트리 판단하여 활성화 제한 (소프트웨어 설치 컴퓨터에서만 활성화 가능하게 하기)
-'2021-03-16 Ver 1.0.4.5     루트 directory 지정하여 어디서 열든 어떤 소프웨어와 연동하든 하나의 경로에서 설정파일 존재하도록 하기. curdir() -> MRM_root_dir 변경
-'2021-03-16 Ver 1.0.4.6     활성화 성공적으로 한후 소프트웨어(QVPAK,MCOSMOS) 삭제 했을때 오류 문구 추가
-'2021-03-30 Ver 1.0.4.7     전용프로그램 폴더 지정 후 경로 변경
-'2021-04-02 Ver 1.0.4.8     QV배열 측정시Split기능사용 할때 공백 부분 인덱스 처리 limit 값을  10>-1, 11>-1로 변경 공백 부분도 배열 생성해줌 
-'2021-04-06 Ver 1.0.4.9     활성화시에 QVClient 레지스트리 등록 및 root Dirtory에 MRM 프로그램 복사 -> QVClient 실행용 
-'2021-04-16 Ver 1.0.4.10    위치지정 서식 사용시 가로 입력 추가 , 중복실행 방지 프로세스 이름에 기본이름 추가 데이터 입력 구간에 on error 추가 - 에러날때 엑셀 닫기
-'2021-04-30 Ver 1.0.4.11    Label11 어셈블리 버전 자동 삽입, 스플레쉬 이미지 삽입, 링크라벨 이용 - 홈페이지 연결
-'2021-05-06 Ver 1.0.4.12    설치파일 (MSI) 제작
-'2021-05-07 Ver 1.1.0.0     유저테스트용 최종 빌드 - 유저테스트용 패스워드 지정, MID.dll파일 생성 - MID : 유저 컴퓨터 ID 
-'2021-05-25 Ver 1.1.0.1     디자인 추가 수정.
-'2021-06-03 Ver 1.1.0.2     위치지정 라벨 체크 안할시 데이터 끝 위치 검출 구문 셀 주소 nothing 오류 수정
-'2021-06-09 Ver 1.1.0.3     메인화면 및 버튼 크기 조정
-'2021-07-27 Ver 1.1.0.4     라벨 수정, 생성시 위치지정 서식 텍스트 박스 비활성화 수정,  위치지정 추가기입 프로젝트 추가(디자인)
-'2021-08-24 Ver 1.1.1.0     위치지정 서식의 추가기입용 다이얼로그 추가 - 원하는 위치에 하나의 텍스트 문장을 측정후 성적서 생성 마다 혹은 매 측정시 자동으로 기입되는 기능 
-'2021-08-25 Ver 1.2.0.0     대구 유저테스트를 위해 비밀번호 수정 TrialMRM0730 > TrialMRM0930 , 사용기한 9/30까지 연장
-'2021-08-25 Ver 1.2.0.1     add_str_dialog에 Keycode 이벤트 추가 Shift+enter = 줄바꿈, Enter = 확인키 , 확인키 클릭시 dialog결과 OK(1)로 출력 하게 하기
-'2021-09-06 Ver 1.2.0.2     병합셀 확인하여 병합셀의 크기 만큼 셀주소를 조정 해서 병합셀에 데이터가 중복 입력 안되도록 수정 >> 병합셀에서도 데이터가 하나만 들어갈수 있음
+'2020-07-02 ver 1.0.1       기본성적서 이외에 위치지정 성적서 폼 라디오 버튼 및 속성 추가
+'2020-07-14 ver 1.0.2       form3 -리스트 수정시 form1 리스트 재로드 수정
+'2020-07-14 ver 1.0.2       위치지정 성적서의 베이스가 될 성적서 파일 지정 추가
+'2020-07-15 ver 1.0.3       성적서 save folder 위치 지정시 지정 폴더가 없으면 생성 기능 추가
+'2020-07-15 ver 1.0.3       기본 성적서폼 선택시 위치지정 속성 공백 지정해서 저장하는 기능 추가
+'2020-07-15 ver 1.0.4       위치지정 성적서 생성 루틴 추가 
+'2020-07-15 ver 1.0.5       줄 수 지정 숫자만 입력하는 이벤트 추가
+'2020-07-15 ver 1.0.6       Form1 셀 주소 지정 영문과 숫자 분리 (ad_NUM, ad_str 함수)
+'2020-07-15 ver 1.0.7       수정 로드시 체크박스 상태에 따라서 텍스트 박스 비활성화
+'2020-07-15 ver 1.0.8       자동저장 안할시에 임시파일로 백업본 저장
+'2020-07-16 ver 1.0.9       기본 성적서 없을때 자동 생성시 오류 workbook >workbooks 수정
+'2020-07-16 ver 1.0.10      위치지정 loop문 line_count 스텍 누락 추가
+'2020-07-16 ver 1.0.11      성적서 생성, 수정 시 공백 확인 누락된것 추가 (csv 파일, 저장 유형)
+'2020-08-13 Ver 1.0.12      프로그래스바 추가 
+'2020-08-13 Ver 1.0.13      성적서 자동저장 체크박스 추가. -기본으로는 자동저장
+'2020-08-13 Ver 1.0.14      A9:I36 범위 shrinktofit = true 설정 (셀맞춤 기능)
+'2020-08-18 Ver 1.0.15      파일 경로 오류 수정 (False <> false 문제)
+'2020-08-18 Ver 1.0.16      상위 폴더 경로 (MRM) 추가
+'2020-08-19 Ver 1.0.17      복사방지 추가 & 액티브 키(프로그램) 제작
+'2020-08-20 Ver 1.0.18      3차원 측정기용 ASC 파일 매칭 추가
+'2020-08-20 Ver 1.0.19      fileopen - input 구현 방식으로 변경
+'2020-08-20 Ver 1.0.20      중복실행 방지 구문 추가
+'2020-08-21 Ver 1.0.21      수정시 리스트박스 리로드 구문 추가
+'2020-08-21 Ver 1.0.22      contexstrip 추가 - 경로 폴더 열기
+'2020-08-24 Ver 1.0.23      판정 사용자서식 추가
+'2020-08-25 Ver 1.0.24      Extention_type3 덤핑 루틴 수정 덤핑 입력후 ""(공백)으로 처리
+'2020-09-24 Ver 1.0.25      기본성적서 유저정보 입력 버튼 생성
+'2020-09-24 Ver 1.0.26      유저정보 입력 버그수정 
+'2020-09-25 Ver 1.0.27      유저정보 입력 세부 수정
+'2020-10-07 Ver 1.0.28      유저정보 입력 날자 지정 체크박스 기능 추가
+'2020-10-29 Ver 1.0.29      유저정보 성적서 사진 변경 기능 추가 , 페이지 자동입력 추가
+'2020-11-04 Ver 1.0.30      PDF저장 기능 추가 , PDF저장시 temp파일 생성 추가
+'2020-11-20 Ver 1.0.31      설정 하나 골라서 완전 자동화 실행 방법 추가 - ini폴더안에 실행파일과 동일한 이름을 가진 폴더 존재하면 해당폴더 안의 ini 파일 하나 읽어와서 바로 실행
+'2020-11-23 Ver 1.0.32      텍스트 박스에서 키코드 이벤트 Form1, Form8에 추가
+'2020-12-18 Ver 1.0.33      ini파일 경로 한글 사용하기위해 dir를 매번 초기값으로 반환하는 함수 적용
+'2021-01-05 Ver 1.0.34      매칭 삭제시 확인 메세지 추가, QV-CSV에서 형상 공차 기입 위치 '오차 -> 설계값' 으로 자동 변경 구문추가
+'2021-01-07 Ver 1.0.35      기본폼 3개 추가 조합폼 5개 추가하여 기본 제공 폼 5개 적용. 탭컨트롤 추가하여 각 탭마다 기본폼 선택 적용, 각 성적서 조합 마다 삽입 위치 조정
+'2021-01-11 Ver 1.0.36      각 기본폼 마다 유저 기본정보 입력창 내용 공유 구문 정리.
+'2021-01-15 Ver 1.0.37      Keycode event 추가 : delete키 - 삭제 버튼 클릭 추가
+'2021-02-03 Ver 1.0.38      메인폼 로드시 MRM 폴더 유무 확인후 폴더 없으면 기본 폴더 생성하는 구문 추가 / 활성화 방법 변경 - 레지스트리 등록 방법 > mysettings 값으로 등록 하기. 복사후 컴퓨터 옮기면 재등록 필요
+'2020-02-04 Ver 1.0.39      사용자 매뉴얼 프로그램 리소스에 추가, 다운로드 기능 추가
+'2021-03-02 Ver 1.0.40      샘플 사진 제거 및 우측 위 미쓰도요 로고 >  업체 사진 기입 가능하도록 수정
+'2021-03-04 Ver 1.0.41      사진 변경 삭제 선택폼 추가, 미세 버그 수정
+'2021-03-10 Ver 1.0.42      메인 화면 폼 크기 고정 및 Label 자동 줄변경 추가
+'2021-03-15 Ver 1.0.43      소프트웨어 설치유무 레지스트리 판단하여 활성화 제한 (소프트웨어 설치 컴퓨터에서만 활성화 가능하게 하기)
+'2021-03-16 Ver 1.0.44      루트 directory 지정하여 어디서 열든 어떤 소프웨어와 연동하든 하나의 경로에서 설정파일 존재하도록 하기. curdir() -> MRM_root_dir 변경
+'2021-03-16 Ver 1.0.45      활성화 성공적으로 한후 소프트웨어(QVPAK,MCOSMOS) 삭제 했을때 오류 문구 추가
+'2021-03-30 Ver 1.0.46      전용프로그램 폴더 지정 후 경로 변경
+'2021-04-02 Ver 1.0.47      QV배열 측정시Split기능사용 할때 공백 부분 인덱스 처리 limit 값을  10>-1, 11>-1로 변경 공백 부분도 배열 생성해줌 
+'2021-04-06 Ver 1.0.48      활성화시에 QVClient 레지스트리 등록 및 root Dirtory에 MRM 프로그램 복사 -> QVClient 실행용 
+'2021-04-16 Ver 1.0.49      위치지정 서식 사용시 가로 입력 추가 , 중복실행 방지 프로세스 이름에 기본이름 추가 데이터 입력 구간에 on error 추가 - 에러날때 엑셀 닫기
+'2021-04-30 Ver 1.0.50      Label11 어셈블리 버전 자동 삽입, 스플레쉬 이미지 삽입, 링크라벨 이용 - 홈페이지 연결
+'2021-05-06 Ver 1.0.51      설치파일 (MSI) 제작
+'2021-05-07 Ver 1.1.0       유저테스트용 최종 빌드 - 유저테스트용 패스워드 지정, MID.dll파일 생성 - MID : 유저 컴퓨터 ID 
+'2021-05-25 Ver 1.1.1       디자인 추가 수정.
+'2021-06-03 Ver 1.1.2       위치지정 라벨 체크 안할시 데이터 끝 위치 검출 구문 셀 주소 nothing 오류 수정
+'2021-06-09 Ver 1.1.3       메인화면 및 버튼 크기 조정
+'2021-07-27 Ver 1.1.4       라벨 수정, 생성시 위치지정 서식 텍스트 박스 비활성화 수정,  위치지정 추가기입 프로젝트 추가(디자인)
+'2021-08-24 Ver 1.1.5       위치지정 서식의 추가기입용 다이얼로그 추가 - 원하는 위치에 하나의 텍스트 문장을 측정후 성적서 생성 마다 혹은 매 측정시 자동으로 기입되는 기능 
+'2021-08-25 Ver 1.2.0       대구 유저테스트를 위해 비밀번호 수정 TrialMRM0730 > TrialMRM0930 , 사용기한 9/30까지 연장
+'2021-08-25 Ver 1.2.1       add_str_dialog에 Keycode 이벤트 추가 Shift+enter = 줄바꿈, Enter = 확인키 , 확인키 클릭시 dialog결과 OK(1)로 출력 하게 하기
+'2021-09-06 Ver 1.2.2       병합셀 확인하여 병합셀의 크기 만큼 셀주소를 조정 해서 병합셀에 데이터가 중복 입력 안되도록 수정 >> 병합셀에서도 데이터가 하나만 들어갈수 있음
+'2021-10-15 Ver 1.3.0       위치지정 서식 기초추가 >ini 파일준비 >>메인화면에서 설정정보 읽어오는 기능구현, 위치지정서식 동적컨트롤로 탭페이지로 표현 
+'2021-10-21 Ver 1.3.1       동적 컨트롤 위치 지정, 및 property 지정 및 수정
+'2021-10-24 Ver 1.3.2       Mknew, 수정창에 위치지정 서식 동적 컨트롤 대응 할 수 있도록 수정 > Mknew,수정창에 동적 컨드롤 생성 > 원본 성적서 불러와서 탭 갯수 만큼 tabpage생성 후 이름 지정.
+'2021-10-24 Ver 1.3.3       위치지정 서식 추가기입창 임시 저장 기능 추가, 저장 후 다음 번 불러올떄는 저장된 데이터 불러오도록 하기. 동적 컨트롤 수정, 가로 기입 오류 수정
+'2021-10-25 Ver 1.3.4       위치지정 서식 마무리 > 사용 성적서의 탭을 읽어와 tabpage 자동 생성 후 각 탭마다 집어넣을 값, 줄수 따로 지정하여 모든 탭에 각자 데이터 집어 넣을 수 있도로 변경, 위치지정 추가 기입창에 적용 탭 항목 추가 및 수정
+'2021-11-08 Ver 1.3.5       일반, 전용 버튼 추가하여 전용프로그램 리스트 읽어와서 수정 가능하도록 함. > 전용프로그램의 수정 및 관리가 편리해짐.
+'2021-11-11 Ver 1.3.6       수정창 > 원본 성적서 불러오기후 탭 재생성 기능 추가 / 새로만들기, 수정창 > 원본성적서 불러오는 다이얼로그 취소 누를 경우 에러 나는 현상 해경
+'2021-11-15 Ver 1.3.7       수정창, Mknew, Form1에 위치지정_추가기입 input_type 속성 추가 > 날짜, 시간 등 선택하여 날짜, 시간 자동 입력
+'2021-11-29 Ver 1.3.8       사용설명서 업데이트 Rev.004 업데이트 
+'2021-12-13 Ver 1.3.9       상한,하한공차,오차 위치값 재배열
 '=============================================================================================================
 
 '=========================================
@@ -74,8 +84,8 @@ Public Class Form1
     Declare Function GPPS Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Long, ByVal lpFileName As String) As Long
     Declare Function WPPS Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpString As String, ByVal lpFileName As String) As Long
     '============================================================== Active Key
-    Const active_key As String = "TrialMRM0930"     '유저테스트용 빌드 mrm 활성화 비밀번호
-    ' Const active_key As String = "MitutoyoMRM4270"
+    Const active_key As String = "MRMV103"     '유저테스트용 빌드 mrm 활성화 비밀번호
+
     'Const MID As String = ""
     Const MRM_root_dir As String = "C:\MitutoyoApp"
     '============================================================== Active Key
@@ -119,6 +129,8 @@ Public Class Form1
 
     Dim Data_error_occur As Integer              '소스파일 및 엑셀 누락 에러 검출용 변수
 
+    Public List_check As Integer
+
     Public Product_Name As String
     Public Machine_Name As String
     Public Request_Dept As String
@@ -131,7 +143,7 @@ Public Class Form1
     Public New_Fix_check As Integer
 
     Public user_info_temp() As String
-    Public add_str_value(5) As String
+    Public add_str_value(10) As String
 
     Dim for_trial As Date
     Dim for_trial2 As Long
@@ -152,7 +164,11 @@ Public Class Form1
         Dim judge As String
         Dim component As String
     End Structure
-
+    Structure control_structure
+        Dim Text_box() As TextBox
+        Dim check_box() As CheckBox
+        Dim label() As Label
+    End Structure
 
 
 
@@ -173,12 +189,12 @@ Public Class Form1
 
         '==================================================== 트라이얼 버전용
 
-        '  for_trial = "2021-09-30"
-        ' for_trial2 = DateDiff(DateInterval.Day, Now, for_trial) + 1
-        ' If for_trial2 <= 0 Then
-        ' MsgBox("테스트 사용기간이 종료 되었습니다." & Environment.NewLine & "정식판 사용을 위해서 한국미쓰도요 영업부에 연락 부탁드립니다." & Environment.NewLine & "대표 번호 : 031-361-4220", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly)
-        '  End
-        ' End If
+        'for_trial = "2022-11-01"
+        'for_trial2 = DateDiff(DateInterval.Day, Now, for_trial) + 1
+        'If for_trial2 <= 0 Then
+        'MsgBox("테스트 사용기간이 종료 되었습니다." & Environment.NewLine & "정식판 사용을 위해서 한국미쓰도요 영업부에 연락 부탁드립니다." & Environment.NewLine & "대표 번호 : 031-361-4220", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly)
+        'End
+        'End If
 
         '==================================================== 트라이얼 버전용
 
@@ -209,6 +225,7 @@ Public Class Form1
         '====================================================리스트 파일 로드
 
         Get_list()
+
 
         '==================================================== MRM 하위 폴더 유무 확인후 폴더 생성
         Dim Folder_Name() As String
@@ -358,10 +375,9 @@ Public Class Form1
         Select Case source_type
 
             Case 1
-                'Call Extension_type_3()     'csv    
-                Call Extension_type_1()             '테스트용
+                Call Extension_type_1()     'csv
             Case 2
-                Call Extension_type_2()     'asc
+                Call Extension_type_2()     'asc   
         End Select
 
         If Data_error_occur = 1 Then
@@ -478,7 +494,15 @@ Public Class Form1
         If ListBox1.SelectedItem IsNot Nothing Then
             ini_Name = ListBox1.SelectedItem.ToString()
         End If
-        ini_dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & ini_Name & ".ini"
+
+        Select Case List_check
+            Case 1
+
+                ini_dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & ini_Name & ".ini"
+
+            Case 2
+                ini_dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & ini_Name & "\" & ini_Name & ".ini"
+        End Select
 
         If ListBox1.SelectedItem = Nothing Then
 
@@ -494,8 +518,9 @@ Public Class Form1
             '   Label18.Text = ""
 
         Else
-            '  Call input_property(ini_dir)
-            Call Input_property_t(ini_dir)            '테스트용
+            Call Input_property(ini_dir)
+
+            'Call Input_property_t(ini_dir)            '테스트용
 
 
         End If
@@ -520,13 +545,35 @@ Public Class Form1
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Dim temp_kill_Dir As String
         Dim temp_kill_Name As String
+        Dim temp_kill_exe As String
+        Dim temp_kill_folder As String
 
         If ListBox1.SelectedItem IsNot Nothing Then
             If MsgBox("선택 리스트를 삭제하시겠습니까?", 4, "매칭 리스트 삭제") = 6 Then           'YES : 6, NO: 7
-                temp_kill_Name = ListBox1.SelectedItem.ToString
-                temp_kill_Dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & temp_kill_Name & ".ini"
-                ListBox1.Items.Remove(ListBox1.SelectedItem)
-                Kill(temp_kill_Dir)
+
+                Select Case List_check
+                    Case 1          '일반
+                        temp_kill_Name = ListBox1.SelectedItem.ToString
+                        temp_kill_Dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & temp_kill_Name & ".ini"
+                        ListBox1.Items.Remove(ListBox1.SelectedItem)
+                        Kill(temp_kill_Dir)
+
+                    Case 2          '전용
+
+
+                        temp_kill_Name = ListBox1.SelectedItem.ToString
+                        temp_kill_Dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & temp_kill_Name & "\" & temp_kill_Name & ".ini"
+                        temp_kill_folder = MRM_root_dir & "\MRM\Data\Resources\ini\" & temp_kill_Name
+                        temp_kill_exe = MRM_root_dir & "\MRM\전용프로그램\" & temp_kill_Name & ".exe"
+                        ListBox1.Items.Remove(ListBox1.SelectedItem)
+                        Kill(temp_kill_Dir)         '전용 ini삭제
+                        RmDir(temp_kill_folder)     '전용 folder 삭제
+                        Kill(temp_kill_exe)         '전용 exe 삭제
+
+                End Select
+
+
+
             End If
         Else
             MsgBox("삭제할 매칭 리스트를 선택해주세요",, "삭제 리스트 선택")
@@ -600,7 +647,11 @@ Public Class Form1
         'Dim CMM_install_chk As String
         Dim CMM_install_value As String
         'Dim CMM_version As String
+        Dim active_ans As Integer
 
+
+
+        Dim install_check As String
 
         'Dim UID_check As String
         reg_path = "HKEY_CURRENT_USER\Software\Mitutoyo\MRM"
@@ -619,105 +670,105 @@ Public Class Form1
         '레지스트리에 GEOPAK이 있으면 GEOPAK의 기본값을 읽어 오지만 아무것도 없기 때문에 기본값 출력  -> 기본값 출력하면 소프트웨어 존재
         '레지스트리에 GEOPAK이 없으면 Nothing값 출력 -> Nothing값 출력하면 소프트웨어 존재 안함
 
+
+
+        install_check = My.Computer.Registry.GetValue(reg_path, "install_check", "false")
+
         On Error GoTo MID_DLL_ERROR
+
+        If install_check = "false" Then
+            MsgBox("MRM이 설치 되어있지 않습니다." & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
+            Me.Close()
+            Lib_Serial_Check = 1
+            GoTo mid_check_skip
+
+        ElseIf install_check = "true" Then
+
+        Else
+            MsgBox("MRM이 설치 되어있지 않습니다." & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
+            Me.Close()
+            Lib_Serial_Check = 1
+            GoTo mid_check_skip
+
+        End If
 
 
         ' If registry_value <> Serial_NUM Then    '      
         If registry_value <> MID_CHECK_EH(Serial_NUM) Then    'dll파일에서 MID 읽어와서 일치하는지 확인
-            '   
-            'SplashScreen1.Close()
-            If MsgBox("MRM 사용이 활성 되어있지 않습니다." & Environment.NewLine & Environment.NewLine & "장비 등록하여 MRM을 활성 하시겠습니까?", 4, "MRM Activation") = 6 Then  '6 : YES  7 : NO
-                활성화키.ShowDialog()
+            '
+            'active_ans = MsgBox("MRM 사용이 활성 되어있지 않습니다." & Environment.NewLine & Environment.NewLine & "MRM을 활성 하시겠습니까?", 4, "MRM Activation")
+            'If active_ans = 6 Then  '6 : YES  7 : NO
+            활성화키.ShowDialog()
+            활성화키.Focus()
 
-                If UCase(활성화키.TextBox1.Text) = UCase(active_key) Then
+            If UCase(활성화키.TextBox1.Text) = UCase(active_key) Then
 
-                    If QV_install_value = "Install completed" Then 'qv 설치되어있음
+                If QV_install_value = "Install completed" Then 'qv 설치되어있음
 
-                        'My.Settings.등록_ID = Serial_NUM
-                        'My.Settings.등록여부 = True
-                        'My.Settings.Save()
-                        My.Computer.Registry.SetValue(reg_path, "Active_Machine_ID", Serial_NUM)
-                        My.Computer.Registry.SetValue(reg_path, "Last_Active_Time", registry_time)
-                        'My.Computer.Registry.SetValue(reg_path, "Active_UID", active_key)
-                        My.Computer.Registry.SetValue(reg_path, "Active_Software", "QVPAK")
+                    'My.Settings.등록_ID = Serial_NUM
+                    'My.Settings.등록여부 = True
+                    'My.Settings.Save()
+                    My.Computer.Registry.SetValue(reg_path, "Active_Machine_ID", Serial_NUM)
+                    My.Computer.Registry.SetValue(reg_path, "Last_Active_Time", registry_time)
+                    'My.Computer.Registry.SetValue(reg_path, "Active_UID", active_key)
+                    My.Computer.Registry.SetValue(reg_path, "Active_Software", "QVPAK")
 
-                        My.Computer.Registry.SetValue(QV_install_chk & "\QVClientMenu Config", "MenuName12", "MRM")
-                        My.Computer.Registry.SetValue(QV_install_chk & "\QVClientMenu Config", "CommandLine12", MRM_root_dir & "\MRM\Mitutoyo Result Matcher.exe")
-                        MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
+                    My.Computer.Registry.SetValue(QV_install_chk & "\QVClientMenu Config", "MenuName12", "MRM")
+                    My.Computer.Registry.SetValue(QV_install_chk & "\QVClientMenu Config", "CommandLine12", MRM_root_dir & "\MRM\Mitutoyo Result Matcher.exe")
+                    MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
 
-                    ElseIf CMM_install_value = "MCOSMOS" Then     'cmm 설치되어있음
+                ElseIf CMM_install_value = "MCOSMOS" Then     'cmm 설치되어있음
 
-                        'My.Settings.등록_ID = Serial_NUM
-                        'My.Settings.등록여부 = True
-                        'My.Settings.Save()
-                        My.Computer.Registry.SetValue(reg_path, "Active_Machine_ID", Serial_NUM)
-                        My.Computer.Registry.SetValue(reg_path, "Last_Active_Time", registry_time)
-                        'My.Computer.Registry.SetValue(reg_path, "Active_UID", active_key)
-                        My.Computer.Registry.SetValue(reg_path, "Active_Software", "MCOSMOS")
-                        MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
-
-
-                    Else        'cmm 설치 안되어있음
-
-                        MsgBox("MRM을 성공적으로 활성 하지 못하였습니다." & Environment.NewLine & "Mitutoyo 측정 소프트웨어가 설치되어있는 컴퓨터에서 활성화 시켜 주세요" & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
-                        Me.Close()
-                        Lib_Serial_Check = 1
+                    'My.Settings.등록_ID = Serial_NUM
+                    'My.Settings.등록여부 = True
+                    'My.Settings.Save()
+                    My.Computer.Registry.SetValue(reg_path, "Active_Machine_ID", Serial_NUM)
+                    My.Computer.Registry.SetValue(reg_path, "Last_Active_Time", registry_time)
+                    'My.Computer.Registry.SetValue(reg_path, "Active_UID", active_key)
+                    My.Computer.Registry.SetValue(reg_path, "Active_Software", "MCOSMOS")
+                    MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
 
 
-                    End If
+                Else        'cmm 설치 안되어있음
 
-                Else
-                    MsgBox("MRM을 성공적으로 활성 하지 못하였습니다." & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
+                    MsgBox("MRM을 성공적으로 활성 하지 못하였습니다." & Environment.NewLine & "Mitutoyo 측정 소프트웨어가 설치되어있는 컴퓨터에서 활성화 시켜 주세요" & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
                     Me.Close()
                     Lib_Serial_Check = 1
-                End If
-            Else
 
-                MsgBox("MRM 활성화를 취소하셨습니다.", 64, "MRM Activation")
+
+                End If
+
+            Else
+                MsgBox("MRM을 성공적으로 활성 하지 못하였습니다. 입력한 활성화 키를 다시한번 확인 부탁드립니다." & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
                 Me.Close()
                 Lib_Serial_Check = 1
-
             End If
+            ' Else
 
-        Else '
-
-            'UID_check = My.Computer.Registry.GetValue(reg_path, "Active_UID", Nothing)
-            'If UID_check <> active_key Then
-            'MsgBox("이미 활성화 등록된 장비입니다. 기존 등록된 버전의 프로그램으로 실행해 주세요." & Environment.NewLine & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")
+            'MsgBox("MRM 활성화를 취소하셨습니다.", 64, "MRM Activation")
+            'Me.Close()
+            'Lib_Serial_Check = 1
 
             'End If
-        End If
+
+        Else '
+            If QV_install_value = "Install completed" Then 'qv 설치되어있음
 
 
+            ElseIf CMM_install_value = "MCOSMOS" Then     'cmm 설치되어있음
 
-        If QV_install_value = "Install completed" Then 'qv 설치되어있음
+            Else        'QV, cmm 설치 안되어있음
 
-            'QV 설치되어있음
-
-        Else 'QV 설치 안되어있음
-
-            If CMM_install_value = "MCOSMOS" Then     'cmm 설치되어있음
-
-                'cmm 설치되어있음
-
-            Else 'cmm 설치 안되어있음
-
-                MsgBox("PC에 소프트웨어가 설치 되어있지 않습니다." & Environment.NewLine & "본 프로그램은 QVPAK 혹은 MCOSMOS 소프트웨어가 설치 되어있는 PC에서 사용이 가능합니다." & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
+                MsgBox("MRM을 성공적으로 활성 하지 못하였습니다." & Environment.NewLine & "Mitutoyo 측정 소프트웨어가 설치되어있는 컴퓨터에서 활성화 시켜 주세요" & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
                 Me.Close()
                 Lib_Serial_Check = 1
+
             End If
+
         End If
 
 
 
-        'If My.Settings.등록_ID = Mid() Then
-
-        'Else
-        'MsgBox("다른 장비에서 활성화 시킨 프로그램입니다." & Environment.NewLine & "등록 장비에서만 사용이 가능합니다." & Environment.NewLine & "프로그램의 추가 구입, 문제해결, 문의사항은 하기 MID화 함께 Mitutoyo Korea에 문의 부탁드립니다." & Environment.NewLine & "MID : " & Serial_NUM, 48, "MRM 복사 방지")  '6 : YES  7 : NO
-
-        'Me.Close()
-        'Lib_Serial_Check = 1
-        'End If
 
 
         '============================레지스트리 등록 확인법 
@@ -737,10 +788,13 @@ Public Class Form1
         'Lib_Serial_Check = 1
 
         'End Select
+
+mid_check_skip:
+
         Exit Function
 MID_DLL_ERROR:
         'SplashScreen1.Close()
-        MsgBox("        >>>>>   파일 복사 감지   <<<<<    " & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다." & Environment.NewLine & "문의전화(영업부) : 각 담당 영업사원" & Environment.NewLine & "문의 전화 (영업기술부) : 031-361-4274", 48, "MRM Activation")
+        MsgBox("        >>>>>   파일 복사 감지   <<<<<    " & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다." & Environment.NewLine & "문의전화(영업부) : 각 담당 영업사원" & Environment.NewLine & "문의전화 (영업기술부) : 031-361-4274" & Environment.NewLine & "ERROR CDOE : M-001", 48, "MRM Activation")          'M-001 시리얼 체크 에러 발생
 
         Me.Close()
         End
@@ -1191,856 +1245,6 @@ MID_DLL_ERROR:
 
     End Sub
 
-    Sub Extension_type_2()          'ASC 파일 읽어오기
-        On Error GoTo XLC
-        Dim input_string As String
-        Dim merge_count As Long
-        Dim cRow As Integer
-        Dim i As Integer
-
-        Select Case Label20.Text
-        '=========================================================================
-
-            Case "기본폼1", "기본폼2", "기본폼3", "기본폼4", "기본폼5"
-                Dim error_arry() As String
-
-                Dim Data_sheet As String
-                Dim form_txt_1 As String
-                Dim form_txt_2 As String
-                Dim sheets_switch As Integer
-                Dim sheets_del As Integer
-
-                sheets_switch = 0
-
-                Select Case Label20.Text
-
-                    Case "기본폼1"        '말머리 전부 포함               1사용
-                        form_txt_1 = "기본폼1"
-                        form_txt_2 = form_txt_1
-                        sheets_switch = 0
-
-                    Case "기본폼2"        '말머리 전부 없음               2 사용
-                        form_txt_1 = "기본폼2"
-                        form_txt_2 = form_txt_1
-                        sheets_switch = 1
-
-                    Case "기본폼3"        '그림 전부 삽입                 3 사용
-                        form_txt_1 = "기본폼3"
-                        form_txt_2 = form_txt_1
-                        sheets_switch = 2
-
-                    Case "기본폼4"        '첫 페이지 말머리 있음 2 페이지 부터 말머리 없음            1,2사용
-                        form_txt_1 = "기본폼1"
-                        form_txt_2 = "기본폼2"
-                        sheets_switch = 0
-                        sheets_del = 1
-                    Case "기본폼5"         '첫페이지 그림 삽입, 2 페이지부터 그림, 말머리 없음         2,3 사용
-                        form_txt_1 = "기본폼3"
-                        form_txt_2 = "기본폼2"
-                        sheets_switch = 2
-                        sheets_del = 1
-                    Case Else
-
-                        form_txt_1 = "기본폼1"
-                        form_txt_2 = "기본폼1"
-
-                End Select
-
-                Data_sheet = "Data Sheet"
-
-                error_arry = Split("평면도,위치도,동심도,평행도,직각도,동축도,면의 위치도,경사도", ",")
-
-                '=========================================================================
-
-
-                XL.Workbooks.open(Open_Dir)       '성적서 오픈
-                'XL.visible = True
-                XL.DisplayAlerts = False
-
-                XL.Sheets.add(before:=XL.Sheets("기본폼1")) 'asc파일 가져올 워크시트 추가
-                XL.activesheet.name = Data_sheet
-
-                FileOpen(2, CSV_Dir, OpenMode.Input)
-
-
-                Do Until EOF(2)
-                    cRow = cRow + 1
-                    input_string = LineInput(2)
-                    Dim input_arry() As String = Split(input_string, ";")
-                    For i = 0 To UBound(input_arry)
-                        XL.sheets(Data_sheet).cells(cRow, i + 1).value = input_arry(i)
-                    Next
-                Loop
-
-                FileClose(2)
-                ' XL.visible = True
-                '================================================================기본 유저 정보 입력
-                input_user_info()
-                Sheet_del()
-                '================================================================기본 유저 정보 입력
-                XL.Sheets(form_txt_1).Copy(After:=XL.Sheets(Data_sheet))        '데이터 입력용 워크시트 복사
-                XL.activesheet.name = "DATA-1"                                         '워크시트 선택
-                XL.sheets("DATA-1").select                                         '워크시트 선택
-                Cell_Address = 1                    '워크시트1 셀 위치
-                Sheet_Count = 1                     '데이터 입력 워크시트 카운트
-                Cell_Count2 = XL.Sheets(Data_sheet).Rows.Count       '워크시트 행 위치 검색
-                Cell_Count = XL.Sheets(Data_sheet).Cells(Cell_Count2, 1).End(-4162).Row      '워크시트 행 위치 검색  -4162 : xlUp
-
-
-                Select Case Label20.Text                    '페이지수 계산
-
-                    Case "기본폼1"
-                        Quetient = Cell_Count / 28              '페이지수 계산  폼1 : 28, 폼2 : 32, 폼3 : 15
-                    Case "기본폼2"        '말머리 전부 없음               2 사용
-                        Quetient = Cell_Count / 32
-                    Case "기본폼3"        '그림 전부 삽입                 3 사용
-                        Quetient = Cell_Count / 15
-                    Case "기본폼4"        '첫 페이지 말머리 있음 2 페이지 부터 말머리 없음            1,2사용
-                        Quetient = ((Cell_Count - 28) / 32) + 1
-                    Case "기본폼5"         '첫페이지 그림 삽입, 2 페이지부터 그림, 말머리 없음         2,3 사용
-                        Quetient = ((Cell_Count - 15) / 32) + 1
-                    Case Else
-
-                End Select
-
-                TotalSheet = CInt(Quetient)             '페이지수 계산 (반올림)
-
-                프로그레스바.ProgressBar1.Maximum = Cell_Count
-
-                Dim count As Integer
-
-                If Quetient - TotalSheet > 0 Then TotalSheet = TotalSheet + 1       '반올림값 보정 0.5 이하 +1페이지
-
-                Do      '데이터 입력
-                    Select Case sheets_switch
-                        Case 0      '기본폼1
-                            Line_Count = 9
-                        Case 1      '기본폼2
-                            Line_Count = 5
-                        Case 2      '기본폼 3
-                            Line_Count = 22
-                    End Select
-
-                    Do Until Line_Count > 36
-
-                        XL.Sheets("DATA-" & Sheet_Count).Range("A" & Line_Count).value = XL.Sheets(1).Range("B" & Cell_Address).value & "(" & XL.Sheets(1).Range("A" & Cell_Address).value & ")"   '라벨명
-                        XL.Sheets("DATA-" & Sheet_Count).Range("B" & Line_Count).value = XL.Sheets(1).Range("C" & Cell_Address).value     '구성요소
-                        XL.Sheets("DATA-" & Sheet_Count).Range("C" & Line_Count).value = XL.Sheets(1).Range("G" & Cell_Address).value     '측정값
-                        XL.Sheets("DATA-" & Sheet_Count).Range("D" & Line_Count).value = XL.Sheets(1).Range("D" & Cell_Address).value     '설계치
-                        XL.Sheets("DATA-" & Sheet_Count).Range("E" & Line_Count).value = XL.Sheets(1).Range("H" & Cell_Address).value     '오차
-                        XL.Sheets("DATA-" & Sheet_Count).Range("F" & Line_Count).value = XL.Sheets(1).Range("E" & Cell_Address).value     '상한
-                        XL.Sheets("DATA-" & Sheet_Count).Range("G" & Line_Count).value = XL.Sheets(1).Range("F" & Cell_Address).value     '하한
-                        XL.Sheets("DATA-" & Sheet_Count).Range("H" & Line_Count).value = XL.Sheets(1).Range("J" & Cell_Address).value     '판정 // 통과/실패
-                        If XL.Sheets("DATA-" & Sheet_Count).Range("A" & Line_Count).value = "()" Then
-                            XL.Sheets("DATA-" & Sheet_Count).Range("A" & Line_Count).value = ""
-                            Exit Do
-                        End If
-                        Line_Count = Line_Count + 1
-                        Cell_Address = Cell_Address + 1
-                        count += 1
-
-                        '====================================================================================================================================
-                        If 프로그레스바.ProgressBar1.Value = 프로그레스바.ProgressBar1.Maximum Then
-                        Else
-                            프로그레스바.ProgressBar1.Value += 1
-                        End If
-                        '====================================================================================================================================
-
-                    Loop
-
-                    Select Case sheets_switch
-                        Case 0, 2           '기본폼1, 기본폼3
-                            XL.sheets("DATA-" & Sheet_Count).range("I3").value = Sheet_Count & "/" & TotalSheet  '페이지 번호 입력
-
-                        Case 1      '기본폼2
-                            XL.sheets("DATA-" & Sheet_Count).range("I1").value = Sheet_Count & "/" & TotalSheet  '페이지 번호 입력
-                    End Select
-
-                    If Sheet_Count = TotalSheet Then        '같은 페이지일때 점프로 나가기
-                        Exit Do
-                    End If
-
-
-                    If Sheet_Count = 0 Then
-                        XL.Sheets(form_txt_1).Copy(After:=XL.Sheets("DATA-" & Sheet_Count))
-                        XL.activesheet.name = "DATA-" & (Sheet_Count + 1)
-                    Else
-                        XL.Sheets(form_txt_2).Copy(After:=XL.Sheets("DATA-" & Sheet_Count))
-                        XL.activesheet.name = "DATA-" & (Sheet_Count + 1)
-                        Select Case Label20.Text
-                            Case "기본폼4"
-                                sheets_switch = 1
-                            Case "기본폼5"
-                                sheets_switch = 1
-                        End Select
-
-                    End If
-                    Sheet_Count = Sheet_Count + 1
-
-
-
-                Loop Until Sheet_Count > (TotalSheet)
-
-                XL.Sheets(form_txt_1).delete
-                If sheets_del = 1 Then
-                    XL.Sheets(form_txt_2).delete
-                End If
-                XL.Sheets(Data_sheet).delete
-
-
-             '=========================================================================
-            Case "위치 지정"
-                '=========================================================================
-                Dim Label_ad(1) As String
-                Dim measure_ad(1) As String
-                Dim component_ad(1) As String
-                Dim design_ad(1) As String
-                Dim error_ad(1) As String
-                Dim UP_Tol_ad(1) As String
-                Dim Low_Tol_ad(1) As String
-                Dim judge_ad(1) As String
-                Dim Line_count_ad As Integer
-                Dim Result_Form_dir As String
-                Dim select_check_value() As String
-                ReDim select_check_value(10)
-                Dim origin_sheet_name As String
-                Dim Data_sheet As String
-                Dim input_direction As String
-                Dim column_count As Integer
-                Dim error_arry() As String
-                Dim error_txt As String
-
-                Label_ad(0) = Ad_Str(GetINIValue("custom_match_info", "Label", ini_dir))
-                component_ad(0) = Ad_Str(GetINIValue("custom_match_info", "component", ini_dir))
-                measure_ad(0) = Ad_Str(GetINIValue("custom_match_info", "measure_value", ini_dir))
-                design_ad(0) = Ad_Str(GetINIValue("custom_match_info", "Design_value", ini_dir))
-                error_ad(0) = Ad_Str(GetINIValue("custom_match_info", "error", ini_dir))
-                UP_Tol_ad(0) = Ad_Str(GetINIValue("custom_match_info", "UP_Tol", ini_dir))
-                Low_Tol_ad(0) = Ad_Str(GetINIValue("custom_match_info", "Low_Tol", ini_dir))
-                judge_ad(0) = Ad_Str(GetINIValue("custom_match_info", "judge", ini_dir))
-                Line_count_ad = GetINIValue("custom_match_info", "Line_count", ini_dir)
-                Result_Form_dir = GetINIValue("custom_match_info", "Result_Form_dir", ini_dir)
-                input_direction = GetINIValue("custom_match_info", "input_direction", ini_dir)
-
-                Label_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Label", ini_dir))
-                component_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "component", ini_dir))
-                measure_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "measure_value", ini_dir))
-                design_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Design_value", ini_dir))
-                error_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "error", ini_dir))
-                UP_Tol_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "UP_Tol", ini_dir))
-                Low_Tol_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Low_Tol", ini_dir))
-                judge_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "judge", ini_dir))
-
-                select_check_value(0) = GetINIValue("check", "label", ini_dir)
-                select_check_value(1) = GetINIValue("check", "Measure_value", ini_dir)
-                select_check_value(2) = GetINIValue("check", "Design_value", ini_dir)
-                select_check_value(3) = GetINIValue("check", "error", ini_dir)
-                select_check_value(4) = GetINIValue("check", "UP_tol", ini_dir)
-                select_check_value(5) = GetINIValue("check", "Low_tol", ini_dir)
-                select_check_value(6) = GetINIValue("check", "judge", ini_dir)
-                select_check_value(7) = GetINIValue("check", "component", ini_dir)
-
-                error_arry = Split("평면도,위치도,동심도,평행도,직각도,동축도,면의 위치도,경사도", ",")
-
-                XL.Workbooks.open(Result_Form_dir)       '성적서 오픈
-                XL.DisplayAlerts = False
-
-                origin_sheet_name = XL.activesheet.name
-                Data_sheet = "Data_sheet"
-                XL.Sheets.add(before:=XL.Sheets(origin_sheet_name)) 'csv파일 가져올 워크시트 추가
-                XL.activesheet.name = Data_sheet
-
-                FileOpen(2, CSV_Dir, OpenMode.Input)
-
-
-                Do Until EOF(2)
-                    cRow = cRow + 1
-                    input_string = LineInput(2)
-                    Dim input_arry() As String = Split(input_string, ";")
-                    For i = 0 To UBound(input_arry)
-                        XL.sheets(1).cells(cRow, i + 1).value = input_arry(i)
-                    Next
-                Loop
-                FileClose(2)
-                'XL.visible = True
-
-                '===========================================위치지정 추가기입 삽입 위치.
-
-                Call add_str(origin_sheet_name)
-
-                '===========================================위치지정 추가기입 삽입 위치.
-
-                XL.Sheets(origin_sheet_name).Copy(After:=XL.Sheets("Data_sheet"))        '데이터 입력용 워크시트 복사
-                XL.activesheet.name = origin_sheet_name & "-1"                            '데이터 입력용 워크시트 이름지정 및 선택
-
-                Cell_Address = 1                    '워크시트1 셀 위치
-                Sheet_Count = 1                     '데이터 입력 워크시트 카운트
-                Cell_Count2 = XL.Sheets(Data_sheet).Rows.Count       '워크시트 행 위치 검색
-                Cell_Count = XL.Sheets(Data_sheet).Cells(Cell_Count2, 1).End(-4162).Row      '워크시트 행 위치 검색  -4162 : xlUp
-                Quetient = Cell_Count / Line_count_ad              '페이지수 계산
-                TotalSheet = CInt(Quetient)             '페이지수 계산 (반올림)
-
-                프로그레스바.ProgressBar1.Maximum = Cell_Count
-
-                If Quetient - TotalSheet > 0 Then TotalSheet = TotalSheet + 1       '반올림값 보정 0.5 이하 +1페이지
-
-                Do      '데이터 입력
-
-                    Line_Count = 1
-                    column_count = 1
-
-                    Label_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Label", ini_dir))
-                    component_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "component", ini_dir))
-                    measure_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "measure_value", ini_dir))
-                    design_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Design_value", ini_dir))
-                    error_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "error", ini_dir))
-                    UP_Tol_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "UP_Tol", ini_dir))
-                    Low_Tol_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Low_Tol", ini_dir))
-                    judge_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "judge", ini_dir))
-
-                    Do Until Line_Count > Line_count_ad
-
-                        If select_check_value(0) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value2 & "(" & XL.Sheets(Data_sheet).Range("A" & Cell_Address).value2 & ")"   '라벨명
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        Label_ad(1) = Label_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        If select_check_value(7) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(component_ad(0) & component_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("C" & Cell_Address).value2     '구성요소
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(component_ad(0) & component_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(component_ad(0) & component_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        component_ad(1) = component_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(component_ad(0) & component_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-
-                        End If
-
-                        If select_check_value(1) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(measure_ad(0) & measure_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("G" & Cell_Address).value2     '측정값
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(measure_ad(0) & measure_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(measure_ad(0) & measure_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        measure_ad(1) = measure_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(measure_ad(0) & measure_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        If select_check_value(2) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(design_ad(0) & design_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("D" & Cell_Address).value2     '설계치
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(design_ad(0) & design_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(design_ad(0) & design_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        design_ad(1) = design_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(design_ad(0) & design_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        '   error_txt = XL.Sheets("DATA-" & Sheet_Count).Range("B" & Line_Count).value
-
-                        If select_check_value(3) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(error_ad(0) & error_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("H" & Cell_Address).value2     '오차
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(error_ad(0) & error_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(error_ad(0) & error_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        error_ad(1) = error_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(error_ad(0) & error_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        If select_check_value(4) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(UP_Tol_ad(0) & UP_Tol_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("E" & Cell_Address).value2     '상한
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(UP_Tol_ad(0) & UP_Tol_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(UP_Tol_ad(0) & UP_Tol_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        UP_Tol_ad(1) = UP_Tol_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(UP_Tol_ad(0) & UP_Tol_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        If select_check_value(5) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Low_Tol_ad(0) & Low_Tol_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("F" & Cell_Address).value2     '하한
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Low_Tol_ad(0) & Low_Tol_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Low_Tol_ad(0) & Low_Tol_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        Low_Tol_ad(1) = Low_Tol_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Low_Tol_ad(0) & Low_Tol_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        If select_check_value(6) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(judge_ad(0) & judge_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("J" & Cell_Address).value2     '판정 // 통과/실패
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(judge_ad(0) & judge_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(judge_ad(0) & judge_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        judge_ad(1) = judge_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(judge_ad(0) & judge_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        '====================================================================================================================================
-                        '====================================================================================================================================
-                        '라인 끝 빈공간 용
-                        XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").value2 = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value2 & "(" & XL.Sheets(Data_sheet).Range("A" & Cell_Address).value2 & ")"   '라벨명
-
-                        If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").value2 = "()" Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").value2 = ""
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").delete
-                            If Label_ad(0) = Nothing Then
-                            Else
-                                XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).value2 = ""
-
-                            End If
-
-                            Exit Do
-                        End If
-                        XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").delete
-                        '====================================================================================================================================
-                        '====================================================================================================================================
-                        '셀주소 하나씩 내리기
-                        Select Case input_direction
-                            Case "세로"
-                                component_ad(1) = component_ad(1) + 1
-                                Label_ad(1) = Label_ad(1) + 1
-                                measure_ad(1) = measure_ad(1) + 1
-                                design_ad(1) = design_ad(1) + 1
-                                error_ad(1) = error_ad(1) + 1
-                                UP_Tol_ad(1) = UP_Tol_ad(1) + 1
-                                Low_Tol_ad(1) = Low_Tol_ad(1) + 1
-                                judge_ad(1) = judge_ad(1) + 1
-
-                            Case "가로"
-
-                                column_count = column_count + 1
-                        End Select
-                        '====================================================================================================================================
-                        Cell_Address = Cell_Address + 1
-                        Line_Count = Line_Count + 1
-                        '====================================================================================================================================
-                        '====================================================================================================================================
-                        If 프로그레스바.ProgressBar1.Value = 프로그레스바.ProgressBar1.Maximum Then
-                        Else
-                            프로그레스바.ProgressBar1.Value += 1
-                        End If
-                        '====================================================================================================================================
-                    Loop
-
-
-                    If Sheet_Count = TotalSheet Then        '같은 페이지일때 점프로 나가기
-                        Exit Do
-                    End If
-
-                    XL.Sheets(origin_sheet_name).Copy(After:=XL.Sheets(origin_sheet_name & "-" & Sheet_Count))
-                    Sheet_Count = Sheet_Count + 1
-                    XL.activesheet.name = origin_sheet_name & "-" & Sheet_Count
-
-                Loop Until Sheet_Count > (TotalSheet)
-                'XL.visible = True
-                XL.Sheets(origin_sheet_name).delete
-                XL.Sheets(Data_sheet).delete
-
-                '=========================================================================
-                '기본혹은 위치지정 끝
-        End Select
-        '=========================================================================
-
-        Exit Sub
-XLC:
-
-        XL.Workbooks(1).close
-        XL.Quit
-        Data_error_occur = 1
-    End Sub
-
-    Sub Extension_type_3()          'CSV 파일 읽어오기 fileopen - intput으로 구현 실험용
-        '  On Error GoTo XLC
-        Dim input_string As String
-        Dim merge_count As Long
-        Dim cRow As Integer
-        Dim i As Integer
-        Dim dump_num As Integer
-
-        '기본 혹은 위치지정 선택 
-        Select Case Label20.Text
-            Case "기본폼1", "기본폼2", "기본폼3", "기본폼4", "기본폼5"
-
-                Measure_data_basic_form(Label20.Text)
-
-             '=========================================================================
-            Case "위치 지정"
-                '=========================================================================
-                Dim Label_ad(1) As String
-                Dim measure_ad(1) As String
-                Dim component_ad(1) As String
-                Dim design_ad(1) As String
-                Dim error_ad(1) As String
-                Dim UP_Tol_ad(1) As String
-                Dim Low_Tol_ad(1) As String
-                Dim judge_ad(1) As String
-                Dim Line_count_ad As Integer
-                Dim column_count As Integer
-                Dim Result_Form_dir As String
-                Dim select_check_value() As String
-                ReDim select_check_value(10)
-                Dim origin_sheet_name As String
-                Dim Data_sheet As String
-                Dim input_direction As String
-                Dim error_arry() As String
-                Dim error_txt As String
-
-                Label_ad(0) = Ad_Str(GetINIValue("custom_match_info", "Label", ini_dir))
-                component_ad(0) = Ad_Str(GetINIValue("custom_match_info", "component", ini_dir))
-                measure_ad(0) = Ad_Str(GetINIValue("custom_match_info", "measure_value", ini_dir))
-                design_ad(0) = Ad_Str(GetINIValue("custom_match_info", "Design_value", ini_dir))
-                error_ad(0) = Ad_Str(GetINIValue("custom_match_info", "error", ini_dir))
-                UP_Tol_ad(0) = Ad_Str(GetINIValue("custom_match_info", "UP_Tol", ini_dir))
-                Low_Tol_ad(0) = Ad_Str(GetINIValue("custom_match_info", "Low_Tol", ini_dir))
-                judge_ad(0) = Ad_Str(GetINIValue("custom_match_info", "judge", ini_dir))
-                Line_count_ad = GetINIValue("custom_match_info", "Line_count", ini_dir)
-                Result_Form_dir = GetINIValue("custom_match_info", "Result_Form_dir", ini_dir)
-                input_direction = GetINIValue("custom_match_info", "input_direction", ini_dir)
-
-                Label_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Label", ini_dir))
-                component_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "component", ini_dir))
-                measure_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "measure_value", ini_dir))
-                design_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Design_value", ini_dir))
-                error_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "error", ini_dir))
-                UP_Tol_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "UP_Tol", ini_dir))
-                Low_Tol_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Low_Tol", ini_dir))
-                judge_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "judge", ini_dir))
-
-
-                select_check_value(0) = GetINIValue("check", "label", ini_dir)
-                select_check_value(1) = GetINIValue("check", "Measure_value", ini_dir)
-                select_check_value(2) = GetINIValue("check", "Design_value", ini_dir)
-                select_check_value(3) = GetINIValue("check", "error", ini_dir)
-                select_check_value(4) = GetINIValue("check", "UP_tol", ini_dir)
-                select_check_value(5) = GetINIValue("check", "Low_tol", ini_dir)
-                select_check_value(6) = GetINIValue("check", "judge", ini_dir)
-                select_check_value(7) = GetINIValue("check", "component", ini_dir)
-
-                error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도", ",")
-
-                XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
-                XL.DisplayAlerts = False
-
-                origin_sheet_name = XL.activesheet.name
-                Data_sheet = "Data_sheet"
-                XL.Sheets.add(before:=XL.Sheets(origin_sheet_name)) 'csv파일 가져올 워크시트 추가
-                XL.activesheet.name = Data_sheet
-
-                FileOpen(3, CSV_Dir, OpenMode.Input)
-
-                Do Until EOF(3)
-                    cRow = cRow + 1
-                    input_string = LineInput(3)
-                    Dim input_arry() As String = Split(input_string, ",", -1)
-
-                    If input_arry(2).IndexOf("]") <> -1 Then
-                        Dim input_arry2() As String = Split(input_string, ",", -1)
-                        On Error Resume Next
-                        input_arry(0) = input_arry2(0)
-                        input_arry(1) = Mid(input_arry2(1), 2) & "," & Replace(input_arry2(2), """", " ")
-                        input_arry(2) = input_arry2(3)
-                        input_arry(3) = input_arry2(4)
-                        input_arry(4) = input_arry2(5)
-                        input_arry(5) = input_arry2(6)
-                        input_arry(6) = input_arry2(7)
-                        input_arry(7) = input_arry2(8)
-                        input_arry(8) = input_arry2(9)
-                        input_arry(9) = input_arry2(10)
-
-                    End If
-
-                    Select Case dump_num
-                        Case 0      'dump
-                            For i = 0 To UBound(input_arry)
-                                XL.sheets(Data_sheet).cells(cRow, i + 1).value = input_arry(i)
-                                XL.sheets(Data_sheet).cells(cRow, i + 1).value = ""
-                            Next
-
-                            dump_num = 1
-                            cRow = 0
-                        Case 1
-                            For i = 0 To UBound(input_arry)
-                                XL.sheets(Data_sheet).cells(cRow, i + 1).value = input_arry(i)
-                            Next
-                    End Select
-
-                Loop
-                FileClose(3)
-                ' XL.visible = True
-
-                '===========================================위치지정 추가기입 삽입 위치.
-
-                Call add_str(origin_sheet_name)
-
-                '===========================================위치지정 추가기입 삽입 위치.
-
-                XL.Sheets(origin_sheet_name).Copy(After:=XL.Sheets("Data_sheet"))        '데이터 입력용 워크시트 복사
-                XL.activesheet.name = origin_sheet_name & "-1"                            '데이터 입력용 워크시트 선택
-
-                Cell_Address = 1                    '워크시트1 셀 위치
-                Sheet_Count = 1                     '데이터 입력 워크시트 카운트
-                Cell_Count2 = XL.Sheets(Data_sheet).Rows.Count       '워크시트 행 위치 검색
-                Cell_Count = XL.Sheets(Data_sheet).Cells(Cell_Count2, 1).End(-4162).Row      '워크시트 행 위치 검색  -4162 : xlUp
-                Quetient = Cell_Count / Line_count_ad              '페이지수 계산
-                TotalSheet = CInt(Quetient)             '페이지수 계산 (반올림)
-
-                프로그레스바.ProgressBar1.Maximum = Cell_Count
-
-                If Quetient - TotalSheet > 0 Then TotalSheet = TotalSheet + 1       '반올림값 보정 0.5 이하 +1페이지
-
-                Do      '데이터 입력
-
-                    Line_Count = 1
-                    column_count = 1
-
-                    Label_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Label", ini_dir))
-                    component_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "component", ini_dir))
-                    measure_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "measure_value", ini_dir))
-                    design_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Design_value", ini_dir))
-                    error_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "error", ini_dir))
-                    UP_Tol_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "UP_Tol", ini_dir))
-                    Low_Tol_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "Low_Tol", ini_dir))
-                    judge_ad(1) = Ad_NUM(GetINIValue("custom_match_info", "judge", ini_dir))
-
-                    Do Until Line_Count > Line_count_ad
-
-                        If select_check_value(0) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value2 & "(" & XL.Sheets(Data_sheet).Range("A" & Cell_Address).value2 & ")"   '라벨명
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        Label_ad(1) = Label_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        If select_check_value(7) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(component_ad(0) & component_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("C" & Cell_Address).value2     '구성요소
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(component_ad(0) & component_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(component_ad(0) & component_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        component_ad(1) = component_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(component_ad(0) & component_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-
-                        End If
-
-                        error_txt = XL.Sheets(Data_sheet).Range("D" & Cell_Address).value
-
-                        If select_check_value(1) = True Then
-                            If error_arry.Contains(error_txt) Then
-                                XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(measure_ad(0) & measure_ad(1)).cells(1, column_count).value = XL.Sheets(Data_sheet).Range("G" & Cell_Address).value      '측정값
-                            Else
-                                XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(measure_ad(0) & measure_ad(1)).cells(1, column_count).value = XL.Sheets(Data_sheet).Range("E" & Cell_Address).value     '측정값
-                            End If
-
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(measure_ad(0) & measure_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(measure_ad(0) & measure_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        measure_ad(1) = measure_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(measure_ad(0) & measure_ad(1)).cells(1, column_count).mergearea.columns.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-
-                        End If
-
-                        If select_check_value(2) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(design_ad(0) & design_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("D" & Cell_Address).value2     '설계치
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(design_ad(0) & design_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(design_ad(0) & design_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        design_ad(1) = design_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(design_ad(0) & design_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        '   error_txt = XL.Sheets("DATA-" & Sheet_Count).Range("B" & Line_Count).value
-
-                        If select_check_value(3) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(error_ad(0) & error_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("H" & Cell_Address).value2     '오차
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(error_ad(0) & error_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(error_ad(0) & error_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        error_ad(1) = error_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(error_ad(0) & error_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        If select_check_value(4) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(UP_Tol_ad(0) & UP_Tol_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("E" & Cell_Address).value2     '상한
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(UP_Tol_ad(0) & UP_Tol_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(UP_Tol_ad(0) & UP_Tol_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        UP_Tol_ad(1) = UP_Tol_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(UP_Tol_ad(0) & UP_Tol_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        If select_check_value(5) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Low_Tol_ad(0) & Low_Tol_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("F" & Cell_Address).value2     '하한
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Low_Tol_ad(0) & Low_Tol_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Low_Tol_ad(0) & Low_Tol_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        Low_Tol_ad(1) = Low_Tol_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Low_Tol_ad(0) & Low_Tol_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        If select_check_value(6) = True Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(judge_ad(0) & judge_ad(1)).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("J" & Cell_Address).value2     '판정 // 통과/실패
-                            If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(judge_ad(0) & judge_ad(1)).cells(1, column_count).mergecells = True Then
-                                Select Case input_direction
-                                    Case "세로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(judge_ad(0) & judge_ad(1)).cells(1, column_count).mergearea.rows.count
-                                        judge_ad(1) = judge_ad(1) + (merge_count - 1)
-                                    Case "가로"
-                                        merge_count = XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(judge_ad(0) & judge_ad(1)).cells(1, column_count).mergearea.colums.count
-                                        column_count = column_count + (merge_count - 1)
-                                End Select
-                            End If
-                        End If
-
-                        '====================================================================================================================================
-                        '====================================================================================================================================
-                        '라인 끝 빈공간 용
-                        XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").value = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value & "(" & XL.Sheets(Data_sheet).Range("C" & Cell_Address).value & ")"   '라벨명
-
-                        If XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").value = "()" Then
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").value = ""
-                            XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").delete
-                            If Label_ad(0) = Nothing Then
-                            Else
-                                XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range(Label_ad(0) & Label_ad(1)).cells(1, column_count).value = ""
-
-                            End If
-                            Exit Do
-                        End If
-                        XL.Sheets(origin_sheet_name & "-" & Sheet_Count).Range("BA5000").delete
-                        '====================================================================================================================================
-                        '====================================================================================================================================
-                        '셀주소 하나씩 내리기
-                        Select Case input_direction
-                            Case "세로"
-                                component_ad(1) = component_ad(1) + 1
-                                Label_ad(1) = Label_ad(1) + 1
-                                measure_ad(1) = measure_ad(1) + 1
-                                design_ad(1) = design_ad(1) + 1
-                                error_ad(1) = error_ad(1) + 1
-                                UP_Tol_ad(1) = UP_Tol_ad(1) + 1
-                                Low_Tol_ad(1) = Low_Tol_ad(1) + 1
-                                judge_ad(1) = judge_ad(1) + 1
-
-                            Case "가로"
-
-                                column_count = column_count + 1
-                        End Select
-
-                        '====================================================================================================================================
-                        Cell_Address = Cell_Address + 1
-                        Line_Count = Line_Count + 1
-                        '====================================================================================================================================
-                        '====================================================================================================================================
-                        If 프로그레스바.ProgressBar1.Value = 프로그레스바.ProgressBar1.Maximum Then
-                        Else
-                            프로그레스바.ProgressBar1.Value += 1
-                        End If
-                        '====================================================================================================================================
-                    Loop
-
-                    If Sheet_Count = TotalSheet Then        '같은 페이지일때 점프로 나가기
-                        Exit Do
-                    End If
-
-                    XL.Sheets(origin_sheet_name).Copy(After:=XL.Sheets(origin_sheet_name & "-" & Sheet_Count))
-                    Sheet_Count = Sheet_Count + 1
-                    XL.activesheet.name = origin_sheet_name & "-" & Sheet_Count
-
-                Loop Until Sheet_Count > (TotalSheet)
-                'XL.visible = True
-                XL.Sheets(origin_sheet_name).delete
-                XL.Sheets(Data_sheet).delete
-
-                '=========================================================================
-                '기본혹은 위치지정 끝
-        End Select
-        '=========================================================================
-
-        Exit Sub
-XLC:
-
-        XL.Workbooks(1).close
-        XL.Quit
-        Data_error_occur = 1
-    End Sub
-
-
 
     Sub Extension_type_1()          'CSV 파일 읽어오기 위치지정 다중 탭 실험용
         '  On Error GoTo XLC
@@ -2049,6 +1253,7 @@ XLC:
         Dim cRow As Integer
         Dim i As Integer
         Dim dump_num As Integer
+        Dim blank_Stack As Integer
 
         '기본 혹은 위치지정 선택 
         Select Case Label20.Text
@@ -2203,13 +1408,13 @@ XLC:
 
                 Loop
                 FileClose(3)
-                XL.visible = True
+                'XL.visible = True
 
                 tab_index = 1
 
                 '===========================================위치지정 추가기입 삽입 위치.
 
-                Call add_str(origin_sheet_name(tab_index))
+                Call add_str()
 
                 '===========================================위치지정 추가기입 삽입 위치.
 
@@ -2233,40 +1438,32 @@ XLC:
                     Line_Count = 1
                     column_count = 1
 
-                    '    Label_ad(tab_index) = Ad_NUM(GetINIValue("custom_match_info", "Label", ini_dir))
-                    '    component_ad(tab_index) = Ad_NUM(GetINIValue("custom_match_info", "component", ini_dir))
-                    ''   measure_ad(tab_index) = Ad_NUM(GetINIValue("custom_match_info", "measure_value", ini_dir))
-                    '   design_ad(tab_index) = Ad_NUM(GetINIValue("custom_match_info", "Design_value", ini_dir))
-                    '   error_ad(tab_index) = Ad_NUM(GetINIValue("custom_match_info", "error", ini_dir))
-                    '   UP_Tol_ad(tab_index) = Ad_NUM(GetINIValue("custom_match_info", "UP_Tol", ini_dir))
-                    ''  Low_Tol_ad(tab_index) = Ad_NUM(GetINIValue("custom_match_info", "Low_Tol", ini_dir))
-                    '  judge_ad(tab_index) = Ad_NUM(GetINIValue("custom_match_info", "judge", ini_dir))
 
                     Do Until Line_Count > Line_count_ad(tab_index)
 
                         If select_check_value(tab_index).label = True Then
-                            XL.Sheets(tab_name(tab_index)).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value2 & "(" & XL.Sheets(Data_sheet).Range("A" & Cell_Address).value2 & ")"   '라벨명
+                            XL.Sheets(tab_name(tab_index)).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value2 & "(" & XL.Sheets(Data_sheet).Range("C" & Cell_Address).value2 & ")"   '라벨명
                             If XL.Sheets(tab_name(tab_index)).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
                                 Select Case input_direction(tab_index)
                                     Case "세로"
                                         merge_count = XL.Sheets(tab_name(tab_index)).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
                                         Label_ad(tab_index).Row = Label_ad(tab_index).Row + (merge_count - 1)
                                     Case "가로"
-                                        merge_count = XL.Sheets(tab_name).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).mergearea.colums.count
+                                        merge_count = XL.Sheets(tab_name).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
                                         column_count = column_count + (merge_count - 1)
                                 End Select
                             End If
                         End If
 
                         If select_check_value(tab_index).component = True Then
-                            XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("C" & Cell_Address).value2     '구성요소
+                            XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("D" & Cell_Address).value2     '구성요소
                             If XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
                                 Select Case input_direction(tab_index)
                                     Case "세로"
                                         merge_count = XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
                                         component_ad(tab_index).Row = component_ad(tab_index).Row + (merge_count - 1)
                                     Case "가로"
-                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).mergearea.colums.count
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
                                         column_count = column_count + (merge_count - 1)
                                 End Select
                             End If
@@ -2296,6 +1493,540 @@ XLC:
                         End If
 
                         If select_check_value(tab_index).Design_value = True Then
+                            XL.Sheets(tab_name(tab_index)).Range(design_ad(tab_index).Col & design_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("F" & Cell_Address).value2     '설계치
+                            If XL.Sheets(tab_name(tab_index)).Range(design_ad(tab_index).Col & design_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
+                                Select Case input_direction(tab_index)
+                                    Case "세로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(design_ad(tab_index).Col & design_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
+                                        design_ad(tab_index).Row = design_ad(tab_index).Row + (merge_count - 1)
+                                    Case "가로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(design_ad(tab_index).Col & design_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
+                                        column_count = column_count + (merge_count - 1)
+                                End Select
+                            End If
+                        End If
+
+                        '   error_txt = XL.Sheets("DATA-" & Sheet_Count).Range("B" & Line_Count).value
+
+                        If select_check_value(tab_index).Error_check = True Then
+                            XL.Sheets(tab_name(tab_index)).Range(error_ad(tab_index).Col & error_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("G" & Cell_Address).value2     '오차
+                            If XL.Sheets(tab_name(tab_index)).Range(error_ad(tab_index).Col & error_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
+                                Select Case input_direction(tab_index)
+                                    Case "세로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(error_ad(tab_index).Col & error_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
+                                        error_ad(tab_index).Row = error_ad(tab_index).Row + (merge_count - 1)
+                                    Case "가로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(error_ad(tab_index).Col & error_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
+                                        column_count = column_count + (merge_count - 1)
+                                End Select
+                            End If
+                        End If
+
+                        If select_check_value(tab_index).UP_tol = True Then
+                            XL.Sheets(tab_name(tab_index)).Range(UP_Tol_ad(tab_index).Col & UP_Tol_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("H" & Cell_Address).value2     '상한
+                            If XL.Sheets(tab_name(tab_index)).Range(UP_Tol_ad(tab_index).Col & UP_Tol_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
+                                Select Case input_direction(tab_index)
+                                    Case "세로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(UP_Tol_ad(tab_index).Col & UP_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
+                                        UP_Tol_ad(tab_index).Row = UP_Tol_ad(tab_index).Row + (merge_count - 1)
+                                    Case "가로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(UP_Tol_ad(tab_index).Col & UP_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
+                                        column_count = column_count + (merge_count - 1)
+                                End Select
+                            End If
+                        End If
+
+                        If select_check_value(tab_index).Low_tol = True Then
+                            XL.Sheets(tab_name(tab_index)).Range(Low_Tol_ad(tab_index).Col & Low_Tol_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("I" & Cell_Address).value2     '하한
+                            If XL.Sheets(tab_name(tab_index)).Range(Low_Tol_ad(tab_index).Col & Low_Tol_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
+                                Select Case input_direction(tab_index)
+                                    Case "세로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(Low_Tol_ad(tab_index).Col & Low_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
+                                        Low_Tol_ad(tab_index).Row = Low_Tol_ad(tab_index).Row + (merge_count - 1)
+                                    Case "가로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(Low_Tol_ad(tab_index).Col & Low_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
+                                        column_count = column_count + (merge_count - 1)
+                                End Select
+                            End If
+                        End If
+
+                        If select_check_value(tab_index).judge = True Then
+                            XL.Sheets(tab_name(tab_index)).Range(judge_ad(tab_index).Col & judge_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("J" & Cell_Address).value2     '판정 // 통과/실패
+                            If XL.Sheets(tab_name(tab_index)).Range(judge_ad(tab_index).Col & judge_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
+                                Select Case input_direction(tab_index)
+                                    Case "세로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(judge_ad(tab_index).Col & judge_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
+                                        judge_ad(tab_index).Row = judge_ad(tab_index).Row + (merge_count - 1)
+                                    Case "가로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(judge_ad(tab_index).Col & judge_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
+                                        column_count = column_count + (merge_count - 1)
+                                End Select
+                            End If
+                        End If
+
+                        '====================================================================================================================================
+                        '====================================================================================================================================
+                        '라인 끝 빈공간 용
+                        XL.Sheets(tab_name(tab_index)).Range("BA5000").value = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value & "(" & XL.Sheets(Data_sheet).Range("C" & Cell_Address).value & ")"   '라벨명
+
+                        If XL.Sheets(tab_name(tab_index)).Range("BA5000").value = "()" Then
+                            XL.Sheets(tab_name(tab_index)).Range("BA5000").value = ""
+                            XL.Sheets(tab_name(tab_index)).Range("BA5000").delete
+
+                            Exit Do
+                        End If
+                        XL.Sheets(tab_name(tab_index)).Range("BA5000").delete
+                        '====================================================================================================================================
+                        '====================================================================================================================================
+                        '셀주소 하나씩 내리기
+                        Select Case input_direction(tab_index)
+                            Case "세로"
+                                component_ad(tab_index).Row = component_ad(tab_index).Row + 1
+                                Label_ad(tab_index).Row = Label_ad(tab_index).Row + 1
+                                measure_ad(tab_index).Row = measure_ad(tab_index).Row + 1
+                                design_ad(tab_index).Row = design_ad(tab_index).Row + 1
+                                error_ad(tab_index).Row = error_ad(tab_index).Row + 1
+                                UP_Tol_ad(tab_index).Row = UP_Tol_ad(tab_index).Row + 1
+                                Low_Tol_ad(tab_index).Row = Low_Tol_ad(tab_index).Row + 1
+                                judge_ad(tab_index).Row = judge_ad(tab_index).Row + 1
+
+                            Case "가로"
+
+                                column_count = column_count + 1
+                        End Select
+
+                        '====================================================================================================================================
+                        Cell_Address = Cell_Address + 1
+                        Line_Count = Line_Count + 1
+                        '====================================================================================================================================
+                        '====================================================================================================================================
+                        If 프로그레스바.ProgressBar1.Value = 프로그레스바.ProgressBar1.Maximum Then
+                        Else
+                            프로그레스바.ProgressBar1.Value += 1
+                        End If
+                        '====================================================================================================================================
+                    Loop
+
+                    If sum_Line_count = Cell_Address Then        '같은 줄 수 일때 나가기 
+                        Exit Do
+                    End If
+
+                    tab_index = tab_index + 1         '탭 변경용 탭 인덱스 +1 해주기
+
+                    If Tab_count < tab_index Then Exit Do
+
+                    '    XL.Sheets(origin_sheet_name).Copy(After:=XL.Sheets(tab_index))
+                    '  Sheet_Count = Sheet_Count + 1
+                    '      XL.activesheet.name = origin_sheet_name & "-" & Sheet_Count
+
+
+                Loop Until Sheet_Count > Tab_count
+                'XL.visible = True
+                'XL.Sheets(origin_sheet_name).delete
+                XL.Sheets(Data_sheet).delete
+
+                '=========================================================================
+                '기본혹은 위치지정 끝
+        End Select
+        '=========================================================================
+
+        Exit Sub
+XLC:
+
+        XL.Workbooks(1).close
+        XL.Quit
+        Data_error_occur = 1
+    End Sub
+
+    Sub Extension_type_2()          'ASC 파일 읽어오기
+        'On Error GoTo XLC
+        Dim input_string As String
+        Dim merge_count As Long
+        Dim cRow As Integer
+        Dim i As Integer
+
+        Select Case Label20.Text
+        '=========================================================================
+
+            Case "기본폼1", "기본폼2", "기본폼3", "기본폼4", "기본폼5"
+                Dim error_arry() As String
+
+                Dim Data_sheet As String
+                Dim form_txt_1 As String
+                Dim form_txt_2 As String
+                Dim sheets_switch As Integer
+                Dim sheets_del As Integer
+
+                sheets_switch = 0
+
+                Select Case Label20.Text
+
+                    Case "기본폼1"        '말머리 전부 포함               1사용
+                        form_txt_1 = "기본폼1"
+                        form_txt_2 = form_txt_1
+                        sheets_switch = 0
+
+                    Case "기본폼2"        '말머리 전부 없음               2 사용
+                        form_txt_1 = "기본폼2"
+                        form_txt_2 = form_txt_1
+                        sheets_switch = 1
+
+                    Case "기본폼3"        '그림 전부 삽입                 3 사용
+                        form_txt_1 = "기본폼3"
+                        form_txt_2 = form_txt_1
+                        sheets_switch = 2
+
+                    Case "기본폼4"        '첫 페이지 말머리 있음 2 페이지 부터 말머리 없음            1,2사용
+                        form_txt_1 = "기본폼1"
+                        form_txt_2 = "기본폼2"
+                        sheets_switch = 0
+                        sheets_del = 1
+                    Case "기본폼5"         '첫페이지 그림 삽입, 2 페이지부터 그림, 말머리 없음         2,3 사용
+                        form_txt_1 = "기본폼3"
+                        form_txt_2 = "기본폼2"
+                        sheets_switch = 2
+                        sheets_del = 1
+                    Case Else
+
+                        form_txt_1 = "기본폼1"
+                        form_txt_2 = "기본폼1"
+
+                End Select
+
+                Data_sheet = "Data Sheet"
+
+                error_arry = Split("평면도,위치도,동심도,평행도,직각도,동축도,면의 위치도,경사도", ",")
+
+                '=========================================================================
+
+
+                XL.Workbooks.open(Open_Dir)       '성적서 오픈
+                'XL.visible = True
+                XL.DisplayAlerts = False
+
+                XL.Sheets.add(before:=XL.Sheets("기본폼1")) 'asc파일 가져올 워크시트 추가
+                XL.activesheet.name = Data_sheet
+
+                FileOpen(2, CSV_Dir, OpenMode.Input)
+
+
+                Do Until EOF(2)
+                    cRow = cRow + 1
+                    input_string = LineInput(2)
+                    Dim input_arry() As String = Split(input_string, ";")
+                    For i = 0 To UBound(input_arry)
+                        XL.sheets(Data_sheet).cells(cRow, i + 1).value = input_arry(i)
+                    Next
+                Loop
+
+                FileClose(2)
+                ' XL.visible = True
+                '================================================================기본 유저 정보 입력
+                Input_user_info()
+                Sheet_del()
+                '================================================================기본 유저 정보 입력
+                XL.Sheets(form_txt_1).Copy(After:=XL.Sheets(Data_sheet))        '데이터 입력용 워크시트 복사
+                XL.activesheet.name = "DATA-1"                                         '워크시트 선택
+                XL.sheets("DATA-1").select                                         '워크시트 선택
+                Cell_Address = 1                    '워크시트1 셀 위치
+                Sheet_Count = 1                     '데이터 입력 워크시트 카운트
+                Cell_Count2 = XL.Sheets(Data_sheet).Rows.Count       '워크시트 행 위치 검색
+                Cell_Count = XL.Sheets(Data_sheet).Cells(Cell_Count2, 1).End(-4162).Row      '워크시트 행 위치 검색  -4162 : xlUp
+
+
+                Select Case Label20.Text                    '페이지수 계산
+
+                    Case "기본폼1"
+                        Quetient = Cell_Count / 28              '페이지수 계산  폼1 : 28, 폼2 : 32, 폼3 : 15
+                    Case "기본폼2"        '말머리 전부 없음               2 사용
+                        Quetient = Cell_Count / 32
+                    Case "기본폼3"        '그림 전부 삽입                 3 사용
+                        Quetient = Cell_Count / 15
+                    Case "기본폼4"        '첫 페이지 말머리 있음 2 페이지 부터 말머리 없음            1,2사용
+                        Quetient = ((Cell_Count - 28) / 32) + 1
+                    Case "기본폼5"         '첫페이지 그림 삽입, 2 페이지부터 그림, 말머리 없음         2,3 사용
+                        Quetient = ((Cell_Count - 15) / 32) + 1
+                    Case Else
+
+                End Select
+
+                TotalSheet = CInt(Quetient)             '페이지수 계산 (반올림)
+
+                프로그레스바.ProgressBar1.Maximum = Cell_Count
+
+                Dim count As Integer
+
+                If Quetient - TotalSheet > 0 Then TotalSheet = TotalSheet + 1       '반올림값 보정 0.5 이하 +1페이지
+
+                Do      '데이터 입력
+                    Select Case sheets_switch
+                        Case 0      '기본폼1
+                            Line_Count = 9
+                        Case 1      '기본폼2
+                            Line_Count = 5
+                        Case 2      '기본폼 3
+                            Line_Count = 22
+                    End Select
+
+                    Do Until Line_Count > 36
+
+                        XL.Sheets("DATA-" & Sheet_Count).Range("A" & Line_Count).value = XL.Sheets(1).Range("B" & Cell_Address).value & "(" & XL.Sheets(1).Range("A" & Cell_Address).value & ")"   '라벨명
+                        XL.Sheets("DATA-" & Sheet_Count).Range("B" & Line_Count).value = XL.Sheets(1).Range("C" & Cell_Address).value     '구성요소
+                        XL.Sheets("DATA-" & Sheet_Count).Range("C" & Line_Count).value = XL.Sheets(1).Range("G" & Cell_Address).value     '측정값
+                        XL.Sheets("DATA-" & Sheet_Count).Range("D" & Line_Count).value = XL.Sheets(1).Range("D" & Cell_Address).value     '설계치
+                        XL.Sheets("DATA-" & Sheet_Count).Range("E" & Line_Count).value = XL.Sheets(1).Range("H" & Cell_Address).value     '오차
+                        XL.Sheets("DATA-" & Sheet_Count).Range("F" & Line_Count).value = XL.Sheets(1).Range("E" & Cell_Address).value     '상한
+                        XL.Sheets("DATA-" & Sheet_Count).Range("G" & Line_Count).value = XL.Sheets(1).Range("F" & Cell_Address).value     '하한
+                        XL.Sheets("DATA-" & Sheet_Count).Range("H" & Line_Count).value = XL.Sheets(1).Range("J" & Cell_Address).value     '판정 // 통과/실패
+                        If XL.Sheets("DATA-" & Sheet_Count).Range("A" & Line_Count).value = "()" Then
+                            XL.Sheets("DATA-" & Sheet_Count).Range("A" & Line_Count).value = ""
+                            Exit Do
+                        End If
+                        Line_Count = Line_Count + 1
+                        Cell_Address = Cell_Address + 1
+                        count += 1
+
+                        '====================================================================================================================================
+                        If 프로그레스바.ProgressBar1.Value = 프로그레스바.ProgressBar1.Maximum Then
+                        Else
+                            프로그레스바.ProgressBar1.Value += 1
+                        End If
+                        '====================================================================================================================================
+
+                    Loop
+
+                    Select Case sheets_switch
+                        Case 0, 2           '기본폼1, 기본폼3
+                            XL.sheets("DATA-" & Sheet_Count).range("I3").value = Sheet_Count & "/" & TotalSheet  '페이지 번호 입력
+
+                        Case 1      '기본폼2
+                            XL.sheets("DATA-" & Sheet_Count).range("I1").value = Sheet_Count & "/" & TotalSheet  '페이지 번호 입력
+                    End Select
+
+                    If Sheet_Count = TotalSheet Then        '같은 페이지일때 점프로 나가기
+                        Exit Do
+                    End If
+
+
+                    If Sheet_Count = 0 Then
+                        XL.Sheets(form_txt_1).Copy(After:=XL.Sheets("DATA-" & Sheet_Count))
+                        XL.activesheet.name = "DATA-" & (Sheet_Count + 1)
+                    Else
+                        XL.Sheets(form_txt_2).Copy(After:=XL.Sheets("DATA-" & Sheet_Count))
+                        XL.activesheet.name = "DATA-" & (Sheet_Count + 1)
+                        Select Case Label20.Text
+                            Case "기본폼4"
+                                sheets_switch = 1
+                            Case "기본폼5"
+                                sheets_switch = 1
+                        End Select
+
+                    End If
+                    Sheet_Count = Sheet_Count + 1
+
+
+
+                Loop Until Sheet_Count > (TotalSheet)
+
+                XL.Sheets(form_txt_1).delete
+                If sheets_del = 1 Then
+                    XL.Sheets(form_txt_2).delete
+                End If
+                XL.Sheets(Data_sheet).delete
+
+
+             '=========================================================================
+            Case "위치 지정"
+                '=========================================================================
+
+                Dim Label_ad() As address
+                Dim measure_ad() As address
+                Dim component_ad() As address
+                Dim design_ad() As address
+                Dim error_ad() As address
+                Dim UP_Tol_ad() As address
+                Dim Low_Tol_ad() As address
+                Dim judge_ad() As address
+                Dim Line_count_ad() As Integer
+                Dim column_count As Integer
+                Dim Result_Form_dir As String
+                Dim select_check_value() As check_value
+                Dim ini_tab_index As String                'ini 섹션 값 구분용
+                Dim tab_index As Integer                    ' 원본 엑셀 탭 선택용
+                Dim origin_sheet_name() As String
+                Dim Data_sheet As String
+                Dim input_direction() As String
+                Dim Tab_count As Integer        ' 탭 개수 인식
+                Dim tab_name() As String
+                Dim sum_Line_count As Integer
+                Dim sum_temp As Integer
+
+                Result_Form_dir = GetINIValue("custom_match_info", "Result_Form_dir", ini_dir)
+
+                Tab_count = GetINIValue("custom_match_info", "tab_count", ini_dir)
+
+                ReDim Label_ad(Tab_count)
+                ReDim measure_ad(Tab_count)
+                ReDim component_ad(Tab_count)
+                ReDim design_ad(Tab_count)
+                ReDim error_ad(Tab_count)
+                ReDim UP_Tol_ad(Tab_count)
+                ReDim Low_Tol_ad(Tab_count)
+                ReDim judge_ad(Tab_count)
+                ReDim Line_count_ad(Tab_count)
+                ReDim select_check_value(Tab_count)
+                ReDim tab_name(Tab_count)
+                ReDim origin_sheet_name(Tab_count)
+                ReDim input_direction(Tab_count)
+
+
+                For tab_index = 1 To Tab_count
+                    ini_tab_index = "tab_" & tab_index
+                    tab_name(tab_index) = GetINIValue(ini_tab_index, "tab_name", ini_dir)
+                    Label_ad(tab_index).Col = Ad_Str(GetINIValue(ini_tab_index, "Label", ini_dir))
+                    component_ad(tab_index).Col = Ad_Str(GetINIValue(ini_tab_index, "component", ini_dir))
+                    measure_ad(tab_index).Col = Ad_Str(GetINIValue(ini_tab_index, "measure_value", ini_dir))
+                    design_ad(tab_index).Col = Ad_Str(GetINIValue(ini_tab_index, "Design_value", ini_dir))
+                    error_ad(tab_index).Col = Ad_Str(GetINIValue(ini_tab_index, "error", ini_dir))
+                    UP_Tol_ad(tab_index).Col = Ad_Str(GetINIValue(ini_tab_index, "UP_Tol", ini_dir))
+                    Low_Tol_ad(tab_index).Col = Ad_Str(GetINIValue(ini_tab_index, "Low_Tol", ini_dir))
+                    judge_ad(tab_index).Col = Ad_Str(GetINIValue(ini_tab_index, "judge", ini_dir))
+
+                    Label_ad(tab_index).Row = Ad_NUM(GetINIValue(ini_tab_index, "Label", ini_dir))
+                    component_ad(tab_index).Row = Ad_NUM(GetINIValue(ini_tab_index, "component", ini_dir))
+                    measure_ad(tab_index).Row = Ad_NUM(GetINIValue(ini_tab_index, "measure_value", ini_dir))
+                    design_ad(tab_index).Row = Ad_NUM(GetINIValue(ini_tab_index, "Design_value", ini_dir))
+                    error_ad(tab_index).Row = Ad_NUM(GetINIValue(ini_tab_index, "error", ini_dir))
+                    UP_Tol_ad(tab_index).Row = Ad_NUM(GetINIValue(ini_tab_index, "UP_Tol", ini_dir))
+                    Low_Tol_ad(tab_index).Row = Ad_NUM(GetINIValue(ini_tab_index, "Low_Tol", ini_dir))
+                    judge_ad(tab_index).Row = Ad_NUM(GetINIValue(ini_tab_index, "judge", ini_dir))
+
+                    Line_count_ad(tab_index) = GetINIValue(ini_tab_index, "Line_count", ini_dir)
+
+                    input_direction(tab_index) = GetINIValue(ini_tab_index, "input_direction", ini_dir)
+
+
+                    select_check_value(tab_index).label = GetINIValue(ini_tab_index, "label_check", ini_dir)                                                          ' 탭마다 ini 별도로 정보 저장후 읽어오기, 키 이름 _check 추가해서 다른것과 구별 
+                    select_check_value(tab_index).Measure_value = GetINIValue(ini_tab_index, "Measure_value_check", ini_dir)
+                    select_check_value(tab_index).Design_value = GetINIValue(ini_tab_index, "Design_value_check", ini_dir)
+                    select_check_value(tab_index).Error_check = GetINIValue(ini_tab_index, "error_check", ini_dir)
+                    select_check_value(tab_index).UP_tol = GetINIValue(ini_tab_index, "UP_tol_check", ini_dir)
+                    select_check_value(tab_index).Low_tol = GetINIValue(ini_tab_index, "Low_tol_check", ini_dir)
+                    select_check_value(tab_index).judge = GetINIValue(ini_tab_index, "judge_check", ini_dir)
+                    select_check_value(tab_index).component = GetINIValue(ini_tab_index, "component_check", ini_dir)
+
+                    origin_sheet_name(tab_index) = GetINIValue(ini_tab_index, "tab_name", ini_dir)
+
+                Next tab_index
+
+                For Each sum_temp In Line_count_ad
+                    sum_Line_count = sum_Line_count + sum_temp
+                Next
+
+
+
+                ' error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도", ",")
+
+                XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
+                XL.DisplayAlerts = False
+
+                'origin_sheet_name = XL.activesheet.name
+                Data_sheet = "Data_sheet"
+                XL.Sheets.add(before:=XL.Sheets(1)) 'csv파일 가져올 워크시트 추가
+                XL.activesheet.name = Data_sheet
+
+                FileOpen(2, CSV_Dir, OpenMode.Input)
+
+
+                Do Until EOF(2)
+                    cRow = cRow + 1
+                    input_string = LineInput(2)
+                    Dim input_arry() As String = Split(input_string, ";")
+                    For i = 0 To UBound(input_arry)
+                        XL.sheets(1).cells(cRow, i + 1).value = input_arry(i)
+                    Next
+                Loop
+
+                FileClose(2)
+                'XL.visible = True
+
+                tab_index = 1
+
+                '===========================================위치지정 추가기입 삽입 위치.
+
+                Call add_str()
+
+                '===========================================위치지정 추가기입 삽입 위치.
+
+                '   XL.Sheets(origin_sheet_name).Copy(After:=XL.Sheets("Data_sheet"))        '데이터 입력용 워크시트 복사
+                'XL.activesheet.name = tab_name(1)                         '데이터 입력용 워크시트 선택
+
+                Cell_Address = 1                    '워크시트1 셀 위치
+                Sheet_Count = 1                     '데이터 입력 워크시트 카운트
+
+                Cell_Count2 = XL.Sheets(Data_sheet).Rows.Count       '워크시트 행 위치 검색
+                Cell_Count = XL.Sheets(Data_sheet).Cells(Cell_Count2, 1).End(-4162).Row      '워크시트 행 위치 검색  -4162 : xlUp
+                'Quetient = Cell_Count / Line_count_ad              '페이지수 계산
+                TotalSheet = CInt(Quetient)             '페이지수 계산 (반올림)
+
+                프로그레스바.ProgressBar1.Maximum = Cell_Count
+
+                '  If Quetient - TotalSheet > 0 Then TotalSheet = TotalSheet + 1       '반올림값 보정 0.5 이하 +1페이지
+
+                Do      '데이터 입력
+
+                    Line_Count = 1
+                    column_count = 1
+
+
+                    Do Until Line_Count > Line_count_ad(tab_index)
+
+                        If select_check_value(tab_index).label = True Then
+                            XL.Sheets(tab_name(tab_index)).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value2 & "(" & XL.Sheets(Data_sheet).Range("A" & Cell_Address).value2 & ")"   '라벨명
+                            If XL.Sheets(tab_name(tab_index)).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
+                                Select Case input_direction(tab_index)
+                                    Case "세로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
+                                        Label_ad(tab_index).Row = Label_ad(tab_index).Row + (merge_count - 1)
+                                    Case "가로"
+                                        merge_count = XL.Sheets(tab_name).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
+                                        column_count = column_count + (merge_count - 1)
+                                End Select
+                            End If
+                        End If
+
+                        If select_check_value(tab_index).component = True Then
+                            XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("C" & Cell_Address).value2     '구성요소
+                            If XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
+                                Select Case input_direction(tab_index)
+                                    Case "세로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
+                                        component_ad(tab_index).Row = component_ad(tab_index).Row + (merge_count - 1)
+                                    Case "가로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(component_ad(tab_index).Col & component_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
+                                        column_count = column_count + (merge_count - 1)
+                                End Select
+                            End If
+
+                        End If
+
+
+                        If select_check_value(tab_index).Measure_value = True Then
+                            XL.Sheets(tab_name(tab_index)).Range(measure_ad(tab_index).Col & measure_ad(tab_index).Row).cells(1, column_count).value = XL.Sheets(Data_sheet).Range("G" & Cell_Address).value      '측정값
+                            If XL.Sheets(tab_name(tab_index)).Range(measure_ad(tab_index).Col & measure_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
+                                Select Case input_direction(tab_index)
+                                    Case "세로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(measure_ad(tab_index).Col & measure_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
+                                        measure_ad(tab_index).Row = measure_ad(tab_index).Row + (merge_count - 1)
+                                    Case "가로"
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(measure_ad(tab_index).Col & measure_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
+                                        column_count = column_count + (merge_count - 1)
+                                End Select
+                            End If
+
+                        End If
+
+                        If select_check_value(tab_index).Design_value = True Then
                             XL.Sheets(tab_name(tab_index)).Range(design_ad(tab_index).Col & design_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("D" & Cell_Address).value2     '설계치
                             If XL.Sheets(tab_name(tab_index)).Range(design_ad(tab_index).Col & design_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
                                 Select Case input_direction(tab_index)
@@ -2303,7 +2034,7 @@ XLC:
                                         merge_count = XL.Sheets(tab_name(tab_index)).Range(design_ad(tab_index).Col & design_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
                                         design_ad(tab_index).Row = design_ad(tab_index).Row + (merge_count - 1)
                                     Case "가로"
-                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(design_ad(tab_index).Col & design_ad(tab_index).Row).cells(1, column_count).mergearea.colums.count
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(design_ad(tab_index).Col & design_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
                                         column_count = column_count + (merge_count - 1)
                                 End Select
                             End If
@@ -2319,7 +2050,7 @@ XLC:
                                         merge_count = XL.Sheets(tab_name(tab_index)).Range(error_ad(tab_index).Col & error_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
                                         error_ad(tab_index).Row = error_ad(tab_index).Row + (merge_count - 1)
                                     Case "가로"
-                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(error_ad(tab_index).Col & error_ad(tab_index).Row).cells(1, column_count).mergearea.colums.count
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(error_ad(tab_index).Col & error_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
                                         column_count = column_count + (merge_count - 1)
                                 End Select
                             End If
@@ -2333,7 +2064,7 @@ XLC:
                                         merge_count = XL.Sheets(tab_name(tab_index)).Range(UP_Tol_ad(tab_index).Col & UP_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
                                         UP_Tol_ad(tab_index).Row = UP_Tol_ad(tab_index).Row + (merge_count - 1)
                                     Case "가로"
-                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(UP_Tol_ad(tab_index).Col & UP_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.colums.count
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(UP_Tol_ad(tab_index).Col & UP_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
                                         column_count = column_count + (merge_count - 1)
                                 End Select
                             End If
@@ -2347,7 +2078,7 @@ XLC:
                                         merge_count = XL.Sheets(tab_name(tab_index)).Range(Low_Tol_ad(tab_index).Col & Low_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
                                         Low_Tol_ad(tab_index).Row = Low_Tol_ad(tab_index).Row + (merge_count - 1)
                                     Case "가로"
-                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(Low_Tol_ad(tab_index).Col & Low_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.colums.count
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(Low_Tol_ad(tab_index).Col & Low_Tol_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
                                         column_count = column_count + (merge_count - 1)
                                 End Select
                             End If
@@ -2361,7 +2092,7 @@ XLC:
                                         merge_count = XL.Sheets(tab_name(tab_index)).Range(judge_ad(tab_index).Col & judge_ad(tab_index).Row).cells(1, column_count).mergearea.rows.count
                                         judge_ad(tab_index).Row = judge_ad(tab_index).Row + (merge_count - 1)
                                     Case "가로"
-                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(judge_ad(tab_index).Col & judge_ad(tab_index).Row).cells(1, column_count).mergearea.colums.count
+                                        merge_count = XL.Sheets(tab_name(tab_index)).Range(judge_ad(tab_index).Col & judge_ad(tab_index).Row).cells(1, column_count).mergearea.columns.count
                                         column_count = column_count + (merge_count - 1)
                                 End Select
                             End If
@@ -2370,16 +2101,12 @@ XLC:
                         '====================================================================================================================================
                         '====================================================================================================================================
                         '라인 끝 빈공간 용
-                        XL.Sheets(tab_index).Range("BA5000").value = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value & "(" & XL.Sheets(Data_sheet).Range("C" & Cell_Address).value & ")"   '라벨명
+                        XL.Sheets(tab_name(tab_index)).Range("BA5000").value = XL.Sheets(Data_sheet).Range("B" & Cell_Address).value2 & "(" & XL.Sheets(Data_sheet).Range("A" & Cell_Address).value2 & ")"   '라벨명
 
                         If XL.Sheets(tab_name(tab_index)).Range("BA5000").value = "()" Then
                             XL.Sheets(tab_name(tab_index)).Range("BA5000").value = ""
                             XL.Sheets(tab_name(tab_index)).Range("BA5000").delete
-                            If Label_ad(tab_name(tab_index)).Col = Nothing Then
-                            Else
-                                XL.Sheets(tab_name(tab_index)).Range(Label_ad(tab_index).Col & Label_ad(tab_index).Row).cells(1, column_count).value = ""
 
-                            End If
                             Exit Do
                         End If
                         XL.Sheets(tab_name(tab_index)).Range("BA5000").delete
@@ -2449,7 +2176,7 @@ XLC:
             Case "기본폼1", "기본폼2", "기본폼3", "기본폼4", "기본폼5"
                 TabControl1.Visible = True
 
-                Panel1.Visible = False
+                TabControl2.Visible = False                 '   2021-10-15 penal 제거후 tabcontrol2로 제어
 
 
                 '===========================================2021-07-27 Panel 추가 해서 Panel안에 다 넣음
@@ -2503,7 +2230,7 @@ XLC:
             Case "위치 지정"
                 TabControl1.Visible = False
 
-                Panel1.Visible = True
+                TabControl2.Visible = True
 
                 '===========================================2021-07-27 Panel 추가 해서 Panel안에 다 넣음
                 'CheckBox3.Visible = True
@@ -2573,10 +2300,10 @@ XLC:
         Dim file_path As String
         Dim file_len As Integer
 
-        file_path = Label36.Text
+        file_path = GetINIValue("custom_match_info", "Result_Form_Dir", ini_dir)
 
-        file_len = InStrRev(Label36.Text, "\")
-        file_path = Strings.Left(Label36.Text, file_len - 1)
+        file_len = InStrRev(file_path, "\")
+        file_path = Strings.Left(file_path, file_len - 1)
         If file_path <> "" Then
             Shell("explorer.exe " & file_path, AppWinStyle.NormalFocus)
         End If
@@ -2586,7 +2313,7 @@ XLC:
 
         Dim file_path As String
 
-        file_path = Label36.Text
+        file_path = GetINIValue("custom_match_info", "Result_Form_Dir", ini_dir)
 
         If file_path <> "N/A" Then
             Shell("explorer.exe " & file_path, AppWinStyle.NormalFocus)
@@ -2790,7 +2517,7 @@ missing:
 
         ini_dir = ini_Name
 
-        input_property(Restore_str(ini_dir))
+        Input_property(Restore_str(ini_dir))
 
         '================================
 
@@ -2824,9 +2551,9 @@ missing:
         Select Case source_type
 
             Case 1
-                Call Extension_type_3()     'csv    
+                Call Extension_type_1()         'csv    
             Case 2
-                Call Extension_type_2()     'asc
+                Call Extension_type_2()         'asc
         End Select
 
         Select Case strDate
@@ -3002,212 +2729,213 @@ SPE:
 
                 select_pic_name_2 = GetINIValue(user_section, user_keyname(11), ini_dir)
                 select_pic_name_3 = GetINIValue(user_section, user_keyname(12), ini_dir)
-            Case "위치 지정"
-                Dim check_Section As String
-                Dim ad_Section As String
-                Dim coustom_section As String
-                Dim coustom_Keyname() As String
-                ReDim coustom_Keyname(2)
-                Dim Check_Keyname() As String
-                ReDim Check_Keyname(10)
-
-                check_Section = "check"
-                ad_Section = "custom_match_info"
-                Check_Keyname(0) = "label"
-                Check_Keyname(1) = "measure_value"
-                Check_Keyname(2) = "Design_value"
-                Check_Keyname(3) = "error"
-                Check_Keyname(4) = "UP_tol"
-                Check_Keyname(5) = "Low_tol"
-                Check_Keyname(6) = "judge"
-                Check_Keyname(7) = "component"
-
-                coustom_section = "custom_match_info"
-                coustom_Keyname(0) = "Result_Form_Dir"
-                coustom_Keyname(1) = "line_count"
-                coustom_Keyname(2) = "input_direction"
-
-                CheckBox3.Checked = GetINIValue(check_Section, Check_Keyname(0), ini_dir)
-                CheckBox5.Checked = GetINIValue(check_Section, Check_Keyname(1), ini_dir)
-                CheckBox6.Checked = GetINIValue(check_Section, Check_Keyname(2), ini_dir)
-                CheckBox7.Checked = GetINIValue(check_Section, Check_Keyname(3), ini_dir)
-                CheckBox8.Checked = GetINIValue(check_Section, Check_Keyname(4), ini_dir)
-                CheckBox9.Checked = GetINIValue(check_Section, Check_Keyname(5), ini_dir)
-                CheckBox10.Checked = GetINIValue(check_Section, Check_Keyname(6), ini_dir)
-                CheckBox4.Checked = GetINIValue(check_Section, Check_Keyname(7), ini_dir)
-
-                Label27.Text = GetINIValue(ad_Section, Check_Keyname(0), ini_dir)
-                Label28.Text = GetINIValue(ad_Section, Check_Keyname(7), ini_dir)
-                Label29.Text = GetINIValue(ad_Section, Check_Keyname(1), ini_dir)
-                Label30.Text = GetINIValue(ad_Section, Check_Keyname(2), ini_dir)
-                Label31.Text = GetINIValue(ad_Section, Check_Keyname(3), ini_dir)
-                Label32.Text = GetINIValue(ad_Section, Check_Keyname(4), ini_dir)
-                Label33.Text = GetINIValue(ad_Section, Check_Keyname(5), ini_dir)
-                Label34.Text = GetINIValue(ad_Section, Check_Keyname(6), ini_dir)
-
-                Label35.Text = GetINIValue(coustom_section, coustom_Keyname(1), ini_dir)
-                Label36.Text = GetINIValue(coustom_section, coustom_Keyname(0), ini_dir)
-                Label48.Text = GetINIValue(coustom_section, coustom_Keyname(2), ini_dir)
-
-
-
-        End Select
-    End Sub
-
-
-    Sub Input_property_t(ByVal ini_dir As String)                 '리스트 선택시 라벨 표시
-
-        strDate = GetINIValue("Matching_info", "Check_Date", ini_dir)
-        strTime = GetINIValue("Matching_info", "Check_Time", ini_dir)
-        Label16.Text = GetINIValue("Matching_info", "CSV_file_Path", ini_dir)
-        Label17.Text = GetINIValue("Matching_info", "Save_File_Path", ini_dir) '& "\" & GetINIValue("Matching_info", "Save_File_Name", MRM_root_dir & "\Data\Resources\Ini\" & ListBox1.SelectedItem.ToString & ".ini") & GetINIValue("Matching_info", "Save_Type", MRM_root_dir & "\Data\Resources\Ini\" & ListBox1.SelectedItem.ToString & ".ini")
-        auto_save_check = GetINIValue("Matching_info", "auto_save", ini_dir)
-
-        Select Case auto_save_check
-            Case "True"
-                Label22.Text = "예"
-            Case "False"
-                Label22.Text = "아니오"
-        End Select
-
-        Select Case strDate
-            Case "True"
-
-                Select Case strTime
-                    Case "True"
-                        Label18.Text = GetINIValue("Matching_info", "Save_File_Name", ini_dir) & "   +현재 날짜 +현재 시간"
-                    Case "False"
-                        Label18.Text = GetINIValue("Matching_info", "Save_File_Name", ini_dir) & "   +현재 날짜"
-                End Select
-            Case "False"
-                Select Case strTime
-                    Case "True"
-                        Label18.Text = GetINIValue("Matching_info", "Save_File_Name", ini_dir) & "   +현재 시간"
-                    Case "False"
-                        Label18.Text = GetINIValue("Matching_info", "Save_File_Name", ini_dir)
-                End Select
-        End Select
-
-        Label19.Text = GetINIValue("Matching_info", "Save_Type", ini_dir)
-        Label20.Text = GetINIValue("Matching_info", "Basic_form_seleted", ini_dir)   '
-        iniPath = GetINIValue("Matching_info", "ini_dir", ini_dir)
-        logo_path = GetINIValue("Matching_info", "logo_path", ini_dir)
-
-        Select Case Label20.Text
-            Case "기본폼1", "기본폼2", "기본폼3", "기본폼4", "기본폼5"
-                Dim user_section As String
-                Dim user_keyname() As String
-                ReDim user_keyname(12)
-
-                user_section = "user_info"
-                user_keyname(0) = "Product_Name"
-                user_keyname(1) = "Machine_Name"
-                user_keyname(2) = "Request_Dept"
-                user_keyname(3) = "Request_Date"
-                user_keyname(4) = "Drawing_Num"
-                user_keyname(5) = "Program_Name"
-                user_keyname(6) = "Player_Name"
-                user_keyname(7) = "Measure_Date"
-                user_keyname(8) = "Check_date_1"
-                user_keyname(9) = "Check_date_2"
-                user_keyname(10) = "Select_pic_name"
-                user_keyname(11) = "Select_pic_name_2"
-                user_keyname(12) = "Select_pic_name_3"
-
-                Product_Name = GetINIValue(user_section, user_keyname(0), ini_dir)
-                Machine_Name = GetINIValue(user_section, user_keyname(1), ini_dir)
-                Request_Dept = GetINIValue(user_section, user_keyname(2), ini_dir)
-
-                Request_Date = GetINIValue(user_section, user_keyname(3), ini_dir)
-
-                Drawing_Num = GetINIValue(user_section, user_keyname(4), ini_dir)
-                Program_Name = GetINIValue(user_section, user_keyname(5), ini_dir)
-                Player_Name = GetINIValue(user_section, user_keyname(6), ini_dir)
-
-                Measure_Date = GetINIValue(user_section, user_keyname(7), ini_dir)
-
-                select_pic_name = GetINIValue(user_section, user_keyname(10), ini_dir)
-
-                select_pic_name_2 = GetINIValue(user_section, user_keyname(11), ini_dir)
-                select_pic_name_3 = GetINIValue(user_section, user_keyname(12), ini_dir)
 
             Case "위치 지정"
 
                 Dim custom_section As String
-                Dim custom_Keyname() As String
-                ReDim coustom_Keyname(5)
+                Dim custom_Keyname(5) As String
                 Dim Check_Keyname(10) As String
                 Dim address_Keyname(10) As String
 
-                Dim tab_section As String
-                Dim tab_count As Integer
+                Dim tab_selection As String
+                Dim tab_count As Integer     ' 탭 개수 인식
                 Dim i As Integer
+                Dim Selected_tab As TabPage
 
-                custom_Section = "custom_match_info"
+
+                Dim tab_name() As String
+                Dim Label_ad() As String
+                Dim measure_ad() As String
+                Dim component_ad() As String
+                Dim design_ad() As String
+                Dim error_ad() As String
+                Dim UP_Tol_ad() As String
+                Dim Low_Tol_ad() As String
+                Dim judge_ad() As String
+                Dim Line_count_ad() As Integer
+                Dim origin_sheet_name() As String
+                Dim input_direction() As String
+                Dim add_Control() As control_structure
+                Dim control_add_num As Integer
+                Dim check_text(10) As String
+
+
+                custom_section = "custom_match_info"
                 Check_Keyname(0) = "label_check"
                 Check_Keyname(1) = "component_check"
                 Check_Keyname(2) = "measure_value_check"
                 Check_Keyname(3) = "Design_value_check"
-                Check_Keyname(4) = "error_check"
-                Check_Keyname(5) = "UP_tol_check"
-                Check_Keyname(6) = "Low_tol_check"
+                Check_Keyname(4) = "UP_tol_check"
+                Check_Keyname(5) = "Low_tol_check"
+                Check_Keyname(6) = "error_check"
                 Check_Keyname(7) = "judge_check"
 
                 address_Keyname(0) = "label"
                 address_Keyname(1) = "component"
                 address_Keyname(2) = "measure_value"
                 address_Keyname(3) = "Design_value"
-                address_Keyname(4) = "error"
-                address_Keyname(5) = "UP_tol"
-                address_Keyname(6) = "Low_tol"
+                address_Keyname(4) = "UP_tol"
+                address_Keyname(5) = "Low_tol"
+                address_Keyname(6) = "error"
                 address_Keyname(7) = "judge"
 
-                custom_section = "custom_match_info"
                 custom_Keyname(0) = "Result_Form_Dir"
                 custom_Keyname(1) = "line_count"
                 custom_Keyname(2) = "input_direction"
                 custom_Keyname(3) = "tab_count"
+                custom_Keyname(4) = "tab_name"
 
+
+                check_text(1) = "라벨명         : "
+                check_text(2) = "요소             : "
+                check_text(3) = "측정값         : "
+                check_text(4) = "설계치         : "
+                check_text(5) = "상한 공차    :"
+                check_text(6) = "하한 공차    :"
+                check_text(7) = "오차             :"
+                check_text(8) = "판정             :"
+
+                TabControl2.Controls.Clear()
                 tab_count = GetINIValue(custom_section, custom_Keyname(3), ini_dir)
 
+                ReDim Label_ad(tab_count)
+                ReDim measure_ad(tab_count)
+                ReDim component_ad(tab_count)
+                ReDim design_ad(tab_count)
+                ReDim error_ad(tab_count)
+                ReDim UP_Tol_ad(tab_count)
+                ReDim Low_Tol_ad(tab_count)
+                ReDim judge_ad(tab_count)
+                ReDim Line_count_ad(tab_count)
+                ReDim tab_name(tab_count)
+                ReDim origin_sheet_name(tab_count)
+                ReDim input_direction(tab_count)
+                ReDim add_Control(tab_count)
 
 
 
                 For i = 1 To tab_count
-                    tab_section = "tab_" & i
+                    tab_selection = "tab_" & i
+                    tab_name(i) = GetINIValue(tab_selection, custom_Keyname(4), ini_dir)
+                    TabControl2.TabPages.Add(tab_name(i))
+
+                    ReDim add_Control(i).check_box(15)
+                    ReDim add_Control(i).Text_box(15)
+                    ReDim add_Control(i).label(15)
                 Next i
+                For i = 1 To tab_count                      ' 탭마다 컨트롤 생성 및 배치
+                    tab_selection = "tab_" & i
+                    For control_add_num = 1 To 15
 
-                CheckBox3.Checked = GetINIValue(tab_section, Check_Keyname(0), ini_dir)
-                CheckBox4.Checked = GetINIValue(tab_section, Check_Keyname(1), ini_dir)
-                CheckBox5.Checked = GetINIValue(tab_section, Check_Keyname(2), ini_dir)
-                CheckBox6.Checked = GetINIValue(tab_section, Check_Keyname(3), ini_dir)
-                CheckBox7.Checked = GetINIValue(tab_section, Check_Keyname(4), ini_dir)
-                CheckBox8.Checked = GetINIValue(tab_section, Check_Keyname(5), ini_dir)
-                CheckBox9.Checked = GetINIValue(tab_section, Check_Keyname(6), ini_dir)
-                CheckBox10.Checked = GetINIValue(tab_section, Check_Keyname(7), ini_dir)
+                        add_Control(i).check_box(control_add_num) = New CheckBox
+                        add_Control(i).Text_box(control_add_num) = New TextBox
+                        add_Control(i).label(control_add_num) = New Label
+                    Next control_add_num
 
-                Label27.Text = GetINIValue(tab_section, address_Keyname(0), ini_dir)
-                Label28.Text = GetINIValue(tab_section, address_Keyname(1), ini_dir)
-                Label29.Text = GetINIValue(tab_section, address_Keyname(2), ini_dir)
-                Label30.Text = GetINIValue(tab_section, address_Keyname(3), ini_dir)
-                Label31.Text = GetINIValue(tab_section, address_Keyname(4), ini_dir)
-                Label32.Text = GetINIValue(tab_section, address_Keyname(5), ini_dir)
-                Label33.Text = GetINIValue(tab_section, address_Keyname(6), ini_dir)
-                Label34.Text = GetINIValue(tab_section, address_Keyname(7), ini_dir)
 
-                Label35.Text = GetINIValue(custom_section, custom_Keyname(1), ini_dir)
-                Label36.Text = GetINIValue(custom_section, custom_Keyname(0), ini_dir)
-                Label48.Text = GetINIValue(custom_section, custom_Keyname(2), ini_dir)
+                    TabControl2.SelectedIndex = i - 1
+                    Selected_tab = TabControl2.SelectedTab
+                    '======================================================================컨트롤 위치 고정용 
+                    For control_add_num = 1 To 8
+                        'TabControl2.SelectedTab = TabControl2.TabPages(tab_name(i))
+                        Selected_tab.BackColor = SystemColors.Window
+                        ' TabControl2.SelectedTab.Controls.Add(add_Control(i).check_box(control_add_num))
+                        Selected_tab.Controls.Add(add_Control(i).check_box(control_add_num))
+                        add_Control(i).check_box(control_add_num).Enabled = True
+                        add_Control(i).check_box(control_add_num).Top = 25 * control_add_num
+                        add_Control(i).check_box(control_add_num).Left = 20
+                        add_Control(i).check_box(control_add_num).Height = 20
+                        add_Control(i).check_box(control_add_num).Width = 100
+                        add_Control(i).check_box(control_add_num).Checked = GetINIValue(tab_selection, Check_Keyname(control_add_num - 1), ini_dir)
+                        add_Control(i).check_box(control_add_num).Text = check_text(control_add_num)
+                        '체크박스 크기 106,22
+                        '첫 체크박스 위치 18,32 두번쨰 18,55 
+                        Selected_tab.Controls.Add(add_Control(i).label(control_add_num))
+                        add_Control(i).label(control_add_num).Enabled = True
+                        add_Control(i).label(control_add_num).Top = 25 * control_add_num
+                        add_Control(i).label(control_add_num).Left = 140
+                        add_Control(i).label(control_add_num).Height = 20
+                        add_Control(i).label(control_add_num).Width = 30
+                        add_Control(i).label(control_add_num).Text = GetINIValue(tab_selection, address_Keyname(control_add_num - 1), ini_dir)
+
+                        '라벨 크기 32,18
+                        '라벨 위치 144,32
+                    Next control_add_num
+
+                    Selected_tab.Controls.Add(add_Control(i).label(9))  '페이지 줄수 변수
+                    add_Control(i).label(9).Enabled = True
+                    add_Control(i).label(9).Top = 225
+                    add_Control(i).label(9).Left = 140
+                    add_Control(i).label(9).Height = 20
+                    add_Control(i).label(9).Width = 150
+                    add_Control(i).label(9).Text = GetINIValue(tab_selection, custom_Keyname(1), ini_dir)
+
+                    Selected_tab.Controls.Add(add_Control(i).label(10))     '입력방향 변수
+                    add_Control(i).label(10).Enabled = True
+                    add_Control(i).label(10).Top = 250
+                    add_Control(i).label(10).Left = 140
+                    add_Control(i).label(10).Height = 20
+                    add_Control(i).label(10).Width = 150
+                    add_Control(i).label(10).Text = GetINIValue(tab_selection, custom_Keyname(2), ini_dir)
+
+                    Selected_tab.Controls.Add(add_Control(i).label(11))     '사용 성적서 경로 변수
+                    add_Control(i).label(11).Enabled = True
+                    add_Control(i).label(11).Top = 300
+                    add_Control(i).label(11).Left = 20
+                    add_Control(i).label(11).Height = 20
+                    add_Control(i).label(11).Width = 150
+                    add_Control(i).label(11).AutoSize = True
+                    add_Control(i).label(11).MaximumSize = New Size(180, 50)
+                    add_Control(i).label(11).ContextMenuStrip() = ContextMenuStrip3
+                    add_Control(i).label(11).Text = GetINIValue(custom_section, custom_Keyname(0), ini_dir)
+
+                    Selected_tab.Controls.Add(add_Control(i).label(12))          '셀주소
+                    add_Control(i).label(12).Enabled = True
+                    add_Control(i).label(12).Top = 5
+                    add_Control(i).label(12).Left = 140
+                    add_Control(i).label(12).Height = 20
+                    add_Control(i).label(12).Width = 150
+                    add_Control(i).label(12).Text = "셀 주소"
+
+                    Selected_tab.Controls.Add(add_Control(i).label(13))          '페이지줄수
+                    add_Control(i).label(13).Enabled = True
+                    add_Control(i).label(13).Top = 225
+                    add_Control(i).label(13).Left = 20
+                    add_Control(i).label(13).Height = 20
+                    add_Control(i).label(13).Width = 150
+                    add_Control(i).label(13).Text = "페이지 줄 수     :"
+
+                    Selected_tab.Controls.Add(add_Control(i).label(14))          '입력방향  
+                    add_Control(i).label(14).Enabled = True
+                    add_Control(i).label(14).Top = 250
+                    add_Control(i).label(14).Left = 20
+                    add_Control(i).label(14).Height = 20
+                    add_Control(i).label(14).Width = 150
+                    add_Control(i).label(14).Text = "입력 방향          :"
+
+                    Selected_tab.Controls.Add(add_Control(i).label(15))          '사용 성적서 경로
+                    add_Control(i).label(15).Enabled = True
+                    add_Control(i).label(15).Top = 275
+                    add_Control(i).label(15).Left = 20
+                    add_Control(i).label(15).Height = 20
+                    add_Control(i).label(15).Width = 150
+
+                    add_Control(i).label(15).Text = "사용 성적서 경로 :"
+
+                    '======================================================================컨트롤 위치 고정용 
+
+
+                Next i
 
         End Select
 
         Me.Refresh()
-
     End Sub
 
 
+
     ' 리스트박스에서 엔터 눌렀을때 키코드에 대응해서 이벤트 발생 ↓↓↓↓
-    Private Sub KEY_Down_EVENT(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles ListBox1.KeyDown
+    Private Sub KEY_down_EVENT(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles ListBox1.KeyDown
 
         If e.KeyCode = 13 Then      '13 = Enter
             Button1_Click(sender, New System.EventArgs())
@@ -3221,6 +2949,9 @@ SPE:
             Button5_Click(sender, New System.EventArgs())       '삭제 버튼
         End If
 
+        'If e.KeyCode = 27 Then      '27 = ESC
+        'ListBox1.Refresh()
+        'End If
     End Sub
 
     Sub Get_list()
@@ -3242,6 +2973,8 @@ SPE:
         Loop Until ListTemp = ""
         counting = counting - 1
         ReDim Preserve Matching_List(counting)
+
+        List_check = 1
 
     End Sub
     Sub Measure_data_basic_form(form_txt As String)
@@ -3543,14 +3276,14 @@ SPE:
             Return MID_CHECK.Class1.MID_Check(serial_num)
         Else
             'SplashScreen1.Close()
-            MsgBox("        >>>>>   파일 복사 감지   <<<<<    " & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")
+            MsgBox("        >>>>>   파일 복사 감지   <<<<<    " & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다." & Environment.NewLine & "ERROR CODE : M-003", 48, "MRM Activation")   'M-003 : MID 불러오기 실패
             Me.Close()
             End
         End If
 
         Exit Function
 Out:
-
+        MsgBox("        >>>>>   파일 복사 감지   <<<<<    " & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다." & Environment.NewLine & "ERROR CODE : M-002", 48, "MRM Activation")            'M-002 : MID 불러오기 오류 발생
         Me.Close()
         End
     End Function
@@ -3602,7 +3335,7 @@ Out:
                 If Folder_Exists.Exists = False Then
                     MkDir(Folder_Name)
                 Else
-                    MsgBox("동일한 이름의 전용 프로그램이 존재합니다." & Environment.NewLine & "교체 하시려면 MRM > Data > Resources > ini 폴더내의 설정을 삭제 후 재생성해주세요.",, "중복 이름 프로그램 설정 존재")
+                    MsgBox("동일한 이름의 전용 프로그램이 존재합니다." & Environment.NewLine & "교체 하시려면 전용 버튼을 눌러 기존 전용 프로그램을 삭제 후 재생성해주세요.", vbCritical, "중복 이름 프로그램 존재")
                     Exit Sub
                 End If
 
@@ -3610,7 +3343,7 @@ Out:
                 If Folder_Exists2.Exists = False Then
 
                 Else
-                    MsgBox("동일한 이름의 전용 프로그램이 존재합니다." & Environment.NewLine & "교체 하시려면 MRM > 전용프로그램 폴더내의 프로그램을 삭제 후 재생성해주세요.",, "중복 이름 프로그램 존재")
+                    MsgBox("동일한 이름의 전용 프로그램이 존재합니다." & Environment.NewLine & "교체 하시려면 전용 버튼을 눌러 기존 전용 프로그램을 삭제 후 재생성해주세요.", vbCritical, "중복 이름 프로그램 존재")
                     Exit Sub
                 End If
                 'ini파일 복사후 이름변경
@@ -3627,11 +3360,11 @@ Out:
         End Select
     End Sub
 
-    Sub add_str(OSN As String)
+    Sub add_str()
         Dim add_str_section As String
-        Dim add_str_keyname(5) As String
+        Dim add_str_keyname(10) As String
         Dim add_ans_value As String
-        Dim dialog_value
+        Dim dialog_value As Integer
         Dim i As Integer
 
         add_str_section = "add_str_"
@@ -3640,20 +3373,39 @@ Out:
         add_str_keyname(2) = "loction"
         add_str_keyname(3) = "combo"
         add_str_keyname(4) = "use_check"
+        add_str_keyname(5) = "apply_tab"
+        add_str_keyname(6) = "input_type"
 
         For i = 1 To 3
-
-
             add_str_value(0) = GetINIValue(add_str_section & i, add_str_keyname(0), Restore_str(ini_dir))
             add_str_value(1) = GetINIValue(add_str_section & i, add_str_keyname(1), Restore_str(ini_dir))
             add_str_value(2) = GetINIValue(add_str_section & i, add_str_keyname(2), Restore_str(ini_dir))
             add_str_value(3) = GetINIValue(add_str_section & i, add_str_keyname(3), Restore_str(ini_dir))
             add_str_value(4) = GetINIValue(add_str_section & i, add_str_keyname(4), Restore_str(ini_dir))
+            add_str_value(5) = GetINIValue(add_str_section & i, add_str_keyname(5), Restore_str(ini_dir))
+            add_str_value(6) = GetINIValue(add_str_section & i, add_str_keyname(6), Restore_str(ini_dir))
+
             Select Case add_str_value(3)
+
                 Case "자동기입"
                     If add_str_value(4) = True Then
-                        XL.sheets(OSN).select
-                        XL.Sheets(OSN).Range(add_str_value(2)).value = add_str_value(1)
+
+                        Select Case add_str_value(6)
+                            Case "텍스트"
+                                XL.sheets(add_str_value(5)).select
+                                XL.Sheets(add_str_value(5)).Range(add_str_value(2)).value = add_str_value(1)
+
+                            Case "날짜"
+                                XL.sheets(add_str_value(5)).select
+                                XL.Sheets(add_str_value(5)).Range(add_str_value(2)).value = Format(Now(), "yyyy/MM/dd")
+                            Case "시간"
+                                XL.sheets(add_str_value(5)).select
+                                XL.Sheets(add_str_value(5)).Range(add_str_value(2)).value = Format(Now(), "hh:mm:ss")
+                            Case "날짜 + 시간"
+                                XL.sheets(add_str_value(5)).select
+                                XL.Sheets(add_str_value(5)).Range(add_str_value(2)).value = Now()
+                        End Select
+
                     End If
                 Case "매번 생성시"
 
@@ -3661,12 +3413,81 @@ Out:
                         dialog_value = Add_str_dialog.ShowDialog()
                         If dialog_value = 1 Then                ' 1>> OK 버튼
                             add_ans_value = Add_str_dialog.ans_textbox
-                            XL.sheets(OSN).select
-                            XL.Sheets(OSN).Range(add_str_value(2)).value = add_ans_value
+                            XL.sheets(add_str_value(5)).select
+                            XL.Sheets(add_str_value(5)).Range(add_str_value(2)).value = add_ans_value
                         End If
                     End If
             End Select
 
         Next i
+
+    End Sub
+
+    Private Sub Button5_Click_1(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim counting As Integer
+        Dim Tempcounting As Integer
+        Dim ListTemp As String
+
+        ListBox1.Items.Clear()
+
+        counting = 0
+        ListTemp = Dir(MRM_root_dir & "\MRM\data\resources\ini\*.ini")
+        ReDim Matching_List(500)
+        Matching_List(counting) = Dir(MRM_root_dir & "\MRM\data\resources\ini\*.ini")
+        Do
+            Tempcounting = InStr(ListTemp, ".ini")
+            If Tempcounting = 0 Then Exit Do
+            Matching_List(counting) = ListTemp.Substring(0, Tempcounting - 1)
+            ListBox1.Items.Add(Matching_List(counting))
+            counting = counting + 1
+            ListTemp = Dir()
+        Loop Until ListTemp = ""
+        counting = counting - 1
+        ReDim Preserve Matching_List(counting)
+
+        ListBox1.Refresh()
+
+        List_check = 1                   '일반 프로그램 리스트
+
+        Button5.BackColor = Color.Silver
+        Button8.BackColor = Color.White
+
+        Button2.Enabled = True
+        PictureBox1.Enabled = True
+        Button1.Enabled = True
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+
+        Dim counting As Integer
+        Dim Tempcounting As Integer
+        Dim ListTemp As String
+        counting = 0
+
+        ListBox1.Items.Clear()
+
+        ListTemp = Dir(MRM_root_dir & "\MRM\전용프로그램\*.exe")
+        ReDim Matching_List(500)
+        Matching_List(counting) = Dir(MRM_root_dir & "\MRM\전용프로그램\*.exe")
+        Do
+            Tempcounting = InStr(ListTemp, ".exe")
+            If Tempcounting = 0 Then Exit Do
+            Matching_List(counting) = ListTemp.Substring(0, Tempcounting - 1)
+            ListBox1.Items.Add(Matching_List(counting))
+            counting = counting + 1
+            ListTemp = Dir()
+        Loop Until ListTemp = ""
+        counting = counting - 1
+        ReDim Preserve Matching_List(counting)
+
+        ListBox1.Refresh()
+
+        List_check = 2                  '전용 프로그램 리스트
+        Button5.BackColor = Color.White
+        Button8.BackColor = Color.Silver
+
+        Button2.Enabled = False
+        PictureBox1.Enabled = False
+        Button1.Enabled = False
     End Sub
 End Class

@@ -12,6 +12,9 @@
     Dim ini_Value() As String
     Dim ini_dir_preserve As String
 
+    Public user_info_count As Integer
+    Public add_str_count As Integer
+
     Dim Result_Section As String
     Dim Result_Keyname() As String
     Dim Result_Value() As String
@@ -31,14 +34,28 @@
 
 
 
+    Structure control_structure
+        Dim Text_box() As TextBox
+        Dim check_box() As CheckBox
+        Dim label() As Label
+        Dim combo_box() As ComboBox
+    End Structure
+
+    Dim add_Control() As control_structure
+
+
+
     Private Sub MkNew_Load(sender As Object, e As EventArgs) Handles Me.Load
         RadioButton1.Checked = True
-        CheckBox11.Checked = True
+        CheckBox3.Checked = True
         Form1.New_Fix_check = 0
 
         Me.Location = New Point(Form1.Location.X + 50, Form1.Location.Y + 50)
         ComboBox1.SelectedIndex = 0
-        ComboBox2.SelectedIndex = 0
+
+        user_info_count = 0
+        add_str_count = 0
+
         ReDim Temp_User_Info(25)
     End Sub
 
@@ -153,28 +170,31 @@
         ini_KeyName(10) = "Basic_form_seleted"
 
         Result_Section = "custom_match_info"
-        Result_Keyname(0) = "label"
-        Result_Keyname(1) = "measure_value"
-        Result_Keyname(2) = "Design_value"
-        Result_Keyname(3) = "error"
-        Result_Keyname(4) = "UP_tol"
-        Result_Keyname(5) = "Low_tol"
-        Result_Keyname(6) = "judge"
-        Result_Keyname(7) = "line_count"
-        Result_Keyname(8) = "Result_Form_Dir"
-        Result_Keyname(9) = "component"
+        Result_Keyname(1) = "label"
+        Result_Keyname(2) = "component"
+        Result_Keyname(3) = "measure_value"
+        Result_Keyname(4) = "Design_value"
+        Result_Keyname(5) = "UP_tol"
+        Result_Keyname(6) = "Low_tol"
+        Result_Keyname(7) = "error"
+        Result_Keyname(8) = "judge"
+
+        Result_Keyname(9) = "line_count"
         Result_Keyname(10) = "input_direction"
+        Result_Keyname(11) = "Result_Form_Dir"
+        Result_Keyname(12) = "tab_count"
 
-        check_section = "check"
+        'check_section = "check"
 
-        check_keyname(0) = "label"
-        check_keyname(1) = "measure_value"
-        check_keyname(2) = "Design_value"
-        check_keyname(3) = "error"
-        check_keyname(4) = "UP_tol"
-        check_keyname(5) = "Low_tol"
-        check_keyname(6) = "judge"
-        check_keyname(7) = "component"
+        check_keyname(1) = "label_check"
+        check_keyname(2) = "component_check"
+        check_keyname(3) = "measure_value_check"
+        check_keyname(4) = "Design_value_check"
+        check_keyname(5) = "UP_tol_check"
+        check_keyname(6) = "Low_tol_check"
+        check_keyname(7) = "error_check"
+        check_keyname(8) = "judge_check"
+
 
         User_Info_Section = "User_info"
 
@@ -202,6 +222,8 @@
         add_str_keyname(2) = "loction"
         add_str_keyname(3) = "combo"
         add_str_keyname(4) = "use_check"
+        add_str_keyname(5) = "apply_tab"
+        add_str_keyname(6) = "input_type"
 
         '============================================================================ini 값입력 & 생성
 
@@ -222,7 +244,7 @@
         ini_Value(6) = ""                '현재 시간
         ini_Value(7) = CheckBox1.Checked.ToString   '이름 날짜 체크
         ini_Value(8) = CheckBox2.Checked.ToString   ' 이름 시간 체크
-        ini_Value(9) = CheckBox11.Checked.ToString  '자동저장 유무 체크
+        ini_Value(9) = CheckBox3.Checked.ToString  '자동저장 유무 체크
 
         '============================================================================
 
@@ -240,70 +262,72 @@
 
         If RadioButton2.Checked = True Then             '위치 지정
 
-            Result_Value(0) = TextBox5.Text
-            Result_Value(1) = TextBox6.Text
-            Result_Value(2) = TextBox7.Text
-            Result_Value(3) = TextBox8.Text
-            Result_Value(4) = TextBox9.Text
-            Result_Value(5) = TextBox10.Text
-            Result_Value(6) = TextBox11.Text
-            Result_Value(7) = TextBox12.Text
-            Result_Value(9) = TextBox14.Text
-            Result_Value(10) = ComboBox2.Text
-            Result_Value(8) = TextBox13.Text
+            Dim tab_page As Integer
+            Dim control_num As Integer
+            Dim tab_count As Integer
+            Dim tab_Section As String
+            Dim tab_name As String
+
+            tab_count = TabControl2.TabPages.Count
 
 
-            check_value(0) = CheckBox3.Checked
-            check_value(1) = CheckBox4.Checked
-            check_value(2) = CheckBox5.Checked
-            check_value(3) = CheckBox6.Checked
-            check_value(4) = CheckBox7.Checked
-            check_value(5) = CheckBox8.Checked
-            check_value(6) = CheckBox9.Checked
-            check_value(7) = CheckBox10.Checked
-
-            Dim p As Integer
-            For p = 0 To 7
-                If check_value(p) = True Then
-                    If Result_Value(p) = "" Then
-                        MsgBox("셀 주소에 공백이 있습니다. 셀 주소를 확인해 주세요",, "셀 주소 기입오류")
-                        Exit Sub
-                    End If
-                End If
-            Next
-
-
-            If Result_Value(7) = "" Then        '페이지당 줄수 
-                MsgBox("페이지당 줄수는 필수 입니다. 기입해 주세요",, "페이지 줄 수 기입오류")
-                Exit Sub
-            End If
-
-            If Result_Value(8) = "" Then         '원본 성적서 선택 유무 확인 
+            If TextBox5.Text = "" Then         '원본 성적서 선택 유무 확인 
                 MsgBox("원본 성적서 폼을 선택해 주세요",, "원본 성적서 선택 오류")
                 Exit Sub
             End If
 
-            WPPS(Result_Section, Result_Keyname(0), Result_Value(0), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(1), Result_Value(1), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(2), Result_Value(2), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(3), Result_Value(3), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(4), Result_Value(4), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(5), Result_Value(5), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(6), Result_Value(6), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(7), Result_Value(7), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(8), Result_Value(8), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(9), Result_Value(9), Restore_str(ini_Dir))
-            WPPS(Result_Section, Result_Keyname(10), Result_Value(10), Restore_str(ini_Dir))
+            For tab_page = 1 To tab_count
+                For control_num = 1 To 8
+                    If add_Control(tab_page).check_box(control_num).Checked = True Then
+                        If add_Control(tab_page).Text_box(control_num).Text = "" Then
+                            MsgBox("셀 주소에 공백이 있습니다. 셀 주소를 확인해 주세요",, "셀 주소 기입오류")
+                            Exit Sub
+                        End If
+                    End If
+                Next
+
+                If add_Control(tab_page).Text_box(9).Text = "" Then
+                    MsgBox("페이지당 줄수는 필수 입니다. 기입해 주세요",, "페이지 줄 수 기입오류")
+                    Exit Sub
+                End If
 
 
-            WPPS(check_section, check_keyname(0), check_value(0), Restore_str(ini_Dir))
-            WPPS(check_section, check_keyname(1), check_value(1), Restore_str(ini_Dir))
-            WPPS(check_section, check_keyname(2), check_value(2), Restore_str(ini_Dir))
-            WPPS(check_section, check_keyname(3), check_value(3), Restore_str(ini_Dir))
-            WPPS(check_section, check_keyname(4), check_value(4), Restore_str(ini_Dir))
-            WPPS(check_section, check_keyname(5), check_value(5), Restore_str(ini_Dir))
-            WPPS(check_section, check_keyname(6), check_value(6), Restore_str(ini_Dir))
-            WPPS(check_section, check_keyname(7), check_value(7), Restore_str(ini_Dir))
+            Next
+
+            Result_Value(11) = TextBox5.Text
+            Dim Form_finder As New System.IO.FileInfo(Result_Value(11))
+            If Form_finder.Exists = False Then
+                MsgBox("지정한 원본 성적서를 찾을 수 없습니다." & Environment.NewLine & "파일의 존재 여부를 확인 하시거나 새로 지정해주세요")
+                Exit Sub
+            End If
+
+            WPPS(Result_Section, Result_Keyname(11), Result_Value(11), Restore_str(ini_Dir))
+
+            WPPS(Result_Section, Result_Keyname(12), tab_count, Restore_str(ini_Dir))
+
+            For tab_page = 1 To tab_count
+                tab_Section = "Tab_" & tab_page
+
+                tab_name = TabControl2.TabPages(tab_page - 1).Text
+                WPPS(tab_Section, "tab_name", tab_name, Restore_str(ini_Dir))
+
+                For i = 1 To 8
+                    check_value(i) = add_Control(tab_page).check_box(i).Checked
+                    WPPS(tab_Section, check_keyname(i), check_value(i), Restore_str(ini_Dir))
+                Next
+
+                For i = 1 To 8
+                    Result_Value(i) = add_Control(tab_page).Text_box(i).Text
+                    WPPS(tab_Section, Result_Keyname(i), Result_Value(i), Restore_str(ini_Dir))
+                Next
+
+                Result_Value(9) = add_Control(tab_page).Text_box(9).Text
+                Result_Value(10) = add_Control(tab_page).combo_box(1).Text
+                WPPS(tab_Section, Result_Keyname(9), Result_Value(9), Restore_str(ini_Dir))
+                WPPS(tab_Section, Result_Keyname(10), Result_Value(10), Restore_str(ini_Dir))
+
+            Next
+
 
             '========================================================================
             '위치지정시 기본 유저 정보 공백 처리
@@ -354,6 +378,11 @@
             add_str_value(14) = Temp_User_Info(14)
             add_str_value(15) = Temp_User_Info(15)
             add_str_value(16) = Temp_User_Info(16)
+            add_str_value(17) = Temp_User_Info(17)
+            add_str_value(18) = Temp_User_Info(18)
+            add_str_value(19) = Temp_User_Info(19)
+            add_str_value(20) = Temp_User_Info(20)
+
 
 
             WPPS(add_str_section(0), add_str_keyname(0), add_str_value(0), Restore_str(ini_Dir))
@@ -372,11 +401,17 @@
             WPPS(add_str_section(2), add_str_keyname(3), add_str_value(13), Restore_str(ini_Dir))
             WPPS(add_str_section(2), add_str_keyname(4), add_str_value(14), Restore_str(ini_Dir))
 
+            WPPS(add_str_section(0), add_str_keyname(5), add_str_value(15), Restore_str(ini_Dir))
+            WPPS(add_str_section(1), add_str_keyname(5), add_str_value(16), Restore_str(ini_Dir))
+            WPPS(add_str_section(2), add_str_keyname(5), add_str_value(17), Restore_str(ini_Dir))
+
+            WPPS(add_str_section(0), add_str_keyname(6), add_str_value(18), Restore_str(ini_Dir))
+            WPPS(add_str_section(1), add_str_keyname(6), add_str_value(19), Restore_str(ini_Dir))
+            WPPS(add_str_section(2), add_str_keyname(6), add_str_value(20), Restore_str(ini_Dir))
 
 
         Else    '기본 선택시 ini에 위치선택 속성 공백 지정하여 넣기
 
-            Result_Value(0) = ""
             Result_Value(1) = ""
             Result_Value(2) = ""
             Result_Value(3) = ""
@@ -384,11 +419,11 @@
             Result_Value(5) = ""
             Result_Value(6) = ""
             Result_Value(7) = ""
+            Result_Value(8) = ""
             Result_Value(9) = ""
 
-            Result_Value(8) = ""
+            Result_Value(10) = ""
 
-            check_value(0) = False
             check_value(1) = False
             check_value(2) = False
             check_value(3) = False
@@ -396,6 +431,7 @@
             check_value(5) = False
             check_value(6) = False
             check_value(7) = False
+            check_value(8) = False
 
             WPPS(Result_Section, Result_Keyname(0), Result_Value(0), Restore_str(ini_Dir))
             WPPS(Result_Section, Result_Keyname(1), Result_Value(1), Restore_str(ini_Dir))
@@ -488,7 +524,10 @@
 
             Button6.Text = "머릿말 정보 입력"
             Button6.Visible = True
-            Panel1.Visible = False
+            TabControl2.Visible = False
+            Label15.Visible = False
+            TextBox5.Visible = False
+            Button5.Visible = False
 
         Else                ' 위치지정
 
@@ -496,7 +535,10 @@
 
             Button6.Text = "추가 데이터 입력"
             Button6.Visible = True
-            Panel1.Visible = True
+            TabControl2.Visible = True
+            Label15.Visible = True
+            TextBox5.Visible = True
+            Button5.Visible = True
         End If
 
         '   If Button6.Visible = False Then
@@ -506,62 +548,15 @@
 
     End Sub
 
-    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
-        If CheckBox3.Checked = False Then
-            TextBox5.Enabled = False
-        Else
-            TextBox5.Enabled = True
-        End If
+    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs)
+        '        If CheckBox3.Checked = False Then
+        '        TextBox5.Enabled = False
+        '        Else
+        '        TextBox5.Enabled = True
+        ''       End If
 
     End Sub
 
-    Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
-        If CheckBox4.Checked = False Then
-            TextBox6.Enabled = False
-        Else
-            TextBox6.Enabled = True
-        End If
-    End Sub
-
-    Private Sub CheckBox5_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox5.CheckedChanged
-        If CheckBox5.Checked = False Then
-            TextBox7.Enabled = False
-        Else
-            TextBox7.Enabled = True
-        End If
-    End Sub
-
-    Private Sub CheckBox6_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckedChanged
-        If CheckBox6.Checked = False Then
-            TextBox8.Enabled = False
-        Else
-            TextBox8.Enabled = True
-        End If
-    End Sub
-
-    Private Sub CheckBox7_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox7.CheckedChanged
-        If CheckBox7.Checked = False Then
-            TextBox9.Enabled = False
-        Else
-            TextBox9.Enabled = True
-        End If
-    End Sub
-
-    Private Sub CheckBox8_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox8.CheckedChanged
-        If CheckBox8.Checked = False Then
-            TextBox10.Enabled = False
-        Else
-            TextBox10.Enabled = True
-        End If
-    End Sub
-
-    Private Sub CheckBox9_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox9.CheckedChanged
-        If CheckBox9.Checked = False Then
-            TextBox11.Enabled = False
-        Else
-            TextBox11.Enabled = True
-        End If
-    End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim ofd_For_resultForm As New OpenFileDialog
@@ -576,49 +571,23 @@
             .CheckPathExists = True
         End With
         If ofd_For_resultForm.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            TextBox13.Text = ofd_For_resultForm.FileName
-        End If
-    End Sub
+            TextBox5.Text = ofd_For_resultForm.FileName
 
-    Private Sub CheckBox10_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox10.CheckedChanged
-        If CheckBox10.Checked = False Then
-            TextBox14.Enabled = False
         Else
-            TextBox14.Enabled = True
+            Exit Sub
         End If
+
+        Call add_tab(ofd_For_resultForm.FileName)
+
+
     End Sub
 
-    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
-        If CheckBox3.Checked = True Then
-            TextBox5.Enabled = True
-        End If
-        If CheckBox4.Checked = True Then
-            TextBox6.Enabled = True
-        End If
-        If CheckBox5.Checked = True Then
-            TextBox7.Enabled = True
-        End If
-        If CheckBox6.Checked = True Then
-            TextBox8.Enabled = True
-        End If
-        If CheckBox7.Checked = True Then
-            TextBox9.Enabled = True
-        End If
-        If CheckBox8.Checked = True Then
-            TextBox10.Enabled = True
-        End If
-        If CheckBox9.Checked = True Then
-            TextBox11.Enabled = True
-        End If
-        If CheckBox10.Checked = True Then
-            TextBox14.Enabled = True
-        End If
-
-        ' If Button6.Visible = True Then
-        'Button6.Visible = False
-        'Button6.Enabled = False
-        'End If
-
+    Private Sub CheckBox10_CheckedChanged(sender As Object, e As EventArgs)
+        '        If CheckBox10.Checked = False Then
+        '        TextBox14.Enabled = False
+        '        Else
+        '       TextBox14.Enabled = True
+        ''       End If
     End Sub
 
 
@@ -733,8 +702,12 @@
             Temp_User_Info(12) = 위치지정_추가기입_new.add_str_value(12)
             Temp_User_Info(13) = 위치지정_추가기입_new.add_str_value(13)
             Temp_User_Info(14) = 위치지정_추가기입_new.add_str_value(14)
-
-
+            Temp_User_Info(15) = 위치지정_추가기입_new.add_str_value(15)
+            Temp_User_Info(16) = 위치지정_추가기입_new.add_str_value(16)
+            Temp_User_Info(17) = 위치지정_추가기입_new.add_str_value(17)
+            Temp_User_Info(18) = 위치지정_추가기입_new.add_str_value(18)
+            Temp_User_Info(19) = 위치지정_추가기입_new.add_str_value(19)
+            Temp_User_Info(20) = 위치지정_추가기입_new.add_str_value(20)
 
 
 
@@ -747,5 +720,169 @@
         Return origin_str
     End Function
 
+    Sub add_tab(worksheet_name As String)
 
+        TabControl2.TabPages.Clear()
+
+        Dim xl As Object
+
+        Dim sheet_count As Integer
+        Dim i As Integer
+        Dim sheet_name()
+        Dim tab_selection
+        Dim Selected_tab As TabPage
+        Dim check_text(10)
+
+        check_text(1) = "라벨명         : "
+        check_text(2) = "요소           : "
+        check_text(3) = "측정값         : "
+        check_text(4) = "설계치         : "
+        check_text(5) = "상한 공차     : "
+        check_text(6) = "하한 공차     : "
+        check_text(7) = "오차           :"
+        check_text(8) = "판정           :"
+
+        xl = CreateObject("Excel.application")
+
+        xl.workbooks.open(worksheet_name)
+        sheet_count = xl.worksheets.count
+
+        ReDim sheet_name(sheet_count)
+        ReDim add_Control(sheet_count)
+
+
+        위치지정_추가기입_new.tab_count = sheet_count
+        ReDim 위치지정_추가기입_new.tab_names(위치지정_추가기입_new.tab_count)
+        For i = 1 To sheet_count
+            ReDim add_Control(i).check_box(15)
+            ReDim add_Control(i).Text_box(15)
+            ReDim add_Control(i).label(15)
+            ReDim add_Control(i).combo_box(2)
+        Next i
+
+        For i = 1 To sheet_count
+            TabControl2.TabPages.Add(xl.sheets(i).name)
+            sheet_name(i) = xl.sheets(i).name
+            위치지정_추가기입_new.tab_names(i) = sheet_name(i)
+        Next i
+        xl.quit
+
+        For i = 1 To sheet_count                      ' 탭마다 컨트롤 생성 및 배치
+            tab_selection = "tab_" & i
+            For control_add_num = 1 To 15
+                add_Control(i).check_box(control_add_num) = New CheckBox
+                add_Control(i).check_box(control_add_num).Name = "checkBox" & i & control_add_num
+                add_Control(i).Text_box(control_add_num) = New TextBox
+                add_Control(i).label(control_add_num) = New Label
+                add_Control(i).combo_box(1) = New ComboBox
+            Next control_add_num
+
+
+            TabControl2.SelectedIndex = (i - 1)
+            Selected_tab = TabControl2.SelectedTab
+            '======================================================================컨트롤 위치 고정용 
+            For control_add_num = 1 To 8
+
+                Selected_tab.BackColor = SystemColors.Window
+
+                Selected_tab.Controls.Add(add_Control(i).check_box(control_add_num))
+                add_Control(i).check_box(control_add_num).Enabled = True
+                add_Control(i).check_box(control_add_num).Top = 25 * control_add_num
+                add_Control(i).check_box(control_add_num).Left = 20
+                add_Control(i).check_box(control_add_num).Height = 20
+                add_Control(i).check_box(control_add_num).Width = 100
+                add_Control(i).check_box(control_add_num).Text = check_text(control_add_num)
+                add_Control(i).check_box(control_add_num).Name = "check_box" & i & "_" & control_add_num
+
+                AddHandler add_Control(i).check_box(control_add_num).CheckedChanged, AddressOf check_box_CheckedChanged
+
+                '체크박스 크기 106,22
+                '첫 체크박스 위치 18,32 두번쨰 18,55 
+                Selected_tab.Controls.Add(add_Control(i).Text_box(control_add_num))
+                add_Control(i).Text_box(control_add_num).Enabled = True
+                add_Control(i).Text_box(control_add_num).Top = 25 * control_add_num
+                add_Control(i).Text_box(control_add_num).Left = 160
+                add_Control(i).Text_box(control_add_num).Height = 20
+                add_Control(i).Text_box(control_add_num).Width = 100
+
+                add_Control(i).Text_box(control_add_num).Enabled = False
+
+                '라벨 크기 32,18
+                '라벨 위치 144,32
+            Next control_add_num
+
+            Selected_tab.Controls.Add(add_Control(i).Text_box(9))  '페이지 줄수 변수
+            add_Control(i).Text_box(9).Enabled = True
+            add_Control(i).Text_box(9).Top = 20
+            add_Control(i).Text_box(9).Left = 400
+            add_Control(i).Text_box(9).Height = 20
+            add_Control(i).Text_box(9).Width = 100
+
+
+            Selected_tab.Controls.Add(add_Control(i).combo_box(1))     '입력방향 변수
+            add_Control(i).combo_box(1).Enabled = True
+            add_Control(i).combo_box(1).Top = 70
+            add_Control(i).combo_box(1).Left = 400
+            add_Control(i).combo_box(1).Height = 20
+            add_Control(i).combo_box(1).Width = 100
+            add_Control(i).combo_box(1).Items.Add("세로")
+            add_Control(i).combo_box(1).Items.Add("가로")
+            add_Control(i).combo_box(1).SelectedIndex = 0
+
+
+
+            Selected_tab.Controls.Add(add_Control(i).label(1))          '셀주소
+            add_Control(i).label(1).Enabled = True
+            add_Control(i).label(1).Top = 5
+            add_Control(i).label(1).Left = 180
+            add_Control(i).label(1).Height = 20
+            add_Control(i).label(1).Width = 150
+            add_Control(i).label(1).Text = "셀 주소"
+
+            Selected_tab.Controls.Add(add_Control(i).label(2))          '페이지줄수
+            add_Control(i).label(2).Enabled = True
+            add_Control(i).label(2).Top = 25
+            add_Control(i).label(2).Left = 300
+            add_Control(i).label(2).Height = 20
+            add_Control(i).label(2).Width = 150
+            add_Control(i).label(2).Text = "페이지 줄 수   :"
+
+            Selected_tab.Controls.Add(add_Control(i).label(3))          '입력방향  
+            add_Control(i).label(3).Enabled = True
+            add_Control(i).label(3).Top = 75
+            add_Control(i).label(3).Left = 300
+            add_Control(i).label(3).Height = 20
+            add_Control(i).label(3).Width = 150
+            add_Control(i).label(3).Text = "입력 방향       :"
+
+
+            '======================================================================컨트롤 위치 고정용 
+        Next i
+    End Sub
+
+
+    Private Sub check_box_CheckedChanged(sender As Object, e As EventArgs)
+        Dim sender_name As String
+        Dim tab_page As String
+        Dim control_tag As String
+
+        Dim Sender_Checked As Integer
+
+        sender_name = Strings.Right(sender.name, 3)
+        Sender_Checked = sender.checked     'false :0 , True : -1
+
+        tab_page = Strings.Left(sender_name, 1)
+        control_tag = Strings.Right(sender_name, 1)
+
+        If Sender_Checked = -1 Then
+            add_Control(tab_page).Text_box(control_tag).Enabled = True
+
+        ElseIf Sender_Checked = 0 Then
+            add_Control(tab_page).Text_box(control_tag).Enabled = False
+
+        End If
+
+
+
+    End Sub
 End Class

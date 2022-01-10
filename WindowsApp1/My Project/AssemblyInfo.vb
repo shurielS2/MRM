@@ -32,6 +32,6 @@ Imports System.Runtime.InteropServices
 ' 기본값으로 할 수 있습니다.
 ' <Assembly: AssemblyVersion("1.0.0.*")>
 
-<Assembly: AssemblyVersion("1.2.02.*")>
+<Assembly: AssemblyVersion("1.03.09.*")>
 '<Assembly: AssemblyFileVersion("1.0.0.0")>
 <Assembly: NeutralResourcesLanguage("ko-KR")>

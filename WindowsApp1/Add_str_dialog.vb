@@ -4,6 +4,8 @@
     Public ans_textbox As String
     Private Sub Add_str_dialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Label2.Text = Form1.add_str_value(0)
+        Label3.Text = "적용 탭 : " & Form1.add_str_value(5)
+        ' Label4.Text = "셀 주소 : " & Form1.add_str_value(2)
         TextBox1.Text = ""
         TextBox1.Focus()
     End Sub
