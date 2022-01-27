@@ -13,8 +13,8 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("성적서 매칭 프로그램")>
 <Assembly: AssemblyCompany("MitutoyoKorea")>
 <Assembly: AssemblyProduct("Mitutoyo Result Matcher")>
-<Assembly: AssemblyCopyright("CopyRight 2021. Mitutoyokorea Corp all right reserved.")>
-<Assembly: AssemblyTrademark("MitutoyoKorea")>
+<Assembly: AssemblyCopyright("CopyRight 2022. Mitutoyokorea Corp all right reserved.")>
+<Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
@@ -32,6 +32,6 @@ Imports System.Runtime.InteropServices
 ' 기본값으로 할 수 있습니다.
 ' <Assembly: AssemblyVersion("1.0.0.*")>
 
-<Assembly: AssemblyVersion("1.03.09.*")>
+<Assembly: AssemblyVersion("1.03.10.*")>
 '<Assembly: AssemblyFileVersion("1.0.0.0")>
 <Assembly: NeutralResourcesLanguage("ko-KR")>

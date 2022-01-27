@@ -115,7 +115,7 @@
             ComboBox6.Items.Add(tab_names(i))
         Next
 
-        If 수정창.add_str_count = 0 Then
+        If 수정창.add_str_count = 0 Then           '0 첫 시작시 로드
 
             For section_num = 1 To 3
                 add_Str_section = "add_str_" & section_num
@@ -318,7 +318,7 @@
 
             Next section_num
 
-        ElseIf 수정창.add_str_count = 1 Then
+        ElseIf 수정창.add_str_count = 1 Then          '1 수정 후 로드
 
             Select Case section_num
                     Case 1

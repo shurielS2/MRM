@@ -24,6 +24,8 @@
         user_SN(15) = "1848064147"              ' MKC 군포 5층 다목적실
         user_SN(16) = "1887186651"              'M3-QV-Active 
         user_SN(17) = "786381889"               'M3 CRT-AV9166 
+        user_SN(18) = "401177235"            'M3-Busan QV-L404
+        user_SN(19) = "1605543453"            'M3-Busan QV-X302
 
         If user_SN.Contains(input_SN) Then
             For i = 0 To 5000

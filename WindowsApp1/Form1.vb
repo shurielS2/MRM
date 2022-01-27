@@ -71,6 +71,7 @@
 '2021-11-15 Ver 1.3.7       수정창, Mknew, Form1에 위치지정_추가기입 input_type 속성 추가 > 날짜, 시간 등 선택하여 날짜, 시간 자동 입력
 '2021-11-29 Ver 1.3.8       사용설명서 업데이트 Rev.004 업데이트 
 '2021-12-13 Ver 1.3.9       상한,하한공차,오차 위치값 재배열
+'2022-01-14 Ver 1.3.10      위치지정 서식 추가 기입창 입력 에러(누락 부분 18,19,20을 load에서 불러오지 않아서 누락 기입), 추가 기입창 안키고 수정 저장 하면 공백으로 사라지는 현상 수정
 '=============================================================================================================
 
 '=========================================
@@ -139,6 +140,11 @@ Public Class Form1
     Public Program_Name As String
     Public Player_Name As String
     Public Measure_Date As String
+
+    Public specialized_dir As String
+    Public specialized_ini As String
+
+    Public process_name As String
 
     Public New_Fix_check As Integer
 
@@ -289,16 +295,14 @@ Public Class Form1
         'MsgBox(Math.Abs(CreateObject("Scripting.FileSystemObject").GetDrive("C:").SerialNumber))
 
         '================================전용화 판단용 파일 존재유무 판단
-        Dim specialized_dir As String
-        Dim specialized_ini As String
 
-        Dim process_name As String
         process_name = System.Diagnostics.Process.GetCurrentProcess().ProcessName
         Dim specialized_string As String = "\MRM\Data\Resources\ini\" & process_name
         specialized_dir = MRM_root_dir & specialized_string
         specialized_ini = specialized_dir & "\" & process_name & ".ini"
 
         Dim specialized_folder As New System.IO.DirectoryInfo(specialized_dir)
+
         If specialized_folder.Exists = True Then
             If Specialized_play(specialized_dir, specialized_ini) = 0 Then
                 Me.Close()
@@ -551,6 +555,7 @@ Public Class Form1
         If ListBox1.SelectedItem IsNot Nothing Then
             If MsgBox("선택 리스트를 삭제하시겠습니까?", 4, "매칭 리스트 삭제") = 6 Then           'YES : 6, NO: 7
 
+                On Error Resume Next
                 Select Case List_check
                     Case 1          '일반
                         temp_kill_Name = ListBox1.SelectedItem.ToString
@@ -572,7 +577,7 @@ Public Class Form1
 
                 End Select
 
-
+                On Error GoTo 0
 
             End If
         Else
@@ -1358,7 +1363,7 @@ MID_DLL_ERROR:
                 Next
 
 
-                error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도", ",")
+                error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도,TP (2D)", ",")
 
                 XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
                 XL.DisplayAlerts = False
@@ -1408,7 +1413,7 @@ MID_DLL_ERROR:
 
                 Loop
                 FileClose(3)
-                'XL.visible = True
+                XL.visible = True
 
                 tab_index = 1
 
@@ -1474,9 +1479,9 @@ MID_DLL_ERROR:
 
                         If select_check_value(tab_index).Measure_value = True Then
                             If error_arry.Contains(error_txt) Then
-                                XL.Sheets(tab_name(tab_index)).Range(measure_ad(tab_index).Col & measure_ad(tab_index).Row).cells(1, column_count).value = XL.Sheets(Data_sheet).Range("G" & Cell_Address).value      '측정값
+                                XL.Sheets(tab_name(tab_index)).Range(measure_ad(tab_index).Col & measure_ad(tab_index).Row).cells(1, column_count).value = XL.Sheets(Data_sheet).Range("G" & Cell_Address).value      '오차 > 측정값
                             Else
-                                XL.Sheets(tab_name(tab_index)).Range(measure_ad(tab_index).Col & measure_ad(tab_index).Row).cells(1, column_count).value = XL.Sheets(Data_sheet).Range("E" & Cell_Address).value     '측정값
+                                XL.Sheets(tab_name(tab_index)).Range(measure_ad(tab_index).Col & measure_ad(tab_index).Row).cells(1, column_count).value = XL.Sheets(Data_sheet).Range("E" & Cell_Address).value     '측정값 > 측정값
                             End If
 
                             If XL.Sheets(tab_name(tab_index)).Range(measure_ad(tab_index).Col & measure_ad(tab_index).Row).cells(1, column_count).mergecells = True Then
@@ -1506,7 +1511,6 @@ MID_DLL_ERROR:
                             End If
                         End If
 
-                        '   error_txt = XL.Sheets("DATA-" & Sheet_Count).Range("B" & Line_Count).value
 
                         If select_check_value(tab_index).Error_check = True Then
                             XL.Sheets(tab_name(tab_index)).Range(error_ad(tab_index).Col & error_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("G" & Cell_Address).value2     '오차
@@ -1860,6 +1864,9 @@ XLC:
                 Dim tab_name() As String
                 Dim sum_Line_count As Integer
                 Dim sum_temp As Integer
+                Dim error_arry() As String
+                'Dim error_txt As String
+
 
                 Result_Form_dir = GetINIValue("custom_match_info", "Result_Form_dir", ini_dir)
 
@@ -1925,7 +1932,7 @@ XLC:
 
 
 
-                ' error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도", ",")
+                error_arry = Split("평면도,위치도,동심도,평행도,직각도,동축도,면의 위치도,경사도", ",")
 
                 XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
                 XL.DisplayAlerts = False
@@ -2040,7 +2047,7 @@ XLC:
                             End If
                         End If
 
-                        '   error_txt = XL.Sheets("DATA-" & Sheet_Count).Range("B" & Line_Count).value
+                        '   error_txt = XL.Sheets("DATA-" & Sheet_Count).Range("B" & Line_Count).value      'SC파일은 기하공차가 오차로 나오지 않아 필요 없음
 
                         If select_check_value(tab_index).Error_check = True Then
                             XL.Sheets(tab_name(tab_index)).Range(error_ad(tab_index).Col & error_ad(tab_index).Row).cells(1, column_count).value2 = XL.Sheets(Data_sheet).Range("H" & Cell_Address).value2     '오차
@@ -2512,7 +2519,7 @@ missing:
 
     End Sub
 
-    Function Specialized_play(ByVal folder_dir As String, ByVal ini_Name As String) As Long
+    Public Function Specialized_play(ByVal folder_dir As String, ByVal ini_Name As String) As Long
         On Error GoTo SPE
 
         ini_dir = ini_Name
@@ -3033,7 +3040,7 @@ SPE:
 
         Data_sheet = "Data Sheet"
 
-        error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도", ",")
+        error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도,TP (2D)", ",")
 
         '=========================================================================
 
@@ -3044,7 +3051,7 @@ SPE:
         XL.Sheets.add(before:=XL.Sheets("기본폼1")) 'csv파일 가져올 워크시트 추가
         XL.activesheet.name = Data_sheet
 
-        FileOpen(3, CSV_Dir, OpenMode.Input)
+        FileOpen(3, CSV_Dir, OpenMode.Input)            '배열 측정 정리용 구문
 
         'XL.visible = True
 
@@ -3141,7 +3148,7 @@ SPE:
                 XL.Sheets("DATA-" & Sheet_Count).Range("D" & Line_Count).value = XL.Sheets(Data_sheet).Range("F" & Cell_Address).value     '설계치
                 error_txt = XL.Sheets(Data_sheet).Range("D" & Cell_Address).value
 
-                If error_arry.Contains(error_txt) Then
+                If error_arry.Contains(error_txt) Then                                                                                      '기하공차 오차값을 측정값에 입력
                     XL.Sheets("DATA-" & Sheet_Count).Range("C" & Line_Count).value = XL.Sheets(Data_sheet).Range("G" & Cell_Address).value
                 Else
                     XL.Sheets("DATA-" & Sheet_Count).Range("E" & Line_Count).value = XL.Sheets(Data_sheet).Range("G" & Cell_Address).value
