@@ -365,13 +365,14 @@
     <None Include="Resources\버튼_5.png" />
     <None Include="Resources\버튼_6.png" />
     <None Include="Resources\MRM_Logo_하단_200px.png" />
+    <None Include="Resources\icon_7.png" />
+    <None Include="Resources\MRM시안.png" />
     <Content Include="아이콘_큐브__100px.ico" />
     <None Include="Resources\아이콘%28큐브%29_100px.png" />
     <None Include="Resources\로딩페이지_수정.png" />
     <None Include="Resources\MRM상단_200px.png" />
     <None Include="Resources\배경화면_1.png" />
     <None Include="Resources\배경화면.jpg" />
-    <None Include="Resources\전용프로그램만들기.jpg" />
     <None Include="Resources\MRM-정보창.JPG" />
     <None Include="Resources\기본폼3-정보창.JPG" />
     <None Include="Resources\MRM 사용 설명서.pdf" />

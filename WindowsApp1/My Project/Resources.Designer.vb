@@ -93,6 +93,16 @@ Namespace My.Resources
         '''<summary>
         '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         '''</summary>
+        Public ReadOnly Property icon_7() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icon_7", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
         Public ReadOnly Property MRM_Logo_하단_200px() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("MRM_Logo_하단_200px", resourceCulture)
@@ -126,6 +136,16 @@ Namespace My.Resources
         Public ReadOnly Property MRM상단_200px() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("MRM상단_200px", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        '''</summary>
+        Public ReadOnly Property MRM시안() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MRM시안", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -286,16 +306,6 @@ Namespace My.Resources
         Public ReadOnly Property 아이콘_큐브__100px() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("아이콘_큐브__100px", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        '''</summary>
-        Public ReadOnly Property 전용프로그램만들기() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("전용프로그램만들기", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

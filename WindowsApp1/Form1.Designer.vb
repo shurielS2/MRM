@@ -87,6 +87,7 @@ Partial Class Form1
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
@@ -114,6 +115,7 @@ Partial Class Form1
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -742,7 +744,7 @@ Partial Class Form1
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.BackgroundImage = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.전용프로그램만들기
+        Me.PictureBox1.BackgroundImage = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.icon_7
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.Location = New System.Drawing.Point(3, 470)
         Me.PictureBox1.Name = "PictureBox1"
@@ -806,6 +808,18 @@ Partial Class Form1
         Me.Button8.Text = "전용"
         Me.Button8.UseVisualStyleBackColor = False
         '
+        'PictureBox4
+        '
+        Me.PictureBox4.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox4.BackgroundImage = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.MRM시안
+        Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox4.Location = New System.Drawing.Point(3, 470)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(265, 53)
+        Me.PictureBox4.TabIndex = 227
+        Me.PictureBox4.TabStop = False
+        Me.PictureBox4.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -815,6 +829,7 @@ Partial Class Form1
         Me.BackgroundImage = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.배경화면_1
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(824, 616)
+        Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.TabControl2)
@@ -883,6 +898,7 @@ Partial Class Form1
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -951,4 +967,5 @@ Partial Class Form1
     Friend WithEvents TabControl2 As TabControl
     Friend WithEvents Button5 As Button
     Friend WithEvents Button8 As Button
+    Friend WithEvents PictureBox4 As PictureBox
 End Class

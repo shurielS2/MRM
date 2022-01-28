@@ -72,6 +72,8 @@
 '2021-11-29 Ver 1.3.8       사용설명서 업데이트 Rev.004 업데이트 
 '2021-12-13 Ver 1.3.9       상한,하한공차,오차 위치값 재배열
 '2022-01-14 Ver 1.3.10      위치지정 서식 추가 기입창 입력 에러(누락 부분 18,19,20을 load에서 불러오지 않아서 누락 기입), 추가 기입창 안키고 수정 저장 하면 공백으로 사라지는 현상 수정
+'2022-01-27 Ver 1.3.11      전용프로그램 업데이트 단추 생성 및 업데이트용 코드 삽입 > 전용프로그램 리스트 목록 읽어오고 해당 이름과 같은 이름으로 프로그램 덮어쓰기
+'2022-01-28 Ver 1.3.12      위치지정 서식 추가기입 창 설정 내용 무조건 보존하게 변경 > 사용 쳌가 안되있어도 내용은 보존 사용체크가 되있는 거만 기입실행
 '=============================================================================================================
 
 '=========================================
@@ -249,16 +251,16 @@ Public Class Form1
         Dim folder_finder As New System.IO.DirectoryInfo(Folder_Name(0) & Folder_Name(1))
 
         If folder_finder.Exists = False Then
-            MkDir(Folder_Name(0) & Folder_Name(1))
-            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(2))
-            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(2) & Folder_Name(4))
-            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(2) & Folder_Name(4) & Folder_Name(5))
+            MkDir(Folder_Name(0) & Folder_Name(1))                                                          'MRM 루트폴더
+            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(2))                                         'DATA
+            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(2) & Folder_Name(4))                        'Resourece
+            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(2) & Folder_Name(4) & Folder_Name(5))       'ini
             ' MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(2) & Folder_Name(4) & Folder_Name(11))
 
-            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(3))
-            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(3) & Folder_Name(6))
+            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(3))                                         'result
+            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(3) & Folder_Name(6))                        'result\temp
 
-            'MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(7))
+            MkDir(Folder_Name(0) & Folder_Name(1) & Folder_Name(7))
 
             'FileCopy(Folder_Name(10), Folder_Name(0) & Folder_Name(1) & "\Mitutoyo Result Matcher.exe")
             '  Call SetAttr(Folder_Name(0) & Folder_Name(1) & Folder_Name(2) & Folder_Name(4) & Folder_Name(11), FileAttribute.Hidden)
@@ -1413,7 +1415,7 @@ MID_DLL_ERROR:
 
                 Loop
                 FileClose(3)
-                XL.visible = True
+                'XL.visible = True
 
                 tab_index = 1
 
@@ -2190,7 +2192,8 @@ XLC:
                 'CheckBox3.Visible = False
                 'CheckBox4.Visible = False
                 'CheckBox5.Visible = False
-                'CheckBox6.Visible = False
+                'CheckBox6.
+                '= False
                 'CheckBox7.Visible = False
                 'CheckBox8.Visible = False
                 'CheckBox9.Visible = False
@@ -3435,6 +3438,8 @@ Out:
         Dim Tempcounting As Integer
         Dim ListTemp As String
 
+        PictureBox1.Visible = True
+        PictureBox4.Visible = False
         ListBox1.Items.Clear()
 
         counting = 0
@@ -3471,6 +3476,8 @@ Out:
         Dim ListTemp As String
         counting = 0
 
+        PictureBox1.Visible = False
+        PictureBox4.Visible = True
         ListBox1.Items.Clear()
 
         ListTemp = Dir(MRM_root_dir & "\MRM\전용프로그램\*.exe")
@@ -3497,4 +3504,45 @@ Out:
         PictureBox1.Enabled = False
         Button1.Enabled = False
     End Sub
+
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+        Dim ans_btn As Integer
+        Dim SP_List(500) As String
+        Dim counting As Integer
+        Dim Tempcounting As Integer
+        Dim ListTemp As String
+        Dim Change_PRG_name As String
+        Dim Current_PRG_DIR As String
+
+        ans_btn = MsgBox("전용 프로그램을 업데이트 합니다.", 4, "전용프로그램 업데이트")        '4:예/아니오
+
+
+        If ans_btn = 6 Then
+            ListTemp = Dir(MRM_root_dir & "\MRM\전용프로그램\*.exe")
+
+            Matching_List(counting) = Dir(MRM_root_dir & "\MRM\전용프로그램\*.exe")
+            Do
+                Tempcounting = InStr(ListTemp, ".exe")
+                If Tempcounting = 0 Then Exit Do
+                SP_List(counting) = ListTemp.Substring(0, Tempcounting - 1)
+                Change_PRG_name = MRM_root_dir & "\MRM\전용프로그램\" & SP_List(counting) & ".exe"
+                Current_PRG_DIR = System.Reflection.Assembly.GetExecutingAssembly.Location
+                'Kill(Change_PRG_name)
+                FileCopy(Current_PRG_DIR, Change_PRG_name)
+
+                counting = counting + 1
+                ListTemp = Dir()
+            Loop Until ListTemp = ""
+            counting = counting - 1
+            ReDim Preserve SP_List(counting)
+
+
+            MsgBox("업데이트 완료", 0, "전용프로그램 업데이트")            ' 0: 확인 단추 only
+        End If
+
+
+
+    End Sub
+
+
 End Class

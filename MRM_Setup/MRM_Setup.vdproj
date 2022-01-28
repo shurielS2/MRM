@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_113E87087A88EB8848CE32A100DB4C1A"
+        "OwnerKey" = "8:_C72C5DD66C8444449DFB3201E6FBA428"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2AAD1DB0448C05E325296695A01E9F35"
         "OwnerKey" = "8:_0392B012CDB84EF3B43101283DE81EED"
         "MsmSig" = "8:_UNDEFINED"
@@ -41,12 +47,6 @@
         {
         "MsmKey" = "8:_4B57A0E44C224D45A8B71E99EE1AA0F7"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7EEAC7B945454B1196B9D47F6620F586"
-        "OwnerKey" = "8:_C72C5DD66C8444449DFB3201E6FBA428"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,12 +76,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7EEAC7B945454B1196B9D47F6620F586"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C72C5DD66C8444449DFB3201E6FBA428"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -89,6 +83,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_384D3092CACA516314CF98B2EDEFE909"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_113E87087A88EB8848CE32A100DB4C1A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -193,6 +193,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_113E87087A88EB8848CE32A100DB4C1A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MID, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_113E87087A88EB8848CE32A100DB4C1A"
+                    {
+                    "Name" = "8:MID.dll"
+                    "Attributes" = "3:514"
+                    }
+                }
+            "SourcePath" = "8:MID.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E7F7874717A046A391228894444BDC16"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:TRUE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2AAD1DB0448C05E325296695A01E9F35"
             {
             "AssemblyRegister" = "3:1"
@@ -273,37 +304,6 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7EEAC7B945454B1196B9D47F6620F586"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MID, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_7EEAC7B945454B1196B9D47F6620F586"
-                    {
-                    "Name" = "8:MID.dll"
-                    "Attributes" = "3:514"
-                    }
-                }
-            "SourcePath" = "8:MID.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E7F7874717A046A391228894444BDC16"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7F6B209549F0974A2D870D950A0EE463"
@@ -435,15 +435,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MItutoyo Result Matchaer"
-        "ProductCode" = "8:{F6D0F748-0C93-40BE-806A-EDCF6844BC87}"
-        "PackageCode" = "8:{CB01EC05-6D49-4ABC-9521-3114BF4935E8}"
+        "ProductCode" = "8:{52D66C8D-3F62-4449-92E3-A2745CD1D017}"
+        "PackageCode" = "8:{6F9700E0-38EF-46C5-91AD-D7F792DC2143}"
         "UpgradeCode" = "8:{D4F463B8-2ECF-4D16-9269-4E751DDE3167}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.3.10"
+        "ProductVersion" = "8:1.3.11"
         "Manufacturer" = "8:Mitutoyokorea"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -974,7 +974,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0392B012CDB84EF3B43101283DE81EED"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\MID_CHECK\\obj\\Release\\MID.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_6FFE58817509436AB41208E56550A7FD"
@@ -1002,7 +1002,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C72C5DD66C8444449DFB3201E6FBA428"
             {
-            "SourcePath" = "8:..\\WindowsApp1\\obj\\Debug\\Mitutoyo Result Matcher.exe"
+            "SourcePath" = "8:..\\WindowsApp1\\obj\\Release\\Mitutoyo Result Matcher.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E7F7874717A046A391228894444BDC16"
