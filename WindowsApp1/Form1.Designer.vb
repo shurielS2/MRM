@@ -200,7 +200,7 @@ Partial Class Form1
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(299, 15)
         Me.Label10.TabIndex = 9
-        Me.Label10.Text = "CopyRight 2021. Mitutoyokorea Corp all right reserved"
+        Me.Label10.Text = "CopyRight 2022. Mitutoyokorea Corp all right reserved"
         '
         'Label11
         '

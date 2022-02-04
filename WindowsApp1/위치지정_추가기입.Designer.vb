@@ -36,9 +36,11 @@ Partial Class 위치지정_추가기입
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ComboBox4 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox7 = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ComboBox5 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox8 = New System.Windows.Forms.ComboBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -47,6 +49,7 @@ Partial Class 위치지정_추가기입
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ComboBox6 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox9 = New System.Windows.Forms.ComboBox()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -55,9 +58,6 @@ Partial Class 위치지정_추가기입
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBox7 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox8 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox9 = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -118,7 +118,7 @@ Partial Class 위치지정_추가기입
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"자동기입", "매번 생성시"})
+        Me.ComboBox1.Items.AddRange(New Object() {"매번 생성시", "자동기입"})
         Me.ComboBox1.Location = New System.Drawing.Point(21, 194)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(130, 20)
@@ -187,6 +187,15 @@ Partial Class 위치지정_추가기입
         Me.ComboBox4.Size = New System.Drawing.Size(130, 20)
         Me.ComboBox4.TabIndex = 14
         '
+        'ComboBox7
+        '
+        Me.ComboBox7.FormattingEnabled = True
+        Me.ComboBox7.Items.AddRange(New Object() {"텍스트", "날짜", "시간", "날짜 + 시간"})
+        Me.ComboBox7.Location = New System.Drawing.Point(21, 49)
+        Me.ComboBox7.Name = "ComboBox7"
+        Me.ComboBox7.Size = New System.Drawing.Size(130, 20)
+        Me.ComboBox7.TabIndex = 37
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -218,6 +227,15 @@ Partial Class 위치지정_추가기입
         Me.ComboBox5.Name = "ComboBox5"
         Me.ComboBox5.Size = New System.Drawing.Size(130, 20)
         Me.ComboBox5.TabIndex = 15
+        '
+        'ComboBox8
+        '
+        Me.ComboBox8.FormattingEnabled = True
+        Me.ComboBox8.Items.AddRange(New Object() {"텍스트", "날짜", "시간", "날짜 + 시간"})
+        Me.ComboBox8.Location = New System.Drawing.Point(21, 49)
+        Me.ComboBox8.Name = "ComboBox8"
+        Me.ComboBox8.Size = New System.Drawing.Size(130, 20)
+        Me.ComboBox8.TabIndex = 38
         '
         'TextBox4
         '
@@ -265,7 +283,7 @@ Partial Class 위치지정_추가기입
         'ComboBox2
         '
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Items.AddRange(New Object() {"자동기입", "매번 생성시"})
+        Me.ComboBox2.Items.AddRange(New Object() {"매번 생성시", "자동기입"})
         Me.ComboBox2.Location = New System.Drawing.Point(21, 194)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(130, 20)
@@ -293,6 +311,15 @@ Partial Class 위치지정_추가기입
         Me.ComboBox6.Name = "ComboBox6"
         Me.ComboBox6.Size = New System.Drawing.Size(130, 20)
         Me.ComboBox6.TabIndex = 16
+        '
+        'ComboBox9
+        '
+        Me.ComboBox9.FormattingEnabled = True
+        Me.ComboBox9.Items.AddRange(New Object() {"텍스트", "날짜", "시간", "날짜 + 시간"})
+        Me.ComboBox9.Location = New System.Drawing.Point(21, 49)
+        Me.ComboBox9.Name = "ComboBox9"
+        Me.ComboBox9.Size = New System.Drawing.Size(130, 20)
+        Me.ComboBox9.TabIndex = 39
         '
         'TextBox7
         '
@@ -340,7 +367,7 @@ Partial Class 위치지정_추가기입
         'ComboBox3
         '
         Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Items.AddRange(New Object() {"자동기입", "매번 생성시"})
+        Me.ComboBox3.Items.AddRange(New Object() {"매번 생성시", "자동기입"})
         Me.ComboBox3.Location = New System.Drawing.Point(21, 194)
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(130, 20)
@@ -363,33 +390,6 @@ Partial Class 위치지정_추가기입
         Me.Label7.Size = New System.Drawing.Size(57, 12)
         Me.Label7.TabIndex = 40
         Me.Label7.Text = "기입 유형"
-        '
-        'ComboBox7
-        '
-        Me.ComboBox7.FormattingEnabled = True
-        Me.ComboBox7.Items.AddRange(New Object() {"텍스트", "날짜", "시간", "날짜 + 시간"})
-        Me.ComboBox7.Location = New System.Drawing.Point(21, 49)
-        Me.ComboBox7.Name = "ComboBox7"
-        Me.ComboBox7.Size = New System.Drawing.Size(130, 20)
-        Me.ComboBox7.TabIndex = 37
-        '
-        'ComboBox8
-        '
-        Me.ComboBox8.FormattingEnabled = True
-        Me.ComboBox8.Items.AddRange(New Object() {"텍스트", "날짜", "시간", "날짜 + 시간"})
-        Me.ComboBox8.Location = New System.Drawing.Point(21, 49)
-        Me.ComboBox8.Name = "ComboBox8"
-        Me.ComboBox8.Size = New System.Drawing.Size(130, 20)
-        Me.ComboBox8.TabIndex = 38
-        '
-        'ComboBox9
-        '
-        Me.ComboBox9.FormattingEnabled = True
-        Me.ComboBox9.Items.AddRange(New Object() {"텍스트", "날짜", "시간", "날짜 + 시간"})
-        Me.ComboBox9.Location = New System.Drawing.Point(21, 49)
-        Me.ComboBox9.Name = "ComboBox9"
-        Me.ComboBox9.Size = New System.Drawing.Size(130, 20)
-        Me.ComboBox9.TabIndex = 39
         '
         '위치지정_추가기입
         '

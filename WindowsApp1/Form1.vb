@@ -63,17 +63,18 @@
 '2021-09-06 Ver 1.2.2       병합셀 확인하여 병합셀의 크기 만큼 셀주소를 조정 해서 병합셀에 데이터가 중복 입력 안되도록 수정 >> 병합셀에서도 데이터가 하나만 들어갈수 있음
 '2021-10-15 Ver 1.3.0       위치지정 서식 기초추가 >ini 파일준비 >>메인화면에서 설정정보 읽어오는 기능구현, 위치지정서식 동적컨트롤로 탭페이지로 표현 
 '2021-10-21 Ver 1.3.1       동적 컨트롤 위치 지정, 및 property 지정 및 수정
-'2021-10-24 Ver 1.3.2       Mknew, 수정창에 위치지정 서식 동적 컨트롤 대응 할 수 있도록 수정 > Mknew,수정창에 동적 컨드롤 생성 > 원본 성적서 불러와서 탭 갯수 만큼 tabpage생성 후 이름 지정.
+'2021-10-24 Ver 1.3.2       Form2, 수정창에 위치지정 서식 동적 컨트롤 대응 할 수 있도록 수정 > Form2,수정창에 동적 컨드롤 생성 > 원본 성적서 불러와서 탭 갯수 만큼 tabpage생성 후 이름 지정.
 '2021-10-24 Ver 1.3.3       위치지정 서식 추가기입창 임시 저장 기능 추가, 저장 후 다음 번 불러올떄는 저장된 데이터 불러오도록 하기. 동적 컨트롤 수정, 가로 기입 오류 수정
 '2021-10-25 Ver 1.3.4       위치지정 서식 마무리 > 사용 성적서의 탭을 읽어와 tabpage 자동 생성 후 각 탭마다 집어넣을 값, 줄수 따로 지정하여 모든 탭에 각자 데이터 집어 넣을 수 있도로 변경, 위치지정 추가 기입창에 적용 탭 항목 추가 및 수정
 '2021-11-08 Ver 1.3.5       일반, 전용 버튼 추가하여 전용프로그램 리스트 읽어와서 수정 가능하도록 함. > 전용프로그램의 수정 및 관리가 편리해짐.
 '2021-11-11 Ver 1.3.6       수정창 > 원본 성적서 불러오기후 탭 재생성 기능 추가 / 새로만들기, 수정창 > 원본성적서 불러오는 다이얼로그 취소 누를 경우 에러 나는 현상 해경
-'2021-11-15 Ver 1.3.7       수정창, Mknew, Form1에 위치지정_추가기입 input_type 속성 추가 > 날짜, 시간 등 선택하여 날짜, 시간 자동 입력
+'2021-11-15 Ver 1.3.7       수정창, Form2, Form1에 위치지정_추가기입 input_type 속성 추가 > 날짜, 시간 등 선택하여 날짜, 시간 자동 입력
 '2021-11-29 Ver 1.3.8       사용설명서 업데이트 Rev.004 업데이트 
 '2021-12-13 Ver 1.3.9       상한,하한공차,오차 위치값 재배열
 '2022-01-14 Ver 1.3.10      위치지정 서식 추가 기입창 입력 에러(누락 부분 18,19,20을 load에서 불러오지 않아서 누락 기입), 추가 기입창 안키고 수정 저장 하면 공백으로 사라지는 현상 수정
 '2022-01-27 Ver 1.3.11      전용프로그램 업데이트 단추 생성 및 업데이트용 코드 삽입 > 전용프로그램 리스트 목록 읽어오고 해당 이름과 같은 이름으로 프로그램 덮어쓰기
-'2022-01-28 Ver 1.3.12      위치지정 서식 추가기입 창 설정 내용 무조건 보존하게 변경 > 사용 쳌가 안되있어도 내용은 보존 사용체크가 되있는 거만 기입실행
+'2022-01-28 Ver 1.3.12      위치지정 서식 추가기입 창 설정 내용 무조건 보존하게 변경 > 사용 체크가 안되있어도 내용은 보존 사용체크가 되있는 거만 기입실행
+'2022-02-01 Ver 1.3.13      위치지정 서식 새로 만들 경우 텍스트, 매번생성시 지정하여 기입 될수 있도록함. Mknew > Form2 로 변경 MkNew에서 변수 오류로 인해 새로운 폼만 들어서 해결 / 수정창, 생성창 페이줄수 기본값 0 지정
 '=============================================================================================================
 
 '=========================================
@@ -87,7 +88,7 @@ Public Class Form1
     Declare Function GPPS Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Long, ByVal lpFileName As String) As Long
     Declare Function WPPS Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpString As String, ByVal lpFileName As String) As Long
     '============================================================== Active Key
-    Const active_key As String = "MRMV103"     '유저테스트용 빌드 mrm 활성화 비밀번호
+    Const active_key As String = "MRMV103"     '유저테스트용 빌드 mrm 활성화 비밀번호 (빌드 번호)
 
     'Const MID As String = ""
     Const MRM_root_dir As String = "C:\MitutoyoApp"
@@ -151,6 +152,7 @@ Public Class Form1
     Public New_Fix_check As Integer
 
     Public user_info_temp() As String
+    Public user_info_temp2() As String
     Public add_str_value(10) As String
 
     Dim for_trial As Date
@@ -321,7 +323,7 @@ Public Class Form1
 
         CheckBox1.Checked = True
 
-        ReDim user_info_temp(15)           '기본정보(머릿말) 내용 저장용 변수
+        ReDim user_info_temp(25)           '기본정보(머릿말) 내용 저장용 변수
 
         Label11.Text = System.String.Format(Label11.Text, My.Application.Info.Version.Major, My.Application.Info.Version.Minor, My.Application.Info.Version.Build)
 
@@ -487,8 +489,8 @@ Public Class Form1
 
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim MkNew As New MkNew()
-        MkNew.ShowDialog()
+
+        Form2.ShowDialog()
 
     End Sub
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click

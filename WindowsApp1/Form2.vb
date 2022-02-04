@@ -1,4 +1,4 @@
-﻿Public Class MkNew
+﻿Public Class Form2
 
     Declare Function GPPS Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Long, ByVal lpFileName As String) As Long
     Declare Function WPPS Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpString As String, ByVal lpFileName As String) As Long
@@ -14,6 +14,8 @@
 
     Public user_info_count As Integer
     Public add_str_count As Integer
+    Public temp_add_info() As String
+
 
     Dim Result_Section As String
     Dim Result_Keyname() As String
@@ -29,8 +31,10 @@
     Dim add_str_keyname() As String
     Dim add_str_value() As String
 
-    Public Temp_User_Info() As String
-    Public Temp_User_Info_bitmap As Bitmap
+    Dim tab_change_chk As Integer       '성적서 경로 삭제 혹은 변경시 탭페이지 초기화
+
+
+
 
 
 
@@ -45,7 +49,23 @@
 
 
 
-    Private Sub MkNew_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles Me.Load
+        ReDim temp_add_info(25)
+
+
+        ReDim ini_KeyName(15)
+        ReDim ini_Value(15)
+
+        ReDim check_value(15)
+        ReDim check_keyname(15)
+        ReDim Result_Keyname(15)
+        ReDim Result_Value(15)
+        ReDim add_str_keyname(25)
+        ReDim add_str_value(25)
+        ReDim User_Info_Keyname(15)
+        ReDim User_Info_Value(15)
+
+
         RadioButton1.Checked = True
         CheckBox3.Checked = True
         Form1.New_Fix_check = 0
@@ -56,7 +76,7 @@
         user_info_count = 0
         add_str_count = 0
 
-        ReDim Temp_User_Info(25)
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click           'csv 파일열기
@@ -100,17 +120,7 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click       '저장
-        ReDim ini_KeyName(15)
-        ReDim ini_Value(15)
 
-        ReDim check_value(15)
-        ReDim check_keyname(15)
-        ReDim Result_Keyname(15)
-        ReDim Result_Value(15)
-        ReDim add_str_keyname(25)
-        ReDim add_str_value(25)
-        ReDim User_Info_Keyname(15)
-        ReDim User_Info_Value(15)
 
 
         If TextBox1.Text = "" Then
@@ -361,27 +371,27 @@
             WPPS(User_Info_Section, User_Info_Keyname(12), User_Info_Value(12), Restore_str(ini_Dir))
 
 
-            add_str_value(0) = Temp_User_Info(0)
-            add_str_value(1) = Temp_User_Info(1)
-            add_str_value(2) = Temp_User_Info(2)
-            add_str_value(3) = Temp_User_Info(3)
-            add_str_value(4) = Temp_User_Info(4)
-            add_str_value(5) = Temp_User_Info(5)
-            add_str_value(6) = Temp_User_Info(6)
-            add_str_value(7) = Temp_User_Info(7)
-            add_str_value(8) = Temp_User_Info(8)
-            add_str_value(9) = Temp_User_Info(9)
-            add_str_value(10) = Temp_User_Info(10)
-            add_str_value(11) = Temp_User_Info(11)
-            add_str_value(12) = Temp_User_Info(12)
-            add_str_value(13) = Temp_User_Info(13)
-            add_str_value(14) = Temp_User_Info(14)
-            add_str_value(15) = Temp_User_Info(15)
-            add_str_value(16) = Temp_User_Info(16)
-            add_str_value(17) = Temp_User_Info(17)
-            add_str_value(18) = Temp_User_Info(18)
-            add_str_value(19) = Temp_User_Info(19)
-            add_str_value(20) = Temp_User_Info(20)
+            add_str_value(0) = temp_add_info(0)
+            add_str_value(1) = temp_add_info(1)
+            add_str_value(2) = temp_add_info(2)
+            add_str_value(3) = temp_add_info(3)
+            add_str_value(4) = temp_add_info(4)
+            add_str_value(5) = temp_add_info(5)
+            add_str_value(6) = temp_add_info(6)
+            add_str_value(7) = temp_add_info(7)
+            add_str_value(8) = temp_add_info(8)
+            add_str_value(9) = temp_add_info(9)
+            add_str_value(10) = temp_add_info(10)
+            add_str_value(11) = temp_add_info(11)
+            add_str_value(12) = temp_add_info(12)
+            add_str_value(13) = temp_add_info(13)
+            add_str_value(14) = temp_add_info(14)
+            add_str_value(15) = temp_add_info(15)
+            add_str_value(16) = temp_add_info(16)
+            add_str_value(17) = temp_add_info(17)
+            add_str_value(18) = temp_add_info(18)
+            add_str_value(19) = temp_add_info(19)
+            add_str_value(20) = temp_add_info(20)
 
 
 
@@ -457,24 +467,24 @@
             '기본 서식 사용시 기본 유저 정보 기입
             '========================================================================
             For i = 0 To 7
-                If Temp_User_Info(i) = Nothing Then
-                    Temp_User_Info(i) = ""
+                If temp_add_info(i) = Nothing Then
+                    temp_add_info(i) = ""
                 End If
             Next i
 
-            User_Info_Value(0) = Temp_User_Info(0)
-            User_Info_Value(1) = Temp_User_Info(1)
-            User_Info_Value(2) = Temp_User_Info(2)
-            User_Info_Value(3) = Temp_User_Info(3)
-            User_Info_Value(4) = Temp_User_Info(4)
-            User_Info_Value(5) = Temp_User_Info(5)
-            User_Info_Value(6) = Temp_User_Info(6)
-            User_Info_Value(7) = Temp_User_Info(7)
-            User_Info_Value(8) = Temp_User_Info(8)
-            User_Info_Value(9) = Temp_User_Info(9)
-            User_Info_Value(10) = Temp_User_Info(10)
-            User_Info_Value(11) = Temp_User_Info(11)
-            User_Info_Value(12) = Temp_User_Info(12)
+            User_Info_Value(0) = temp_add_info(0)
+            User_Info_Value(1) = temp_add_info(1)
+            User_Info_Value(2) = temp_add_info(2)
+            User_Info_Value(3) = temp_add_info(3)
+            User_Info_Value(4) = temp_add_info(4)
+            User_Info_Value(5) = temp_add_info(5)
+            User_Info_Value(6) = temp_add_info(6)
+            User_Info_Value(7) = temp_add_info(7)
+            User_Info_Value(8) = temp_add_info(8)
+            User_Info_Value(9) = temp_add_info(9)
+            User_Info_Value(10) = temp_add_info(10)
+            User_Info_Value(11) = temp_add_info(11)
+            User_Info_Value(12) = temp_add_info(12)
 
             WPPS(User_Info_Section, User_Info_Keyname(0), User_Info_Value(0), Restore_str(ini_Dir))
             WPPS(User_Info_Section, User_Info_Keyname(1), User_Info_Value(1), Restore_str(ini_Dir))
@@ -578,7 +588,7 @@
         End If
 
         Call add_tab(ofd_For_resultForm.FileName)
-
+        tab_change_chk = 1
 
     End Sub
 
@@ -591,123 +601,125 @@
     End Sub
 
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click       ' 추가 기입창 오픈 버튼
         If RadioButton1.Checked = True Then
             Select Case TabControl1.SelectedTab.Text
                 Case "기본폼1"
 
                     Form7.ShowDialog()
 
-                    Temp_User_Info(0) = Form7.Product_Name
-                    Temp_User_Info(1) = Form7.Machine_Name
-                    Temp_User_Info(2) = Form7.Request_Dept
-                    Temp_User_Info(3) = Form7.Request_Date
-                    Temp_User_Info(4) = Form7.Drawing_Num
-                    Temp_User_Info(5) = Form7.Program_Name
-                    Temp_User_Info(6) = Form7.Player_Name
-                    Temp_User_Info(7) = Form7.Measure_Date
-                    Temp_User_Info(8) = Form7.Check_date_1
-                    Temp_User_Info(9) = Form7.Check_date_2
-                    Temp_User_Info(10) = Form7.select_pic_name
-                    Temp_User_Info(11) = Form7.select_pic_name_2
-                    Temp_User_Info(12) = ""
+                    temp_add_info(0) = Form7.Product_Name
+                    temp_add_info(1) = Form7.Machine_Name
+                    temp_add_info(2) = Form7.Request_Dept
+                    temp_add_info(3) = Form7.Request_Date
+                    temp_add_info(4) = Form7.Drawing_Num
+                    temp_add_info(5) = Form7.Program_Name
+                    temp_add_info(6) = Form7.Player_Name
+                    temp_add_info(7) = Form7.Measure_Date
+                    temp_add_info(8) = Form7.Check_date_1
+                    temp_add_info(9) = Form7.Check_date_2
+                    temp_add_info(10) = Form7.select_pic_name
+                    temp_add_info(11) = Form7.select_pic_name_2
+                    temp_add_info(12) = ""
 
                 Case "기본폼2"
 
                     Form9.ShowDialog()
 
-                    Temp_User_Info(0) = Form9.Product_Name
-                    Temp_User_Info(1) = Form9.Machine_Name
-                    Temp_User_Info(2) = Form9.Request_Dept
-                    Temp_User_Info(3) = Form9.Request_Date
-                    Temp_User_Info(4) = Form9.Drawing_Num
-                    Temp_User_Info(5) = Form9.Program_Name
-                    Temp_User_Info(6) = Form9.Player_Name
-                    Temp_User_Info(7) = Form9.Measure_Date
-                    Temp_User_Info(8) = Form9.Check_date_1
-                    Temp_User_Info(9) = Form9.Check_date_2
-                    Temp_User_Info(10) = ""
-                    Temp_User_Info(11) = ""
-                    Temp_User_Info(12) = ""
+                    temp_add_info(0) = Form9.Product_Name
+                    temp_add_info(1) = Form9.Machine_Name
+                    temp_add_info(2) = Form9.Request_Dept
+                    temp_add_info(3) = Form9.Request_Date
+                    temp_add_info(4) = Form9.Drawing_Num
+                    temp_add_info(5) = Form9.Program_Name
+                    temp_add_info(6) = Form9.Player_Name
+                    temp_add_info(7) = Form9.Measure_Date
+                    temp_add_info(8) = Form9.Check_date_1
+                    temp_add_info(9) = Form9.Check_date_2
+                    temp_add_info(10) = ""
+                    temp_add_info(11) = ""
+                    temp_add_info(12) = ""
                 Case "기본폼3"
 
                     Form10.ShowDialog()
 
-                    Temp_User_Info(0) = Form10.Product_Name
-                    Temp_User_Info(1) = Form10.Machine_Name
-                    Temp_User_Info(2) = Form10.Request_Dept
-                    Temp_User_Info(3) = Form10.Request_Date
-                    Temp_User_Info(4) = Form10.Drawing_Num
-                    Temp_User_Info(5) = Form10.Program_Name
-                    Temp_User_Info(6) = Form10.Player_Name
-                    Temp_User_Info(7) = Form10.Measure_Date
-                    Temp_User_Info(8) = Form10.Check_date_1
-                    Temp_User_Info(9) = Form10.Check_date_2
-                    Temp_User_Info(10) = Form10.select_pic_name
-                    Temp_User_Info(11) = Form10.select_pic_name_2
-                    Temp_User_Info(12) = Form10.select_pic_name_3
+                    temp_add_info(0) = Form10.Product_Name
+                    temp_add_info(1) = Form10.Machine_Name
+                    temp_add_info(2) = Form10.Request_Dept
+                    temp_add_info(3) = Form10.Request_Date
+                    temp_add_info(4) = Form10.Drawing_Num
+                    temp_add_info(5) = Form10.Program_Name
+                    temp_add_info(6) = Form10.Player_Name
+                    temp_add_info(7) = Form10.Measure_Date
+                    temp_add_info(8) = Form10.Check_date_1
+                    temp_add_info(9) = Form10.Check_date_2
+                    temp_add_info(10) = Form10.select_pic_name
+                    temp_add_info(11) = Form10.select_pic_name_2
+                    temp_add_info(12) = Form10.select_pic_name_3
 
                 Case "기본폼4"
 
                     Form7.ShowDialog()
 
-                    Temp_User_Info(0) = Form7.Product_Name
-                    Temp_User_Info(1) = Form7.Machine_Name
-                    Temp_User_Info(2) = Form7.Request_Dept
-                    Temp_User_Info(3) = Form7.Request_Date
-                    Temp_User_Info(4) = Form7.Drawing_Num
-                    Temp_User_Info(5) = Form7.Program_Name
-                    Temp_User_Info(6) = Form7.Player_Name
-                    Temp_User_Info(7) = Form7.Measure_Date
-                    Temp_User_Info(8) = Form7.Check_date_1
-                    Temp_User_Info(9) = Form7.Check_date_2
-                    Temp_User_Info(10) = Form7.select_pic_name
-                    Temp_User_Info(11) = Form7.select_pic_name_2
-                    Temp_User_Info(12) = ""
+                    temp_add_info(0) = Form7.Product_Name
+                    temp_add_info(1) = Form7.Machine_Name
+                    temp_add_info(2) = Form7.Request_Dept
+                    temp_add_info(3) = Form7.Request_Date
+                    temp_add_info(4) = Form7.Drawing_Num
+                    temp_add_info(5) = Form7.Program_Name
+                    temp_add_info(6) = Form7.Player_Name
+                    temp_add_info(7) = Form7.Measure_Date
+                    temp_add_info(8) = Form7.Check_date_1
+                    temp_add_info(9) = Form7.Check_date_2
+                    temp_add_info(10) = Form7.select_pic_name
+                    temp_add_info(11) = Form7.select_pic_name_2
+                    temp_add_info(12) = ""
 
                 Case "기본폼5"
 
                     Form10.ShowDialog()
-
-                    Temp_User_Info(0) = Form10.Product_Name
-                    Temp_User_Info(1) = Form10.Machine_Name
-                    Temp_User_Info(2) = Form10.Request_Dept
-                    Temp_User_Info(3) = Form10.Request_Date
-                    Temp_User_Info(4) = Form10.Drawing_Num
-                    Temp_User_Info(5) = Form10.Program_Name
-                    Temp_User_Info(6) = Form10.Player_Name
-                    Temp_User_Info(7) = Form10.Measure_Date
-                    Temp_User_Info(8) = Form10.Check_date_1
-                    Temp_User_Info(9) = Form10.Check_date_2
-                    Temp_User_Info(10) = Form10.select_pic_name
-                    Temp_User_Info(11) = Form10.select_pic_name_2
-                    Temp_User_Info(12) = Form10.select_pic_name_3
+                    temp_add_info(0) = Form10.Product_Name
+                    temp_add_info(1) = Form10.Machine_Name
+                    temp_add_info(2) = Form10.Request_Dept
+                    temp_add_info(3) = Form10.Request_Date
+                    temp_add_info(4) = Form10.Drawing_Num
+                    temp_add_info(5) = Form10.Program_Name
+                    temp_add_info(6) = Form10.Player_Name
+                    temp_add_info(7) = Form10.Measure_Date
+                    temp_add_info(8) = Form10.Check_date_1
+                    temp_add_info(9) = Form10.Check_date_2
+                    temp_add_info(10) = Form10.select_pic_name
+                    temp_add_info(11) = Form10.select_pic_name_2
+                    temp_add_info(12) = Form10.select_pic_name_3
             End Select
 
         Else
 
             위치지정_추가기입_new.ShowDialog()
-            Temp_User_Info(0) = 위치지정_추가기입_new.add_str_value(0)
-            Temp_User_Info(1) = 위치지정_추가기입_new.add_str_value(1)
-            Temp_User_Info(2) = 위치지정_추가기입_new.add_str_value(2)
-            Temp_User_Info(3) = 위치지정_추가기입_new.add_str_value(3)
-            Temp_User_Info(4) = 위치지정_추가기입_new.add_str_value(4)
-            Temp_User_Info(5) = 위치지정_추가기입_new.add_str_value(5)
-            Temp_User_Info(6) = 위치지정_추가기입_new.add_str_value(6)
-            Temp_User_Info(7) = 위치지정_추가기입_new.add_str_value(7)
-            Temp_User_Info(8) = 위치지정_추가기입_new.add_str_value(8)
-            Temp_User_Info(9) = 위치지정_추가기입_new.add_str_value(9)
-            Temp_User_Info(10) = 위치지정_추가기입_new.add_str_value(10)
-            Temp_User_Info(11) = 위치지정_추가기입_new.add_str_value(11)
-            Temp_User_Info(12) = 위치지정_추가기입_new.add_str_value(12)
-            Temp_User_Info(13) = 위치지정_추가기입_new.add_str_value(13)
-            Temp_User_Info(14) = 위치지정_추가기입_new.add_str_value(14)
-            Temp_User_Info(15) = 위치지정_추가기입_new.add_str_value(15)
-            Temp_User_Info(16) = 위치지정_추가기입_new.add_str_value(16)
-            Temp_User_Info(17) = 위치지정_추가기입_new.add_str_value(17)
-            Temp_User_Info(18) = 위치지정_추가기입_new.add_str_value(18)
-            Temp_User_Info(19) = 위치지정_추가기입_new.add_str_value(19)
-            Temp_User_Info(20) = 위치지정_추가기입_new.add_str_value(20)
+
+
+
+            temp_add_info(0) = 위치지정_추가기입_new.add_str_value(0)
+            temp_add_info(1) = 위치지정_추가기입_new.add_str_value(1)
+            temp_add_info(2) = 위치지정_추가기입_new.add_str_value(2)
+            temp_add_info(3) = 위치지정_추가기입_new.add_str_value(3)
+            temp_add_info(4) = 위치지정_추가기입_new.add_str_value(4)
+            temp_add_info(5) = 위치지정_추가기입_new.add_str_value(5)
+            temp_add_info(6) = 위치지정_추가기입_new.add_str_value(6)
+            temp_add_info(7) = 위치지정_추가기입_new.add_str_value(7)
+            temp_add_info(8) = 위치지정_추가기입_new.add_str_value(8)
+            temp_add_info(9) = 위치지정_추가기입_new.add_str_value(9)
+            temp_add_info(10) = 위치지정_추가기입_new.add_str_value(10)
+            temp_add_info(11) = 위치지정_추가기입_new.add_str_value(11)
+            temp_add_info(12) = 위치지정_추가기입_new.add_str_value(12)
+            temp_add_info(13) = 위치지정_추가기입_new.add_str_value(13)
+            temp_add_info(14) = 위치지정_추가기입_new.add_str_value(14)
+            temp_add_info(15) = 위치지정_추가기입_new.add_str_value(15)
+            temp_add_info(16) = 위치지정_추가기입_new.add_str_value(16)
+            temp_add_info(17) = 위치지정_추가기입_new.add_str_value(17)
+            temp_add_info(18) = 위치지정_추가기입_new.add_str_value(18)
+            temp_add_info(19) = 위치지정_추가기입_new.add_str_value(19)
+            temp_add_info(20) = 위치지정_추가기입_new.add_str_value(20)
 
 
 
@@ -817,7 +829,7 @@
             add_Control(i).Text_box(9).Left = 400
             add_Control(i).Text_box(9).Height = 20
             add_Control(i).Text_box(9).Width = 100
-
+            add_Control(i).Text_box(9).Text = "0"
 
             Selected_tab.Controls.Add(add_Control(i).combo_box(1))     '입력방향 변수
             add_Control(i).combo_box(1).Enabled = True
@@ -882,6 +894,15 @@
 
         End If
 
+
+
+    End Sub
+
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
+        If tab_change_chk = 1 Then
+            TabControl2.TabPages.Clear()
+            tab_change_chk = 0
+        End If
 
 
     End Sub

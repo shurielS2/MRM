@@ -76,8 +76,6 @@
     Private Sub 위치지정_추가기입_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim section_num As Integer
-
-
         ini_dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & Form1.ListBox1.SelectedItem.ToString & ".ini"
 
 
@@ -111,6 +109,8 @@
                 add_str_value(5) = GetINIValue(add_Str_section, add_str_keyname(5), Restore_str(ini_dir))
                 add_str_value(6) = GetINIValue(add_Str_section, add_str_keyname(6), Restore_str(ini_dir))
 
+                If add_str_value(4) = "" Then add_str_value(4) = "false"
+
                 Select Case section_num
                     Case 1
 
@@ -121,7 +121,7 @@
                         ComboBox1.Text = add_str_value(3)
                         CheckBox1.Checked = add_str_value(4)
                         ComboBox4.Text = add_str_value(5)
-                        ComboBox7.Text = add_str_value(6)
+                            ComboBox7.Text = add_str_value(6)
 
                             Select Case ComboBox7.Text
                                 Case "텍스트"
@@ -174,11 +174,9 @@
                                 Case "텍스트"
                                     TextBox5.Enabled = True
                                     ComboBox2.Enabled = True
-
-
                             Case "날짜"
 
-                                    TextBox5.Text = "&날짜"
+                                TextBox5.Text = "&날짜"
                                     TextBox5.Enabled = False
 
                                     ComboBox2.Enabled = False
@@ -255,45 +253,45 @@
             Next section_num
 
         ElseIf 수정창.add_str_count = 1 Then          '1 수정 후 로드
-
-            Select Case section_num
+            For section_num = 1 To 3
+                Select Case section_num
                     Case 1
 
-                    TextBox1.Text = 수정창.Temp_User_Info(0)
-                    TextBox2.Text = 수정창.Temp_User_Info(1)
-                    TextBox3.Text = 수정창.Temp_User_Info(2)
-                    ComboBox1.Text = 수정창.Temp_User_Info(3)
-                    CheckBox1.Checked = 수정창.Temp_User_Info(4)
-                    ComboBox4.Text = 수정창.Temp_User_Info(15)
+                        TextBox1.Text = 수정창.Temp_User_Info(0)
+                        TextBox2.Text = 수정창.Temp_User_Info(1)
+                        TextBox3.Text = 수정창.Temp_User_Info(2)
+                        ComboBox1.Text = 수정창.Temp_User_Info(3)
+                        CheckBox1.Checked = 수정창.Temp_User_Info(4)
+                        ComboBox4.Text = 수정창.Temp_User_Info(15)
 
-                    ComboBox7.Text = 수정창.Temp_User_Info(18)
-
-
-                Case 2
-
-                    TextBox4.Text = 수정창.Temp_User_Info(5)
-                    TextBox5.Text = 수정창.Temp_User_Info(6)
-                    TextBox6.Text = 수정창.Temp_User_Info(7)
-                    ComboBox2.Text = 수정창.Temp_User_Info(8)
-
-                    CheckBox2.Checked = 수정창.Temp_User_Info(9)
-                    ComboBox5.Text = 수정창.Temp_User_Info(16)
-                    ComboBox8.Text = 수정창.Temp_User_Info(19)
-
-                Case 3
+                        ComboBox7.Text = 수정창.Temp_User_Info(18)
 
 
-                    TextBox7.Text = 수정창.Temp_User_Info(10)
-                    TextBox8.Text = 수정창.Temp_User_Info(11)
-                    TextBox9.Text = 수정창.Temp_User_Info(12)
-                    ComboBox3.Text = 수정창.Temp_User_Info(13)
-                    CheckBox3.Checked = 수정창.Temp_User_Info(14)
-                    ComboBox6.Text = 수정창.Temp_User_Info(17)
-                    ComboBox9.Text = 수정창.Temp_User_Info(20)
+                    Case 2
 
-            End Select
+                        TextBox4.Text = 수정창.Temp_User_Info(5)
+                        TextBox5.Text = 수정창.Temp_User_Info(6)
+                        TextBox6.Text = 수정창.Temp_User_Info(7)
+                        ComboBox2.Text = 수정창.Temp_User_Info(8)
+
+                        CheckBox2.Checked = 수정창.Temp_User_Info(9)
+                        ComboBox5.Text = 수정창.Temp_User_Info(16)
+                        ComboBox8.Text = 수정창.Temp_User_Info(19)
+
+                    Case 3
 
 
+                        TextBox7.Text = 수정창.Temp_User_Info(10)
+                        TextBox8.Text = 수정창.Temp_User_Info(11)
+                        TextBox9.Text = 수정창.Temp_User_Info(12)
+                        ComboBox3.Text = 수정창.Temp_User_Info(13)
+                        CheckBox3.Checked = 수정창.Temp_User_Info(14)
+                        ComboBox6.Text = 수정창.Temp_User_Info(17)
+                        ComboBox9.Text = 수정창.Temp_User_Info(20)
+
+                End Select
+
+            Next section_num
 
         End If
     End Sub

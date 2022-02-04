@@ -35,6 +35,8 @@
     Dim kill_exe As String
     Dim kill_folder As String
 
+    Dim tab_change_chk As Integer               '성적서 경로 삭제 혹은 변경시 탭페이지 초기화
+
     Public User_Info_Value() As String
     Public Temp_User_Info() As String
 
@@ -908,6 +910,7 @@
         End If
 
         Call add_tab(ofd_For_resultForm.FileName)
+        tab_change_chk = 1
 
     End Sub
 
@@ -1036,6 +1039,7 @@
             End Select
 
         Else
+
             위치지정_추가기입.ShowDialog()
 
             Temp_User_Info(0) = 위치지정_추가기입.add_str_value(0)
@@ -1162,12 +1166,13 @@
                 '라벨 위치 144,32
             Next control_add_num
 
-            Selected_tab.Controls.Add(add_Control(i).Text_box(9))  '페이지 줄수 변수
+            Selected_tab.Controls.Add(add_Control(i).Text_box(9))  '페이지 줄수 변수(텍스트박스)
             add_Control(i).Text_box(9).Enabled = True
             add_Control(i).Text_box(9).Top = 20
             add_Control(i).Text_box(9).Left = 400
             add_Control(i).Text_box(9).Height = 20
             add_Control(i).Text_box(9).Width = 100
+            add_Control(i).Text_box(9).Text = "0"
 
 
             Selected_tab.Controls.Add(add_Control(i).combo_box(1))     '입력방향 변수
@@ -1239,4 +1244,10 @@
 
     End Sub
 
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
+        If tab_change_chk = 1 Then
+            TabControl2.TabPages.Clear()
+            tab_change_chk = 0
+        End If
+    End Sub
 End Class

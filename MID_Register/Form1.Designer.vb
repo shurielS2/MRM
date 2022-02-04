@@ -131,9 +131,9 @@ Partial Class Form1
         Me.Label7.Font = New System.Drawing.Font("굴림", 12.0!)
         Me.Label7.Location = New System.Drawing.Point(250, 200)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(54, 16)
+        Me.Label7.Size = New System.Drawing.Size(95, 16)
         Me.Label7.TabIndex = 8
-        Me.Label7.Text = "E-mail"
+        Me.Label7.Text = "MKC 작업자"
         '
         'Button2
         '
@@ -232,9 +232,9 @@ Partial Class Form1
         Me.Label12.Font = New System.Drawing.Font("굴림", 9.0!)
         Me.Label12.Location = New System.Drawing.Point(12, 205)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(227, 12)
+        Me.Label12.Size = New System.Drawing.Size(199, 12)
         Me.Label12.TabIndex = 20
-        Me.Label12.Text = "4. 저장된 정보를 담당 영업사원에게 전달"
+        Me.Label12.Text = "4. 저장된 정보를 영업기술부에 전달"
         '
         'Label13
         '
@@ -242,9 +242,9 @@ Partial Class Form1
         Me.Label13.Font = New System.Drawing.Font("굴림", 9.0!)
         Me.Label13.Location = New System.Drawing.Point(12, 225)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(71, 12)
+        Me.Label13.Size = New System.Drawing.Size(259, 12)
         Me.Label13.TabIndex = 21
-        Me.Label13.Text = "5. 신청 완료"
+        Me.Label13.Text = "5. 전달 후 다음날 쉐어 폴더에서 설치파일 수령"
         '
         'Label14
         '
@@ -252,9 +252,9 @@ Partial Class Form1
         Me.Label14.Font = New System.Drawing.Font("굴림", 9.0!)
         Me.Label14.Location = New System.Drawing.Point(12, 245)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(231, 12)
+        Me.Label14.Size = New System.Drawing.Size(271, 12)
         Me.Label14.TabIndex = 22
-        Me.Label14.Text = "6. E-mail로 전달 받은 MRM 설치 및 사용"
+        Me.Label14.Text = "6. MRM 설치 후 강습 제공(수정 날짜 확인 필수!)"
         '
         'Label15
         '
