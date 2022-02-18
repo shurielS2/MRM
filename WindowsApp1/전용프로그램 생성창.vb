@@ -1,11 +1,13 @@
 ﻿Public Class Form8
     Public Ans As Integer
     Public Change_Name As String
+    Public default_name As String
     Dim Select_list As String
     Const prohibit_name As String = "Mitutoyo Result Matcher"
     Private Sub Form8_Load(sender As Object, e As EventArgs) Handles Me.Load
         Ans = 2
         Select_list = Form1.ListBox1.SelectedItem.ToString()
+        TextBox1.Text = default_name
         Me.Location = New Point(Form1.Location.X + 80, Form1.Location.Y + 80)
     End Sub
 

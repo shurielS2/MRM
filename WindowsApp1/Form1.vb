@@ -15,7 +15,7 @@
 '2020-08-13 Ver 1.0.12      프로그래스바 추가 
 '2020-08-13 Ver 1.0.13      성적서 자동저장 체크박스 추가. -기본으로는 자동저장
 '2020-08-13 Ver 1.0.14      A9:I36 범위 shrinktofit = true 설정 (셀맞춤 기능)
-'2020-08-18 Ver 1.0.15      파일 경로 오류 수정 (False <> false 문제)
+'2020-08-18 Ver 1.0.15      파일 경로 오류 수정 (False <> False 문제)
 '2020-08-18 Ver 1.0.16      상위 폴더 경로 (MRM) 추가
 '2020-08-19 Ver 1.0.17      복사방지 추가 & 액티브 키(프로그램) 제작
 '2020-08-20 Ver 1.0.18      3차원 측정기용 ASC 파일 매칭 추가
@@ -75,6 +75,8 @@
 '2022-01-27 Ver 1.3.11      전용프로그램 업데이트 단추 생성 및 업데이트용 코드 삽입 > 전용프로그램 리스트 목록 읽어오고 해당 이름과 같은 이름으로 프로그램 덮어쓰기
 '2022-01-28 Ver 1.3.12      위치지정 서식 추가기입 창 설정 내용 무조건 보존하게 변경 > 사용 체크가 안되있어도 내용은 보존 사용체크가 되있는 거만 기입실행
 '2022-02-01 Ver 1.3.13      위치지정 서식 새로 만들 경우 텍스트, 매번생성시 지정하여 기입 될수 있도록함. Mknew > Form2 로 변경 MkNew에서 변수 오류로 인해 새로운 폼만 들어서 해결 / 수정창, 생성창 페이줄수 기본값 0 지정
+'2022-02-06 Ver 1.3.14      위치지정 서직 중 사이드 반복 기입 기능 추가  > 특정 횟수 반복 기입하룻 있도록 하여 옆으로 샘플 시료만큼 반복측정 기입을 하는 기능 추가.
+'2022-02-14 Ver 1.3.15      Contextmenustirp 에서 원본 데이터 교체, 성적서 저장 경로 교체 추가 / From1(메인화면)에 사이드 반복 측정 횟수 표기  / 사용 설명서 Rev5 추가 
 '=============================================================================================================
 
 '=========================================
@@ -133,6 +135,16 @@ Public Class Form1
 
     Dim Data_error_occur As Integer              '소스파일 및 엑셀 누락 에러 검출용 변수
 
+    Dim File_count As Integer                       ' 파일 이름 지정용 반복 카운트.
+
+    Dim shift_max_num As Integer                    ' 최대 시프트 이동 횟수
+    Dim shift_current_num As Integer                '현재 시프트 이동 횟수
+    Dim shift_func_FileName As String                 '불러올 파일 이름            
+    Dim shift_func_check As String                      '체크박스 유무
+    Dim shift_ini_section As String                     'ini section name
+    Dim shift_ini_keyname(10) As String                 ' ini ketname
+
+
     Public List_check As Integer
 
     Public Product_Name As String
@@ -157,6 +169,8 @@ Public Class Form1
 
     Dim for_trial As Date
     Dim for_trial2 As Long
+
+
 
 
     Structure address
@@ -351,6 +365,31 @@ Public Class Form1
 
         ReDim strData(10)
 
+
+
+        '====================================================       ' 동일탭 사이드 시프트 측정
+        shift_ini_section = "shift"
+
+        shift_ini_keyname(0) = "shift_func_check"
+        shift_ini_keyname(1) = "shift_data_filename"
+        shift_ini_keyname(2) = "shift_max_num"
+        shift_ini_keyname(3) = "shift_current_num"
+
+        shift_func_check = GetINIValue(shift_ini_section, shift_ini_keyname(0), Restore_str(ini_dir))
+
+        If shift_func_check = "True" Then
+
+            shift_func_FileName = GetINIValue(shift_ini_section, shift_ini_keyname(1), Restore_str(ini_dir))
+            shift_max_num = GetINIValue(shift_ini_section, shift_ini_keyname(2), Restore_str(ini_dir))
+            shift_current_num = GetINIValue(shift_ini_section, shift_ini_keyname(3), Restore_str(ini_dir))
+
+        End If
+        '====================================================       ' 동일탭 사이드 시프트 측정
+
+
+
+        '====================================================
+
         Open_Dir = MRM_root_dir & "\MRM\Data\Resources\Result_Source.xlsx"   '원본 엑셀
         Dim fFindFile As New System.IO.FileInfo(Open_Dir)
         If fFindFile.Exists = False Then
@@ -422,11 +461,19 @@ Public Class Form1
         tempsave_dir = MRM_root_dir & "\MRM\Result\temp"
         Dim fFindFolder As New System.IO.DirectoryInfo(tempsave_dir)   '  temp폴더 존재 유무 확인용 선언
 
+
+
+        If shift_func_check = "True" Then
+            If shift_current_num <> 1 Then Save_Dir = shift_func_FileName           ' 1이 아닐때만 불러와서 저장
+        End If
+
+
         Select Case Label22.Text
             Case "예"
 
                 Select Case Label19.Text
                     Case ".xlsx"
+
                         With XL
                             .DisplayAlerts = False
                             '.Sheets(1).select
@@ -448,6 +495,26 @@ Public Class Form1
                             .quit
                         End With
                 End Select
+
+                If shift_func_check = "True" Then           ' 저장 하고 파일 이름 저장 및 번호 증가 
+
+
+                    If shift_current_num = 1 Then
+                        shift_func_FileName = Save_Dir          '저장 폴더 이름 저장.
+                        WPPS(shift_ini_section, shift_ini_keyname(1), shift_func_FileName, Restore_str(ini_dir))
+                        shift_current_num = shift_current_num + 1
+
+                    ElseIf shift_current_num = shift_max_num Then
+
+                        shift_current_num = 1
+
+                    Else
+                        shift_current_num = shift_current_num + 1
+
+                    End If
+                    WPPS(shift_ini_section, shift_ini_keyname(3), shift_current_num, Restore_str(ini_dir))
+                End If
+
 
                 XL = Nothing
                 '=============================================================================== 에러 구문 출력 
@@ -568,8 +635,6 @@ Public Class Form1
                         Kill(temp_kill_Dir)
 
                     Case 2          '전용
-
-
                         temp_kill_Name = ListBox1.SelectedItem.ToString
                         temp_kill_Dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & temp_kill_Name & "\" & temp_kill_Name & ".ini"
                         temp_kill_folder = MRM_root_dir & "\MRM\Data\Resources\ini\" & temp_kill_Name
@@ -681,11 +746,11 @@ Public Class Form1
 
 
 
-        install_check = My.Computer.Registry.GetValue(reg_path, "install_check", "false")
+        install_check = My.Computer.Registry.GetValue(reg_path, "install_check", "False")
 
         On Error GoTo MID_DLL_ERROR
 
-        If install_check = "false" Then
+        If install_check = "False" Then
             MsgBox("MRM이 설치 되어있지 않습니다." & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
             Me.Close()
             Lib_Serial_Check = 1
@@ -736,7 +801,6 @@ Public Class Form1
                     'My.Computer.Registry.SetValue(reg_path, "Active_UID", active_key)
                     My.Computer.Registry.SetValue(reg_path, "Active_Software", "MCOSMOS")
                     MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
-
 
                 Else        'cmm 설치 안되어있음
 
@@ -1369,7 +1433,17 @@ MID_DLL_ERROR:
 
                 error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도,TP (2D)", ",")
 
-                XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
+                If shift_func_check = "True" Then
+                    If shift_current_num = 1 Then   ' 처음에는 원본 성적서 열고 이후(2회이상)은 지정 성적서 오픈
+                        XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
+                    Else
+                        XL.workbooks.open(shift_func_FileName)      '지정 성적서 열기 
+                    End If
+
+                Else
+                    XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
+                End If
+
                 XL.DisplayAlerts = False
 
                 'origin_sheet_name = XL.activesheet.name
@@ -1417,7 +1491,7 @@ MID_DLL_ERROR:
 
                 Loop
                 FileClose(3)
-                'XL.visible = True
+                ' XL.visible = True
 
                 tab_index = 1
 
@@ -1426,6 +1500,8 @@ MID_DLL_ERROR:
                 Call add_str()
 
                 '===========================================위치지정 추가기입 삽입 위치.
+
+
 
                 '   XL.Sheets(origin_sheet_name).Copy(After:=XL.Sheets("Data_sheet"))        '데이터 입력용 워크시트 복사
                 'XL.activesheet.name = tab_name(1)                         '데이터 입력용 워크시트 선택
@@ -1446,6 +1522,28 @@ MID_DLL_ERROR:
 
                     Line_Count = 1
                     column_count = 1
+
+
+                    '===========================================쉬프트 기입 
+                    If shift_func_check = "True" Then
+
+                        Select Case input_direction(tab_index)
+                            Case "가로"               ' 가로 기입일때는 세로로 한줄 이동
+                                component_ad(tab_index).Row = component_ad(tab_index).Row + shift_current_num - 1               '첫번째는 0으로 항 원래 자리
+                                Label_ad(tab_index).Row = Label_ad(tab_index).Row + shift_current_num - 1
+                                measure_ad(tab_index).Row = measure_ad(tab_index).Row + shift_current_num - 1
+                                design_ad(tab_index).Row = design_ad(tab_index).Row + shift_current_num - 1
+                                error_ad(tab_index).Row = error_ad(tab_index).Row + shift_current_num - 1
+                                UP_Tol_ad(tab_index).Row = UP_Tol_ad(tab_index).Row + shift_current_num - 1
+                                Low_Tol_ad(tab_index).Row = Low_Tol_ad(tab_index).Row + shift_current_num - 1
+                                judge_ad(tab_index).Row = judge_ad(tab_index).Row + shift_current_num - 1
+
+                            Case "세로"           ' 세로 기입일때는 가로로 한줄 이동
+
+                                column_count = column_count + shift_current_num - 1
+                        End Select
+                    End If
+                    '===========================================쉬프트 기입.
 
 
                     Do Until Line_Count > Line_count_ad(tab_index)
@@ -1613,7 +1711,9 @@ MID_DLL_ERROR:
                             프로그레스바.ProgressBar1.Value += 1
                         End If
                         '====================================================================================================================================
-                    Loop
+
+
+                    Loop      '데이터 입력 루프 
 
                     If sum_Line_count = Cell_Address Then        '같은 줄 수 일때 나가기 
                         Exit Do
@@ -1938,7 +2038,18 @@ XLC:
 
                 error_arry = Split("평면도,위치도,동심도,평행도,직각도,동축도,면의 위치도,경사도", ",")
 
-                XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
+
+                If shift_func_check = "True" Then
+                    If shift_current_num = 1 Then   ' 처음에는 원본 성적서 열고 이후(2회이상)은 지정 성적서 오픈
+                        XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
+                    Else
+                        XL.workbooks.open(shift_func_FileName)      '지정 성적서 열기 
+                    End If
+
+                Else
+                    XL.Workbooks.open(Result_Form_dir)       '성적서 오픈        원본성적서 지정
+                End If
+
                 XL.DisplayAlerts = False
 
                 'origin_sheet_name = XL.activesheet.name
@@ -1989,6 +2100,28 @@ XLC:
                     Line_Count = 1
                     column_count = 1
 
+
+
+                    '===========================================쉬프트 기입 
+                    If shift_func_check = "True" Then
+
+                        Select Case input_direction(tab_index)
+                            Case "가로"               ' 가로 기입일때는 세로로 한줄 이동
+                                component_ad(tab_index).Row = component_ad(tab_index).Row + shift_current_num - 1           '첫 시작은 0값을 넣어야하기때문에 -1 해줌
+                                Label_ad(tab_index).Row = Label_ad(tab_index).Row + shift_current_num - 1
+                                measure_ad(tab_index).Row = measure_ad(tab_index).Row + shift_current_num - 1
+                                design_ad(tab_index).Row = design_ad(tab_index).Row + shift_current_num - 1
+                                error_ad(tab_index).Row = error_ad(tab_index).Row + shift_current_num - 1
+                                UP_Tol_ad(tab_index).Row = UP_Tol_ad(tab_index).Row + shift_current_num - 1
+                                Low_Tol_ad(tab_index).Row = Low_Tol_ad(tab_index).Row + shift_current_num - 1
+                                judge_ad(tab_index).Row = judge_ad(tab_index).Row + shift_current_num - 1
+
+                            Case "세로"           ' 세로 기입일때는 가로로 한줄 이동
+
+                                column_count = column_count + shift_current_num - 1
+                        End Select
+                    End If
+                    '===========================================쉬프트 기입.
 
                     Do Until Line_Count > Line_count_ad(tab_index)
 
@@ -2150,7 +2283,7 @@ XLC:
                             프로그레스바.ProgressBar1.Value += 1
                         End If
                         '====================================================================================================================================
-                    Loop
+                    Loop        '데이터 입력 루프 
 
                     If sum_Line_count = Cell_Address Then        '같은 줄 수 일때 나가기 
                         Exit Do
@@ -2332,6 +2465,56 @@ XLC:
         End If
 
     End Sub
+
+    Private Sub 데이터파일교체ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 데이터파일교체ToolStripMenuItem.Click
+
+        If Label16.Text = "N/A" Then Exit Sub
+
+        Dim ofd_For_Csv As New OpenFileDialog()
+        With ofd_For_Csv
+            .InitialDirectory = MRM_root_dir & "\MRM\Data"
+            .Filter = "CSV(*.CSV)/ASC(*.ASC)|*.csv;*.asc|All File(*.*)|*.*"
+            .FilterIndex = 1
+            .Title = "Select CSV File "
+            .RestoreDirectory = True
+            .CheckFileExists = True
+            .CheckPathExists = True
+        End With
+
+        Dim fFindFolder As New System.IO.DirectoryInfo(ofd_For_Csv.InitialDirectory)
+        If fFindFolder.Exists = False Then
+            MkDir(MRM_root_dir & "\MRM\data")
+        End If
+
+        If ofd_For_Csv.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            WPPS("Matching_Info", "CSV_file_Path", ofd_For_Csv.FileName, Restore_str(ini_dir))         '변경 정보 ini에 저장)
+            Label16.Text = ofd_For_Csv.FileName
+        End If
+
+    End Sub
+
+
+    Private Sub 폴더위치교체ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 폴더위치교체ToolStripMenuItem.Click
+
+        If Label17.Text = "N/A" Then Exit Sub
+        Dim save_For_Result As New FolderBrowserDialog()
+        save_For_Result.SelectedPath = MRM_root_dir & "\MRM\Result"
+        Dim fFindFolder As New System.IO.DirectoryInfo(save_For_Result.SelectedPath)           '폴더 존재 유무 확인
+        If fFindFolder.Exists = False Then
+            MkDir(MRM_root_dir & "\MRM\Result")
+        End If
+
+
+        If save_For_Result.ShowDialog() = Windows.Forms.DialogResult.OK Then
+
+            WPPS("Matching_Info", "Save_File_Path", save_For_Result.SelectedPath, Restore_str(ini_dir))         '변경 정보 ini에 저장
+            Label17.Text = save_For_Result.SelectedPath
+        End If
+
+
+    End Sub
+
+
     Sub Input_user_info()
         'On Error GoTo missing
         '===================================================== 기본폼1 기입
@@ -2385,7 +2568,7 @@ XLC:
             XL.sheets("기본폼1").shapes.addpicture(fileName:=select_pic_name, Linktofile:=0, SaveWithDocument:=-1, Left:=Pic_L, Top:=Pic_T, Width:=Pic_W, Height:=Pic_H).select
         End If
 
-        Pic_L2 = XL.sheets("기본폼1").Range("H1:I2").Left
+        Pic_L2 = XL.sheets("기본폼1").Range("H1: I2").Left
         Pic_T2 = XL.sheets("기본폼1").Range("H1:I2").Top
         Pic_W2 = XL.sheets("기본폼1").Range("H1:I2").width - 6
         Pic_H2 = XL.sheets("기본폼1").Range("H1:I2").height - 20
@@ -2535,6 +2718,26 @@ missing:
 
         ReDim strData(10)
 
+
+        '====================================================       ' 동일탭 사이드 시프트 측정
+        shift_ini_section = "shift"
+
+        shift_ini_keyname(0) = "shift_func_check"
+        shift_ini_keyname(1) = "shift_data_filename"
+        shift_ini_keyname(2) = "shift_max_num"
+        shift_ini_keyname(3) = "shift_current_num"
+
+        shift_func_check = GetINIValue(shift_ini_section, shift_ini_keyname(0), Restore_str(ini_dir))
+
+        If shift_func_check = "True" Then
+
+            shift_func_FileName = GetINIValue(shift_ini_section, shift_ini_keyname(1), Restore_str(ini_dir))
+            shift_max_num = GetINIValue(shift_ini_section, shift_ini_keyname(2), Restore_str(ini_dir))
+            shift_current_num = GetINIValue(shift_ini_section, shift_ini_keyname(3), Restore_str(ini_dir))
+
+        End If
+        '====================================================       ' 동일탭 사이드 시프트 측정
+
         Open_Dir = MRM_root_dir & "\MRM\Data\Resources\Result_Source.xlsx"   '원본 엑셀
 
         Dim fFindFile As New System.IO.FileInfo(Open_Dir)
@@ -2595,6 +2798,12 @@ missing:
         tempsave_dir = MRM_root_dir & "\MRM\Result\temp"
         Dim fFindFolder As New System.IO.DirectoryInfo(tempsave_dir)   '  폴더 존재 유무 확인용 선언
 
+
+        If shift_func_check = "True" Then
+            If shift_current_num <> 1 Then Save_Dir = shift_func_FileName           ' 1이 아닐떄만 불러와서 저장
+        End If
+
+
         Select Case Label22.Text
             Case "예"
 
@@ -2620,6 +2829,26 @@ missing:
                             .quit
                         End With
                 End Select
+
+                If shift_func_check = "True" Then           ' 저장 하고 파일 이름 저장 및 번호 증가 
+
+
+                    If shift_current_num = 1 Then
+                        shift_func_FileName = Save_Dir          '저장 폴더 이름 저장.
+                        WPPS(shift_ini_section, shift_ini_keyname(1), shift_func_FileName, Restore_str(ini_dir))
+                        shift_current_num = shift_current_num + 1
+
+                    ElseIf shift_current_num = shift_max_num Then
+
+                        shift_current_num = 1
+
+                    Else
+                        shift_current_num = shift_current_num + 1
+
+                    End If
+                    WPPS(shift_ini_section, shift_ini_keyname(3), shift_current_num, Restore_str(ini_dir))
+                End If
+
 
                 XL = Nothing
                 '=============================================================================== 에러 구문 출력 
@@ -2742,6 +2971,13 @@ SPE:
                 select_pic_name_2 = GetINIValue(user_section, user_keyname(11), ini_dir)
                 select_pic_name_3 = GetINIValue(user_section, user_keyname(12), ini_dir)
 
+                '==============================반복측정 초기화
+
+                Label8.Text = "N/A"         ' 현재 숫자
+                Label14.Text = "N/A"            ' 최대 숫자
+
+                 '==============================반복측정 초기화
+
             Case "위치 지정"
 
                 Dim custom_section As String
@@ -2771,6 +3007,9 @@ SPE:
                 Dim control_add_num As Integer
                 Dim check_text(10) As String
 
+                Dim shift_ini_section As String
+                Dim shift_ini_keyname(10) As String
+                Dim shift_ini_value(10) As String
 
                 custom_section = "custom_match_info"
                 Check_Keyname(0) = "label_check"
@@ -2796,6 +3035,13 @@ SPE:
                 custom_Keyname(2) = "input_direction"
                 custom_Keyname(3) = "tab_count"
                 custom_Keyname(4) = "tab_name"
+
+                shift_ini_section = "shift"
+
+                shift_ini_keyname(0) = "shift_func_check"
+                shift_ini_keyname(1) = "shift_data_filename"
+                shift_ini_keyname(2) = "shift_max_num"
+                shift_ini_keyname(3) = "shift_current_num"
 
 
                 check_text(1) = "라벨명         : "
@@ -2823,6 +3069,23 @@ SPE:
                 ReDim origin_sheet_name(tab_count)
                 ReDim input_direction(tab_count)
                 ReDim add_Control(tab_count)
+
+
+                shift_func_check = GetINIValue(shift_ini_section, shift_ini_keyname(0), Restore_str(ini_dir))
+
+                If shift_func_check = "True" Then
+                    On Error Resume Next
+                    shift_func_FileName = GetINIValue(shift_ini_section, shift_ini_keyname(1), Restore_str(ini_dir))
+                    shift_max_num = GetINIValue(shift_ini_section, shift_ini_keyname(2), Restore_str(ini_dir))
+                    shift_current_num = GetINIValue(shift_ini_section, shift_ini_keyname(3), Restore_str(ini_dir))
+                    Label8.Text = shift_current_num         ' 현재 숫자
+                    Label14.Text = shift_max_num            ' 최대 숫자
+                    On Error GoTo 0
+
+                Else
+                    Label8.Text = "N/A"         ' 현재 숫자
+                    Label14.Text = "N/A"            ' 최대 숫자
+                End If
 
 
 
@@ -3102,7 +3365,7 @@ SPE:
         'XL.visible = True
         '================================================================기본 유저 정보 입력
 
-        input_user_info()
+        Input_user_info()
         Sheet_del()     '시트  삭제
 
         XL.Sheets(form_txt_1).Copy(After:=XL.Sheets(Data_sheet))        '데이터 입력용 워크시트 복사
@@ -3300,7 +3563,7 @@ Out:
         End
     End Function
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click   '전용프로그램 생성
         Dim Change_name As String
         Dim Origin_name As String
         Dim Select_name As String
@@ -3320,6 +3583,7 @@ Out:
         End If
 
         Select_name = ListBox1.SelectedItem.ToString()
+        Form8.default_name = Select_name
         Select_ini_dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & Select_name & ".ini"
 
         Form8.ShowDialog()
@@ -3420,6 +3684,7 @@ Out:
 
                     End If
                 Case "매번 생성시"
+                    On Error GoTo err1
 
                     If add_str_value(4) = True Then
                         dialog_value = Add_str_dialog.ShowDialog()
@@ -3429,9 +3694,16 @@ Out:
                             XL.Sheets(add_str_value(5)).Range(add_str_value(2)).value = add_ans_value
                         End If
                     End If
+
+                    On Error GoTo 0
             End Select
 
         Next i
+
+        Exit Sub
+
+err1:
+        MsgBox("추가기입창 설정 오류입니다. 추가기입창 설정을 확인해주세요.")
 
     End Sub
 
@@ -3545,6 +3817,5 @@ Out:
 
 
     End Sub
-
 
 End Class

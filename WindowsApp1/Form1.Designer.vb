@@ -44,9 +44,11 @@ Partial Class Form1
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.폴더위치열기ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Source파일열기ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.데이터파일교체ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.폴더위치열기ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.폴더위치교체ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -88,6 +90,12 @@ Partial Class Form1
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
         Me.ContextMenuStrip3.SuspendLayout()
@@ -116,6 +124,7 @@ Partial Class Form1
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -327,9 +336,9 @@ Partial Class Form1
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.폴더위치열기ToolStripMenuItem, Me.Source파일열기ToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.폴더위치열기ToolStripMenuItem, Me.Source파일열기ToolStripMenuItem, Me.데이터파일교체ToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(167, 48)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(167, 70)
         '
         '폴더위치열기ToolStripMenuItem
         '
@@ -342,6 +351,12 @@ Partial Class Form1
         Me.Source파일열기ToolStripMenuItem.Name = "Source파일열기ToolStripMenuItem"
         Me.Source파일열기ToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.Source파일열기ToolStripMenuItem.Text = "데이터 파일 열기"
+        '
+        '데이터파일교체ToolStripMenuItem
+        '
+        Me.데이터파일교체ToolStripMenuItem.Name = "데이터파일교체ToolStripMenuItem"
+        Me.데이터파일교체ToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.데이터파일교체ToolStripMenuItem.Text = "데이터 파일 교체"
         '
         'Label17
         '
@@ -359,15 +374,21 @@ Partial Class Form1
         'ContextMenuStrip2
         '
         Me.ContextMenuStrip2.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.폴더위치열기ToolStripMenuItem1})
+        Me.ContextMenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.폴더위치열기ToolStripMenuItem1, Me.폴더위치교체ToolStripMenuItem})
         Me.ContextMenuStrip2.Name = "ContextMenuStrip2"
-        Me.ContextMenuStrip2.Size = New System.Drawing.Size(155, 26)
+        Me.ContextMenuStrip2.Size = New System.Drawing.Size(155, 48)
         '
         '폴더위치열기ToolStripMenuItem1
         '
         Me.폴더위치열기ToolStripMenuItem1.Name = "폴더위치열기ToolStripMenuItem1"
         Me.폴더위치열기ToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
         Me.폴더위치열기ToolStripMenuItem1.Text = "폴더 위치 열기"
+        '
+        '폴더위치교체ToolStripMenuItem
+        '
+        Me.폴더위치교체ToolStripMenuItem.Name = "폴더위치교체ToolStripMenuItem"
+        Me.폴더위치교체ToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.폴더위치교체ToolStripMenuItem.Text = "폴더 위치 교체"
         '
         'Label18
         '
@@ -428,18 +449,18 @@ Partial Class Form1
         Me.ContextMenuStrip3.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.폴더위치열기ToolStripMenuItem2, Me.원본성적서열기ToolStripMenuItem})
         Me.ContextMenuStrip3.Name = "ContextMenuStrip3"
-        Me.ContextMenuStrip3.Size = New System.Drawing.Size(163, 48)
+        Me.ContextMenuStrip3.Size = New System.Drawing.Size(181, 92)
         '
         '폴더위치열기ToolStripMenuItem2
         '
         Me.폴더위치열기ToolStripMenuItem2.Name = "폴더위치열기ToolStripMenuItem2"
-        Me.폴더위치열기ToolStripMenuItem2.Size = New System.Drawing.Size(162, 22)
+        Me.폴더위치열기ToolStripMenuItem2.Size = New System.Drawing.Size(180, 22)
         Me.폴더위치열기ToolStripMenuItem2.Text = "폴더 위치 열기"
         '
         '원본성적서열기ToolStripMenuItem
         '
         Me.원본성적서열기ToolStripMenuItem.Name = "원본성적서열기ToolStripMenuItem"
-        Me.원본성적서열기ToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.원본성적서열기ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.원본성적서열기ToolStripMenuItem.Text = "원본성적서 열기"
         '
         'CheckBox1
@@ -820,6 +841,70 @@ Partial Class Form1
         Me.PictureBox4.TabStop = False
         Me.PictureBox4.Visible = False
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
+        Me.Label6.Location = New System.Drawing.Point(453, 337)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(128, 17)
+        Me.Label6.TabIndex = 228
+        Me.Label6.Text = "사이드 반복 측정 횟수"
+        '
+        'PictureBox5
+        '
+        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
+        Me.PictureBox5.Location = New System.Drawing.Point(438, 335)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(15, 20)
+        Me.PictureBox5.TabIndex = 229
+        Me.PictureBox5.TabStop = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.Label7.Location = New System.Drawing.Point(453, 367)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(64, 15)
+        Me.Label7.TabIndex = 230
+        Me.Label7.Text = "현재 / 최대"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.BackColor = System.Drawing.Color.Transparent
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.Label8.Location = New System.Drawing.Point(453, 387)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(26, 15)
+        Me.Label8.TabIndex = 231
+        Me.Label8.Text = "N/A"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.Label9.Location = New System.Drawing.Point(484, 387)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(10, 15)
+        Me.Label9.TabIndex = 232
+        Me.Label9.Text = "/"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.BackColor = System.Drawing.Color.Transparent
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.Label14.Location = New System.Drawing.Point(500, 387)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(26, 15)
+        Me.Label14.TabIndex = 233
+        Me.Label14.Text = "N/A"
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -829,6 +914,12 @@ Partial Class Form1
         Me.BackgroundImage = Global.Mitutoyo_Result_Matcher.My.Resources.Resources.배경화면_1
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(824, 616)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.PictureBox5)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.PictureBox4)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button5)
@@ -899,6 +990,7 @@ Partial Class Form1
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -968,4 +1060,12 @@ Partial Class Form1
     Friend WithEvents Button5 As Button
     Friend WithEvents Button8 As Button
     Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents PictureBox5 As PictureBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents 데이터파일교체ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 폴더위치교체ToolStripMenuItem As ToolStripMenuItem
 End Class

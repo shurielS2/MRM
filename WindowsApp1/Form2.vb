@@ -31,6 +31,11 @@
     Dim add_str_keyname() As String
     Dim add_str_value() As String
 
+    Dim shift_tab_count As Integer
+    Dim shift_ini_section As String
+    Dim shift_ini_keyname(10) As String
+    Dim shift_ini_value(10) As String
+
     Dim tab_change_chk As Integer       '성적서 경로 삭제 혹은 변경시 탭페이지 초기화
 
 
@@ -66,6 +71,17 @@
         ReDim User_Info_Value(15)
 
 
+        '======================================== 새로 생성시 이전 정보 초기화
+        TextBox1.Text = ""
+        TextBox2.Text = ""
+        TextBox3.Text = ""
+        TextBox4.Text = ""
+        TextBox5.Text = ""
+        ComboBox1.Text = ""
+        CheckBox1.Checked = False
+        CheckBox2.Checked = False
+
+
         RadioButton1.Checked = True
         CheckBox3.Checked = True
         Form1.New_Fix_check = 0
@@ -75,7 +91,7 @@
 
         user_info_count = 0
         add_str_count = 0
-
+        '======================================== 새로 생성시 이전 정보 초기화
 
     End Sub
 
@@ -111,10 +127,12 @@
             MkDir(MRM_root_dir & "\MRM\Result")
         End If
 
+        If save_For_Result.ShowDialog() = Windows.Forms.DialogResult.OK Then
 
-        save_For_Result.ShowDialog()
+            TextBox2.Text = save_For_Result.SelectedPath
+        End If
 
-        TextBox2.Text = save_For_Result.SelectedPath
+
 
 
     End Sub
@@ -235,6 +253,14 @@
         add_str_keyname(5) = "apply_tab"
         add_str_keyname(6) = "input_type"
 
+        shift_ini_section = "shift"
+
+        shift_ini_keyname(0) = "shift_func_check"
+        shift_ini_keyname(1) = "shift_data_filename"
+        shift_ini_keyname(2) = "shift_max_num"
+        shift_ini_keyname(3) = "shift_current_num"
+
+
         '============================================================================ini 값입력 & 생성
 
         ini_Value(0) = TextBox1.Text        'csv파일 경로
@@ -336,6 +362,11 @@
                 WPPS(tab_Section, Result_Keyname(9), Result_Value(9), Restore_str(ini_Dir))
                 WPPS(tab_Section, Result_Keyname(10), Result_Value(10), Restore_str(ini_Dir))
 
+
+                shift_ini_value(0) = add_Control(tab_page).check_box(9).Checked
+                shift_ini_value(1) = ""                                                 '파일 경로
+                shift_ini_value(2) = add_Control(tab_page).Text_box(10).Text           '맥스값
+                shift_ini_value(3) = "1"                                                '시작 값 
             Next
 
 
@@ -420,6 +451,17 @@
             WPPS(add_str_section(2), add_str_keyname(6), add_str_value(20), Restore_str(ini_Dir))
 
 
+            '============================================================================================반복 실행 값 기입
+
+
+
+            WPPS(shift_ini_section, shift_ini_keyname(0), shift_ini_value(0), Restore_str(ini_Dir))     '체크유무
+            WPPS(shift_ini_section, shift_ini_keyname(1), shift_ini_value(1), Restore_str(ini_Dir))     '파일경로
+            WPPS(shift_ini_section, shift_ini_keyname(2), shift_ini_value(2), Restore_str(ini_Dir))     '맥스값
+            WPPS(shift_ini_section, shift_ini_keyname(3), shift_ini_value(3), Restore_str(ini_Dir))     '현재값
+
+            '============================================================================================반복 실행 값 기입
+
         Else    '기본 선택시 ini에 위치선택 속성 공백 지정하여 넣기
 
             Result_Value(1) = ""
@@ -499,6 +541,17 @@
             WPPS(User_Info_Section, User_Info_Keyname(10), User_Info_Value(10), Restore_str(ini_Dir))
             WPPS(User_Info_Section, User_Info_Keyname(11), User_Info_Value(11), Restore_str(ini_Dir))
             WPPS(User_Info_Section, User_Info_Keyname(12), User_Info_Value(12), Restore_str(ini_Dir))
+
+            shift_ini_value(0) = "False"                '기본 선택시 반복 실행 기본값 
+            shift_ini_value(1) = ""
+            shift_ini_value(2) = "1"
+            shift_ini_value(3) = "1"
+
+            WPPS(shift_ini_section, shift_ini_keyname(0), shift_ini_value(0), Restore_str(ini_Dir))     '체크유무
+            WPPS(shift_ini_section, shift_ini_keyname(1), shift_ini_value(1), Restore_str(ini_Dir))     '파일경로
+            WPPS(shift_ini_section, shift_ini_keyname(2), shift_ini_value(2), Restore_str(ini_Dir))     '맥스값
+            WPPS(shift_ini_section, shift_ini_keyname(3), shift_ini_value(3), Restore_str(ini_Dir))     '현재값
+
         End If
 
         '==============================================================기본 ini 내용 작성
@@ -758,7 +811,7 @@
 
         xl.workbooks.open(worksheet_name)
         sheet_count = xl.worksheets.count
-
+        shift_tab_count = sheet_count
         ReDim sheet_name(sheet_count)
         ReDim add_Control(sheet_count)
 
@@ -867,6 +920,37 @@
             add_Control(i).label(3).Width = 150
             add_Control(i).label(3).Text = "입력 방향       :"
 
+            '======================================================================위치지정 탭 시프트 
+            Selected_tab.Controls.Add(add_Control(i).check_box(9))                  'shift check box
+            add_Control(i).check_box(9).Enabled = True
+            add_Control(i).check_box(9).Top = 100
+            add_Control(i).check_box(9).Left = 400
+            add_Control(i).check_box(9).Height = 20
+            add_Control(i).check_box(9).Width = 150
+            add_Control(i).check_box(9).Text = "사이드 반복측정"
+            add_Control(i).check_box(9).Name = "shift_check_" & i
+
+            AddHandler add_Control(i).check_box(9).CheckedChanged, AddressOf shift_CheckedChanged
+
+            Selected_tab.Controls.Add(add_Control(i).label(4))          '반복 횟수  
+            add_Control(i).label(4).Enabled = True
+            add_Control(i).label(4).Top = 125
+            add_Control(i).label(4).Left = 300
+            add_Control(i).label(4).Height = 20
+            add_Control(i).label(4).Width = 120
+            add_Control(i).label(4).Text = "최대 반복 횟수 : "
+
+            Selected_tab.Controls.Add(add_Control(i).Text_box(10))                   'shift 카운트 값 텍스트 박스
+            add_Control(i).Text_box(10).Enabled = False
+            add_Control(i).Text_box(10).Top = 125
+            add_Control(i).Text_box(10).Left = 420
+            add_Control(i).Text_box(10).Height = 20
+            add_Control(i).Text_box(10).Width = 100
+            add_Control(i).Text_box(10).Name = "shift_text_" & i
+            add_Control(i).Text_box(10).Enabled = False
+
+            AddHandler add_Control(i).Text_box(10).TextChanged, AddressOf shift_textChanged
+            '======================================================================위치지정 탭 시프트
 
             '======================================================================컨트롤 위치 고정용 
         Next i
@@ -880,8 +964,8 @@
 
         Dim Sender_Checked As Integer
 
-        sender_name = Strings.Right(sender.name, 3)
-        Sender_Checked = sender.checked     'false :0 , True : -1
+        sender_name = Strings.Right(sender.name, 3)         '탭 10개 넘으면 오류 발생
+        Sender_Checked = sender.checked     'False :0 , True : -1
 
         tab_page = Strings.Left(sender_name, 1)
         control_tag = Strings.Right(sender_name, 1)
@@ -893,6 +977,48 @@
             add_Control(tab_page).Text_box(control_tag).Enabled = False
 
         End If
+
+
+
+    End Sub
+
+    Sub shift_CheckedChanged(sender As Object, e As EventArgs)
+
+        Dim sender_checked As Integer
+
+        sender_checked = sender.checked     'False :0 , True : -1
+
+        If sender_checked = -1 Then
+
+            For i = 1 To shift_tab_count
+                add_Control(i).check_box(9).Checked = True
+                add_Control(i).Text_box(10).Enabled = True
+            Next
+        Else
+
+            For i = 1 To shift_tab_count
+                add_Control(i).check_box(9).Checked = False
+                add_Control(i).Text_box(10).Enabled = False
+            Next
+        End If
+
+
+    End Sub
+
+    Sub shift_textChanged(sender As Object, e As EventArgs)
+
+        Dim sender_text As String
+        Dim tab_page As String
+        Dim change_text As String
+
+        sender_text = sender.name     'text 박스 내용
+
+        tab_page = Strings.Right(sender.name, 1)
+        change_text = add_Control(tab_page).Text_box(10).Text
+
+        For i = 1 To shift_tab_count
+            add_Control(i).Text_box(10).Text = change_text
+        Next
 
 
 

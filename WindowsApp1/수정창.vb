@@ -35,6 +35,11 @@
     Dim kill_exe As String
     Dim kill_folder As String
 
+    Dim shift_tab_count As Integer
+    Dim shift_ini_section As String
+    Dim shift_ini_keyname(10) As String
+    Dim shift_ini_value(10) As String
+
     Dim tab_change_chk As Integer               '성적서 경로 삭제 혹은 변경시 탭페이지 초기화
 
     Public User_Info_Value() As String
@@ -98,6 +103,68 @@
         ini_KeyName(9) = "auto_save"
         ini_KeyName(10) = "Basic_form_seleted"
 
+        User_Info_Section = "User_info"
+
+        User_Info_Keyname(0) = "Product_Name"
+        User_Info_Keyname(1) = "Machine_Name"
+        User_Info_Keyname(2) = "Request_Dept"
+        User_Info_Keyname(3) = "Request_Date"
+        User_Info_Keyname(4) = "Drawing_Num"
+        User_Info_Keyname(5) = "Program_Name"
+        User_Info_Keyname(6) = "Player_Name"
+        User_Info_Keyname(7) = "Measure_Date"
+        User_Info_Keyname(8) = "Check_date_1"
+        User_Info_Keyname(9) = "Check_date_2"
+        User_Info_Keyname(10) = "Select_pic_name"
+        User_Info_Keyname(11) = "Select_pic_name_2"
+        User_Info_Keyname(12) = "Select_pic_name_3"
+
+        Result_Section = "custom_match_info"
+        Result_Keyname(1) = "label"
+        Result_Keyname(2) = "component"
+        Result_Keyname(3) = "measure_value"
+        Result_Keyname(4) = "Design_value"
+        Result_Keyname(5) = "UP_tol"
+        Result_Keyname(6) = "Low_tol"
+        Result_Keyname(7) = "error"
+        Result_Keyname(8) = "judge"
+
+        Result_Keyname(9) = "line_count"
+        Result_Keyname(10) = "input_direction"
+        Result_Keyname(11) = "Result_Form_Dir"
+        Result_Keyname(12) = "tab_count"
+
+        check_keyname(1) = "label_check"
+        check_keyname(2) = "component_check"
+        check_keyname(3) = "measure_value_check"
+        check_keyname(4) = "Design_value_check"
+        check_keyname(5) = "UP_tol_check"
+        check_keyname(6) = "Low_tol_check"
+        check_keyname(7) = "error_check"
+        check_keyname(8) = "judge_check"
+
+        add_str_section(0) = "add_str_1"
+        add_str_section(1) = "add_str_2"
+        add_str_section(2) = "add_str_3"
+
+        add_str_keyname(0) = "Description"
+        add_str_keyname(1) = "value"
+        add_str_keyname(2) = "loction"
+        add_str_keyname(3) = "combo"
+        add_str_keyname(4) = "use_check"
+        add_str_keyname(5) = "apply_tab"
+        add_str_keyname(6) = "input_type"
+
+        shift_ini_section = "shift"
+
+        shift_ini_keyname(0) = "shift_func_check"
+        shift_ini_keyname(1) = "shift_data_filename"
+        shift_ini_keyname(2) = "shift_max_num"
+        shift_ini_keyname(3) = "shift_current_num"
+
+
+        '==========================================기본 정보 입력
+
         TextBox1.Text = GetINIValue(ini_section, ini_KeyName(0), Restore_str(ini_Dir))
         TextBox2.Text = GetINIValue(ini_section, ini_KeyName(1), Restore_str(ini_Dir))
         TextBox3.Text = Form1.ListBox1.SelectedItem.ToString
@@ -108,6 +175,8 @@
         CheckBox11.Checked = GetINIValue(ini_section, ini_KeyName(9), Restore_str(ini_Dir))
 
         radio_jugde = GetINIValue(ini_section, ini_KeyName(5), Restore_str(ini_Dir))
+
+        '==========================================기본 정보 입력
 
         If radio_jugde = "기본" Then
             RadioButton1.Checked = True
@@ -136,21 +205,7 @@
             '==============================================================
             '유저정보 로드
             '==============================================================
-            User_Info_Section = "User_info"
 
-            User_Info_Keyname(0) = "Product_Name"
-            User_Info_Keyname(1) = "Machine_Name"
-            User_Info_Keyname(2) = "Request_Dept"
-            User_Info_Keyname(3) = "Request_Date"
-            User_Info_Keyname(4) = "Drawing_Num"
-            User_Info_Keyname(5) = "Program_Name"
-            User_Info_Keyname(6) = "Player_Name"
-            User_Info_Keyname(7) = "Measure_Date"
-            User_Info_Keyname(8) = "Check_date_1"
-            User_Info_Keyname(9) = "Check_date_2"
-            User_Info_Keyname(10) = "Select_pic_name"
-            User_Info_Keyname(11) = "Select_pic_name_2"
-            User_Info_Keyname(12) = "Select_pic_name_3"
 
             User_Info_Value(0) = GetINIValue(User_Info_Section, User_Info_Keyname(0), Restore_str(ini_Dir))
             User_Info_Value(1) = GetINIValue(User_Info_Section, User_Info_Keyname(1), Restore_str(ini_Dir))
@@ -190,32 +245,9 @@
             TabControl1.Visible = False
 
 
-            Result_Section = "custom_match_info"
-            Result_Keyname(1) = "label"
-            Result_Keyname(2) = "component"
-            Result_Keyname(3) = "measure_value"
-            Result_Keyname(4) = "Design_value"
-            Result_Keyname(5) = "UP_tol"
-            Result_Keyname(6) = "Low_tol"
-            Result_Keyname(7) = "error"
-            Result_Keyname(8) = "judge"
-
-            Result_Keyname(9) = "line_count"
-            Result_Keyname(10) = "input_direction"
-            Result_Keyname(11) = "Result_Form_Dir"
-            Result_Keyname(12) = "tab_count"
-
-            check_keyname(1) = "label_check"
-            check_keyname(2) = "component_check"
-            check_keyname(3) = "measure_value_check"
-            check_keyname(4) = "Design_value_check"
-            check_keyname(5) = "UP_tol_check"
-            check_keyname(6) = "Low_tol_check"
-            check_keyname(7) = "error_check"
-            check_keyname(8) = "judge_check"
-
             tab_count = GetINIValue(Result_Section, Result_Keyname(12), Restore_str(ini_Dir))
             TextBox5.Text = GetINIValue(Result_Section, Result_Keyname(11), Restore_str(ini_Dir))
+            shift_tab_count = tab_count
 
             add_tab(TextBox5.Text)
             For tab_page = 1 To tab_count
@@ -231,6 +263,20 @@
                 add_Control(tab_page).Text_box(9).Text = GetINIValue(tab_Section, Result_Keyname(9), Restore_str(ini_Dir))
                 add_Control(tab_page).combo_box(1).Text = GetINIValue(tab_Section, Result_Keyname(10), Restore_str(ini_Dir))
 
+
+                '================================================================== 반복 횟수 로딩
+
+
+                add_Control(tab_page).check_box(9).Checked = GetINIValue(shift_ini_section, shift_ini_keyname(0), Restore_str(ini_Dir))     ' 체크여부
+                If add_Control(tab_page).check_box(9).Checked = True Then add_Control(tab_page).Text_box(10).Enabled = True                 '체크시 텍스트박스 온
+                add_Control(tab_page).Text_box(10).Text = GetINIValue(shift_ini_section, shift_ini_keyname(2), Restore_str(ini_Dir))       '맥스 횟수
+                shift_ini_value(3) = GetINIValue(shift_ini_section, shift_ini_keyname(3), Restore_str(ini_Dir))                    ' 현재 반복 횟수
+                shift_ini_value(1) = GetINIValue(shift_ini_section, shift_ini_keyname(1), Restore_str(ini_Dir))                         '반복 실행 파일명
+
+
+
+                '================================================================== 반복 횟수 로딩
+
             Next
 
 
@@ -245,17 +291,6 @@
 
 
             '==================================================================추가데이터 로딩
-            add_str_section(0) = "add_str_1"
-            add_str_section(1) = "add_str_2"
-            add_str_section(2) = "add_str_3"
-
-            add_str_keyname(0) = "Description"
-            add_str_keyname(1) = "value"
-            add_str_keyname(2) = "loction"
-            add_str_keyname(3) = "combo"
-            add_str_keyname(4) = "use_check"
-            add_str_keyname(5) = "apply_tab"
-            add_str_keyname(6) = "input_type"
 
 
             add_str_value(0) = GetINIValue(add_str_section(0), add_str_keyname(0), Restore_str(ini_Dir))
@@ -284,6 +319,10 @@
 
 
             '==================================================================추가데이터 로딩
+
+
+
+
 
         End If
 
@@ -578,6 +617,14 @@
                 WPPS(tab_Section, Result_Keyname(9), Result_Value(9), Restore_str(ini_Dir))
                 WPPS(tab_Section, Result_Keyname(10), Result_Value(10), Restore_str(ini_Dir))
 
+
+                shift_ini_value(0) = add_Control(tab_page).check_box(9).Checked ' 체크여부 
+
+                shift_ini_value(2) = add_Control(tab_page).Text_box(10).Text           '맥스값
+                If shift_ini_value(0) = "False" Then
+                    shift_ini_value(1) = ""                                                 '파일 경로
+                    shift_ini_value(3) = "1"           '시작 값 강제 지정(현재값)
+                End If
             Next
 
 
@@ -638,30 +685,41 @@
             End If
 
             WPPS(add_str_section(0), add_str_keyname(0), add_str_value(0), Restore_str(ini_Dir))
-                WPPS(add_str_section(0), add_str_keyname(1), add_str_value(1), Restore_str(ini_Dir))
-                WPPS(add_str_section(0), add_str_keyname(2), add_str_value(2), Restore_str(ini_Dir))
-                WPPS(add_str_section(0), add_str_keyname(3), add_str_value(3), Restore_str(ini_Dir))
-                WPPS(add_str_section(0), add_str_keyname(4), add_str_value(4), Restore_str(ini_Dir))
-                WPPS(add_str_section(1), add_str_keyname(0), add_str_value(5), Restore_str(ini_Dir))
-                WPPS(add_str_section(1), add_str_keyname(1), add_str_value(6), Restore_str(ini_Dir))
-                WPPS(add_str_section(1), add_str_keyname(2), add_str_value(7), Restore_str(ini_Dir))
-                WPPS(add_str_section(1), add_str_keyname(3), add_str_value(8), Restore_str(ini_Dir))
-                WPPS(add_str_section(1), add_str_keyname(4), add_str_value(9), Restore_str(ini_Dir))
-                WPPS(add_str_section(2), add_str_keyname(0), add_str_value(10), Restore_str(ini_Dir))
-                WPPS(add_str_section(2), add_str_keyname(1), add_str_value(11), Restore_str(ini_Dir))
-                WPPS(add_str_section(2), add_str_keyname(2), add_str_value(12), Restore_str(ini_Dir))
-                WPPS(add_str_section(2), add_str_keyname(3), add_str_value(13), Restore_str(ini_Dir))
-                WPPS(add_str_section(2), add_str_keyname(4), add_str_value(14), Restore_str(ini_Dir))
+            WPPS(add_str_section(0), add_str_keyname(1), add_str_value(1), Restore_str(ini_Dir))
+            WPPS(add_str_section(0), add_str_keyname(2), add_str_value(2), Restore_str(ini_Dir))
+            WPPS(add_str_section(0), add_str_keyname(3), add_str_value(3), Restore_str(ini_Dir))
+            WPPS(add_str_section(0), add_str_keyname(4), add_str_value(4), Restore_str(ini_Dir))
+            WPPS(add_str_section(1), add_str_keyname(0), add_str_value(5), Restore_str(ini_Dir))
+            WPPS(add_str_section(1), add_str_keyname(1), add_str_value(6), Restore_str(ini_Dir))
+            WPPS(add_str_section(1), add_str_keyname(2), add_str_value(7), Restore_str(ini_Dir))
+            WPPS(add_str_section(1), add_str_keyname(3), add_str_value(8), Restore_str(ini_Dir))
+            WPPS(add_str_section(1), add_str_keyname(4), add_str_value(9), Restore_str(ini_Dir))
+            WPPS(add_str_section(2), add_str_keyname(0), add_str_value(10), Restore_str(ini_Dir))
+            WPPS(add_str_section(2), add_str_keyname(1), add_str_value(11), Restore_str(ini_Dir))
+            WPPS(add_str_section(2), add_str_keyname(2), add_str_value(12), Restore_str(ini_Dir))
+            WPPS(add_str_section(2), add_str_keyname(3), add_str_value(13), Restore_str(ini_Dir))
+            WPPS(add_str_section(2), add_str_keyname(4), add_str_value(14), Restore_str(ini_Dir))
 
-                WPPS(add_str_section(0), add_str_keyname(5), add_str_value(15), Restore_str(ini_Dir))
-                WPPS(add_str_section(1), add_str_keyname(5), add_str_value(16), Restore_str(ini_Dir))
-                WPPS(add_str_section(2), add_str_keyname(5), add_str_value(17), Restore_str(ini_Dir))
+            WPPS(add_str_section(0), add_str_keyname(5), add_str_value(15), Restore_str(ini_Dir))
+            WPPS(add_str_section(1), add_str_keyname(5), add_str_value(16), Restore_str(ini_Dir))
+            WPPS(add_str_section(2), add_str_keyname(5), add_str_value(17), Restore_str(ini_Dir))
 
-                WPPS(add_str_section(0), add_str_keyname(6), add_str_value(18), Restore_str(ini_Dir))
-                WPPS(add_str_section(1), add_str_keyname(6), add_str_value(19), Restore_str(ini_Dir))
-                WPPS(add_str_section(2), add_str_keyname(6), add_str_value(20), Restore_str(ini_Dir))
+            WPPS(add_str_section(0), add_str_keyname(6), add_str_value(18), Restore_str(ini_Dir))
+            WPPS(add_str_section(1), add_str_keyname(6), add_str_value(19), Restore_str(ini_Dir))
+            WPPS(add_str_section(2), add_str_keyname(6), add_str_value(20), Restore_str(ini_Dir))
 
 
+            '============================================================================================반복 실행 값 기입
+
+
+
+            WPPS(shift_ini_section, shift_ini_keyname(0), shift_ini_value(0), Restore_str(ini_Dir))     '체크유무
+            WPPS(shift_ini_section, shift_ini_keyname(1), shift_ini_value(1), Restore_str(ini_Dir))     '파일경로
+            WPPS(shift_ini_section, shift_ini_keyname(2), shift_ini_value(2), Restore_str(ini_Dir))     '맥스값
+
+            WPPS(shift_ini_section, shift_ini_keyname(3), shift_ini_value(3), Restore_str(ini_Dir))     '현재값
+
+            '============================================================================================반복 실행 값 기입
 
             add_str_count = 0
 
@@ -670,7 +728,7 @@
         Else    '기본 선택시 ini에 위치선택 속성 공백 지정하여 넣기
 
 
-                Result_Value(0) = ""
+            Result_Value(0) = ""
             Result_Value(1) = ""
             Result_Value(2) = ""
             Result_Value(3) = ""
@@ -1211,6 +1269,37 @@
             add_Control(i).label(3).Width = 150
             add_Control(i).label(3).Text = "입력 방향       :"
 
+            '======================================================================위치지정 탭 시프트 
+            Selected_tab.Controls.Add(add_Control(i).check_box(9))                  'shift check box
+            add_Control(i).check_box(9).Enabled = True
+            add_Control(i).check_box(9).Top = 100
+            add_Control(i).check_box(9).Left = 400
+            add_Control(i).check_box(9).Height = 20
+            add_Control(i).check_box(9).Width = 150
+            add_Control(i).check_box(9).Text = "사이드 반복측정"
+            add_Control(i).check_box(9).Name = "shift_check_" & i
+
+            AddHandler add_Control(i).check_box(9).CheckedChanged, AddressOf shift_CheckedChanged
+
+            Selected_tab.Controls.Add(add_Control(i).label(4))          '반복 횟수  
+            add_Control(i).label(4).Enabled = True
+            add_Control(i).label(4).Top = 125
+            add_Control(i).label(4).Left = 300
+            add_Control(i).label(4).Height = 20
+            add_Control(i).label(4).Width = 120
+            add_Control(i).label(4).Text = "최대 반복 횟수 : "
+
+            Selected_tab.Controls.Add(add_Control(i).Text_box(10))                   'shift 카운트 값 텍스트 박스
+            add_Control(i).Text_box(10).Enabled = False
+            add_Control(i).Text_box(10).Top = 125
+            add_Control(i).Text_box(10).Left = 420
+            add_Control(i).Text_box(10).Height = 20
+            add_Control(i).Text_box(10).Width = 100
+            add_Control(i).Text_box(10).Name = "shift_text_" & i
+            add_Control(i).Text_box(10).Enabled = False
+
+            AddHandler add_Control(i).Text_box(10).TextChanged, AddressOf shift_textChanged
+            '======================================================================위치지정 탭 시프트
 
             '======================================================================컨트롤 위치 고정용 
         Next i
@@ -1227,7 +1316,7 @@
         Dim Sender_Checked As Integer
 
         sender_name = Strings.Right(sender.name, 3)
-        Sender_Checked = sender.checked     'false :0 , True : -1
+        Sender_Checked = sender.checked     'False :0 , True : -1
 
         tab_page = Strings.Left(sender_name, 1)
         control_tag = Strings.Right(sender_name, 1)
@@ -1243,7 +1332,47 @@
 
 
     End Sub
+    Sub shift_CheckedChanged(sender As Object, e As EventArgs)
 
+        Dim sender_checked As Integer
+
+        sender_checked = sender.checked     'False :0 , True : -1
+
+        If sender_checked = -1 Then
+
+            For i = 1 To shift_tab_count
+                add_Control(i).check_box(9).Checked = True
+                add_Control(i).Text_box(10).Enabled = True
+            Next
+        Else
+
+            For i = 1 To shift_tab_count
+                add_Control(i).check_box(9).Checked = False
+                add_Control(i).Text_box(10).Enabled = False
+            Next
+        End If
+
+
+    End Sub
+
+    Sub shift_textChanged(sender As Object, e As EventArgs)
+
+        Dim sender_text As String
+        Dim tab_page As String
+        Dim change_text As String
+
+        sender_text = sender.name     'text 박스 내용
+
+        tab_page = Strings.Right(sender.name, 1)
+        change_text = add_Control(tab_page).Text_box(10).Text
+
+        For i = 1 To shift_tab_count
+            add_Control(i).Text_box(10).Text = change_text
+        Next
+
+
+
+    End Sub
     Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
         If tab_change_chk = 1 Then
             TabControl2.TabPages.Clear()
