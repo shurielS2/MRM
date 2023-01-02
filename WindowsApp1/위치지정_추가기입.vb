@@ -64,7 +64,7 @@
                 add_str_value(11) = TextBox8.Text
                 add_str_value(12) = TextBox9.Text
                 add_str_value(13) = ComboBox3.Text
-                If add_str_value(13) = "매번 생성시" Then add_str_value(12) = ""
+                If add_str_value(13) = "매번 생성시" Then add_str_value(11) = ""
                 add_str_value(14) = CheckBox3.Checked.ToString
                 add_str_value(17) = ComboBox4.Text
                 add_str_value(20) = ComboBox9.Text

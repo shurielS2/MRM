@@ -689,11 +689,13 @@
             WPPS(add_str_section(0), add_str_keyname(2), add_str_value(2), Restore_str(ini_Dir))
             WPPS(add_str_section(0), add_str_keyname(3), add_str_value(3), Restore_str(ini_Dir))
             WPPS(add_str_section(0), add_str_keyname(4), add_str_value(4), Restore_str(ini_Dir))
+
             WPPS(add_str_section(1), add_str_keyname(0), add_str_value(5), Restore_str(ini_Dir))
             WPPS(add_str_section(1), add_str_keyname(1), add_str_value(6), Restore_str(ini_Dir))
             WPPS(add_str_section(1), add_str_keyname(2), add_str_value(7), Restore_str(ini_Dir))
             WPPS(add_str_section(1), add_str_keyname(3), add_str_value(8), Restore_str(ini_Dir))
             WPPS(add_str_section(1), add_str_keyname(4), add_str_value(9), Restore_str(ini_Dir))
+
             WPPS(add_str_section(2), add_str_keyname(0), add_str_value(10), Restore_str(ini_Dir))
             WPPS(add_str_section(2), add_str_keyname(1), add_str_value(11), Restore_str(ini_Dir))
             WPPS(add_str_section(2), add_str_keyname(2), add_str_value(12), Restore_str(ini_Dir))
@@ -938,12 +940,19 @@
             Button6.Text = "머릿말 정보 입력"
             Button6.Visible = True
             TabControl2.Visible = False
+            Label15.Visible = False
+            TextBox5.Visible = False
+            Button5.Visible = False
+
         Else                ' 위치지정
 
             TabControl1.Visible = False
             Button6.Text = "추가 데이터 입력"
             Button6.Visible = True
             TabControl2.Visible = True
+            Label15.Visible = True
+            TextBox5.Visible = True
+            Button5.Visible = True
         End If
 
 
@@ -1379,4 +1388,6 @@
             tab_change_chk = 0
         End If
     End Sub
+
+
 End Class

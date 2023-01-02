@@ -65,7 +65,7 @@
             .Filter = "MRM REG|.MREG"
             .FilterIndex = 1
             .Title = "MRM Register"
-            .FileName = TextBox2.Text & "_" & TextBox6.Text
+            .FileName = TextBox2.Text & "_" & TextBox5.Text & "_" & TextBox6.Text
             .RestoreDirectory = True
             .CheckFileExists = False
             .CheckPathExists = True

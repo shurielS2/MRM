@@ -449,18 +449,18 @@ Partial Class Form1
         Me.ContextMenuStrip3.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ContextMenuStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.폴더위치열기ToolStripMenuItem2, Me.원본성적서열기ToolStripMenuItem})
         Me.ContextMenuStrip3.Name = "ContextMenuStrip3"
-        Me.ContextMenuStrip3.Size = New System.Drawing.Size(181, 92)
+        Me.ContextMenuStrip3.Size = New System.Drawing.Size(163, 48)
         '
         '폴더위치열기ToolStripMenuItem2
         '
         Me.폴더위치열기ToolStripMenuItem2.Name = "폴더위치열기ToolStripMenuItem2"
-        Me.폴더위치열기ToolStripMenuItem2.Size = New System.Drawing.Size(180, 22)
+        Me.폴더위치열기ToolStripMenuItem2.Size = New System.Drawing.Size(162, 22)
         Me.폴더위치열기ToolStripMenuItem2.Text = "폴더 위치 열기"
         '
         '원본성적서열기ToolStripMenuItem
         '
         Me.원본성적서열기ToolStripMenuItem.Name = "원본성적서열기ToolStripMenuItem"
-        Me.원본성적서열기ToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.원본성적서열기ToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.원본성적서열기ToolStripMenuItem.Text = "원본성적서 열기"
         '
         'CheckBox1
@@ -757,10 +757,10 @@ Partial Class Form1
         Me.LinkLabel1.BackColor = System.Drawing.Color.Transparent
         Me.LinkLabel1.Location = New System.Drawing.Point(148, 597)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(147, 15)
+        Me.LinkLabel1.Size = New System.Drawing.Size(141, 15)
         Me.LinkLabel1.TabIndex = 218
         Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "WWW.Mitutoyokorea.com"
+        Me.LinkLabel1.Text = "www.mitutoyokorea.com"
         '
         'PictureBox1
         '

@@ -26,6 +26,7 @@
 
         End Select
     End Sub
+
     Private Sub KEY_Down_EVENT(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBox1.KeyDown
 
         If e.KeyCode = 13 Then      '13 = Enter

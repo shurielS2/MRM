@@ -77,6 +77,9 @@
 '2022-02-01 Ver 1.3.13      위치지정 서식 새로 만들 경우 텍스트, 매번생성시 지정하여 기입 될수 있도록함. Mknew > Form2 로 변경 MkNew에서 변수 오류로 인해 새로운 폼만 들어서 해결 / 수정창, 생성창 페이줄수 기본값 0 지정
 '2022-02-06 Ver 1.3.14      위치지정 서직 중 사이드 반복 기입 기능 추가  > 특정 횟수 반복 기입하룻 있도록 하여 옆으로 샘플 시료만큼 반복측정 기입을 하는 기능 추가.
 '2022-02-14 Ver 1.3.15      Contextmenustirp 에서 원본 데이터 교체, 성적서 저장 경로 교체 추가 / From1(메인화면)에 사이드 반복 측정 횟수 표기  / 사용 설명서 Rev5 추가 
+'2022-02-25 Ver 1.3.16      수정창 버그픽스> 기본폼 선택시 위치지정용 성적서 기능 뜨는거 수정 / 홈페이지 링크 대문자>소문자 수정 / MID_Register 기본 저장 이름 수정
+'2022-03-15 Ver 1.3.17      스플래쉬 화면 오타 수정 Macher > Matcher
+'2022-03-24 Ver 1.3.18      CMM 설치 확인 유무 레지스트리 경로 변경 V41~V43 > HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Mitutoyo\MCOSMOS43 / V50 > 추가 > HKEY_LOCAL_MACHINE\SOFTWARE\Mitutoyo\MCOSMOS50 / V50은 기본값 지정 되어있어서 "" 도 존재 유무확인 사항에 추가
 '=============================================================================================================
 
 '=========================================
@@ -211,16 +214,7 @@ Public Class Form1
         '==================================================== mysetting 초기화
         ' My.Settings.Reload()
 
-        '==================================================== 트라이얼 버전용
 
-        'for_trial = "2022-11-01"
-        'for_trial2 = DateDiff(DateInterval.Day, Now, for_trial) + 1
-        'If for_trial2 <= 0 Then
-        'MsgBox("테스트 사용기간이 종료 되었습니다." & Environment.NewLine & "정식판 사용을 위해서 한국미쓰도요 영업부에 연락 부탁드립니다." & Environment.NewLine & "대표 번호 : 031-361-4220", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly)
-        'End
-        'End If
-
-        '==================================================== 트라이얼 버전용
 
         '==================================================== 활성화 체크
         Select Case Lib_Serial_Check()
@@ -378,11 +372,11 @@ Public Class Form1
         shift_func_check = GetINIValue(shift_ini_section, shift_ini_keyname(0), Restore_str(ini_dir))
 
         If shift_func_check = "True" Then
-
+            On Error Resume Next
             shift_func_FileName = GetINIValue(shift_ini_section, shift_ini_keyname(1), Restore_str(ini_dir))
             shift_max_num = GetINIValue(shift_ini_section, shift_ini_keyname(2), Restore_str(ini_dir))
-            shift_current_num = GetINIValue(shift_ini_section, shift_ini_keyname(3), Restore_str(ini_dir))
-
+            shift_current_num = CInt(GetINIValue(shift_ini_section, shift_ini_keyname(3), Restore_str(ini_dir)))
+            On Error GoTo 0
         End If
         '====================================================       ' 동일탭 사이드 시프트 측정
 
@@ -717,9 +711,16 @@ Public Class Form1
         Dim QV_install_value As String
         Dim QV_version As String
 
-        Dim software_chk_CMM As String
-        'Dim CMM_install_chk As String
-        Dim CMM_install_value As String
+        Dim software_chk_CMM_V41 As String
+        Dim CMM_install_value_V41 As String
+        Dim software_chk_CMM_V42 As String
+        Dim CMM_install_value_V42 As String
+        Dim software_chk_CMM_V43 As String
+        Dim CMM_install_value_V43 As String
+
+        Dim software_chk_CMM_V50 As String
+        Dim CMM_install_value_V50 As String
+
         'Dim CMM_version As String
         Dim active_ans As Integer
 
@@ -738,11 +739,22 @@ Public Class Form1
         QV_install_chk = "HKEY_LOCAL_MACHINE\SOFTWARE\MEI\QVPak\" & QV_version                      '각 버전 폴더 진입
         QV_install_value = My.Computer.Registry.GetValue(QV_install_chk, "", Nothing)         '설치 유무 기본값  "" =기본값
 
-        software_chk_CMM = "HKEY_CURRENT_USER\SOFTWARE\Mitutoyo\GEOPAK"               '폴더 존재 유무 확인용 
-        CMM_install_value = My.Computer.Registry.GetValue(software_chk_CMM, "", "MCOSMOS")         '설치 유무 기본값
+        software_chk_CMM_V41 = "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Mitutoyo\MCOSMOS41"               'mcosmos v4.3 폴더 존재 유무 확인용 
+        CMM_install_value_V41 = My.Computer.Registry.GetValue(software_chk_CMM_V41, "", "MCOSMOS_V41")         '설치 유무 기본값
+
+        software_chk_CMM_V42 = "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Mitutoyo\MCOSMOS42"               'mcosmos v4.3 폴더 존재 유무 확인용 
+        CMM_install_value_V42 = My.Computer.Registry.GetValue(software_chk_CMM_V42, "", "MCOSMOS_V42")         '설치 유무 기본값
+
+        software_chk_CMM_V43 = "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Mitutoyo\MCOSMOS43"               'mcosmos v4.3 폴더 존재 유무 확인용 
+        CMM_install_value_V43 = My.Computer.Registry.GetValue(software_chk_CMM_V43, "", "MCOSMOS_V43")         '설치 유무 기본값
+
+        software_chk_CMM_V50 = "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Mitutoyo\MCOSMOS50"               '폴더 존재 유무 확인용 
+        CMM_install_value_V50 = My.Computer.Registry.GetValue(software_chk_CMM_V50, "", "MCOSMOS_V50")         '설치 유무 기본값   V50은 기본값이 공백 지정되어있어서 ""출력
+
         '===================CMM 확인 루틴 설명
-        '레지스트리에 GEOPAK이 있으면 GEOPAK의 기본값을 읽어 오지만 아무것도 없기 때문에 기본값 출력  -> 기본값 출력하면 소프트웨어 존재
-        '레지스트리에 GEOPAK이 없으면 Nothing값 출력 -> Nothing값 출력하면 소프트웨어 존재 안함
+        '레지스트리에 MCOSMOS 키값이 있으면 GEOPAK의 기본값을 읽어 오지만 아무것도 없기 때문에 기본값 출력  -> 기본값 출력하면 소프트웨어 존재
+        '레지스트리에 MCOSMOS_ 키값이 없으면 Nothing값 출력 -> Nothing값 출력하면 소프트웨어 존재 안함
+        '2022-03-24  V50추가 > 기본값 지정 되어있어서 ""출력
 
 
 
@@ -770,6 +782,23 @@ Public Class Form1
         ' If registry_value <> Serial_NUM Then    '      
         If registry_value <> MID_CHECK_EH(Serial_NUM) Then    'dll파일에서 MID 읽어와서 일치하는지 확인
             '
+
+            '==================================================== 트라이얼 버전용
+
+
+            'for_trial2 = DateDiff(DateInterval.Day, Now, for_trial) + 1
+            'If for_trial2 <= 0 Then
+            'MsgBox("테스트 사용기간이 종료 되었습니다." & Environment.NewLine & "정식판 사용을 위해서 한국미쓰도요 영업부에 연락 부탁드립니다." & Environment.NewLine & "대표 번호 : 031-361-4220", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly)
+            ' End
+            ' End If
+
+            '==================================================== 트라이얼 버전용
+
+
+
+
+
+
             'active_ans = MsgBox("MRM 사용이 활성 되어있지 않습니다." & Environment.NewLine & Environment.NewLine & "MRM을 활성 하시겠습니까?", 4, "MRM Activation")
             'If active_ans = 6 Then  '6 : YES  7 : NO
             활성화키.ShowDialog()
@@ -791,7 +820,7 @@ Public Class Form1
                     My.Computer.Registry.SetValue(QV_install_chk & "\QVClientMenu Config", "CommandLine12", MRM_root_dir & "\MRM\Mitutoyo Result Matcher.exe")
                     MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
 
-                ElseIf CMM_install_value = "MCOSMOS" Then     'cmm 설치되어있음
+                ElseIf CMM_install_value_V41 = "MCOSMOS_V41" Then     'cmm v4.1설치되어있음
 
                     'My.Settings.등록_ID = Serial_NUM
                     'My.Settings.등록여부 = True
@@ -799,10 +828,44 @@ Public Class Form1
                     My.Computer.Registry.SetValue(reg_path, "Active_Machine_ID", Serial_NUM)
                     My.Computer.Registry.SetValue(reg_path, "Last_Active_Time", registry_time)
                     'My.Computer.Registry.SetValue(reg_path, "Active_UID", active_key)
-                    My.Computer.Registry.SetValue(reg_path, "Active_Software", "MCOSMOS")
+                    My.Computer.Registry.SetValue(reg_path, "Active_Software", "MCOSMOS_V41")
                     MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
 
-                Else        'cmm 설치 안되어있음
+                ElseIf CMM_install_value_V42 = "MCOSMOS_V42" Then     'cmm v4.2설치되어있음
+
+                    'My.Settings.등록_ID = Serial_NUM
+                    'My.Settings.등록여부 = True
+                    'My.Settings.Save()
+                    My.Computer.Registry.SetValue(reg_path, "Active_Machine_ID", Serial_NUM)
+                    My.Computer.Registry.SetValue(reg_path, "Last_Active_Time", registry_time)
+                    'My.Computer.Registry.SetValue(reg_path, "Active_UID", active_key)
+                    My.Computer.Registry.SetValue(reg_path, "Active_Software", "MCOSMOS_V42")
+                    MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
+
+                ElseIf CMM_install_value_V43 = "MCOSMOS_V43" Then     'cmm v4.3설치되어있음
+
+                    'My.Settings.등록_ID = Serial_NUM
+                    'My.Settings.등록여부 = True
+                    'My.Settings.Save()
+                    My.Computer.Registry.SetValue(reg_path, "Active_Machine_ID", Serial_NUM)
+                    My.Computer.Registry.SetValue(reg_path, "Last_Active_Time", registry_time)
+                    'My.Computer.Registry.SetValue(reg_path, "Active_UID", active_key)
+                    My.Computer.Registry.SetValue(reg_path, "Active_Software", "MCOSMOS_V43")
+                    MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
+
+                ElseIf CMM_install_value_V50 = "" Or CMM_install_value_V50 = "MCOSMOS_V50" Then     'cmm v5.0설치되어있음  V5.0은 기본값이 지정 되어있음
+
+                    'My.Settings.등록_ID = Serial_NUM
+                    'My.Settings.등록여부 = True
+                    'My.Settings.Save()
+                    My.Computer.Registry.SetValue(reg_path, "Active_Machine_ID", Serial_NUM)
+                    My.Computer.Registry.SetValue(reg_path, "Last_Active_Time", registry_time)
+                    'My.Computer.Registry.SetValue(reg_path, "Active_UID", active_key)
+                    My.Computer.Registry.SetValue(reg_path, "Active_Software", "MCOSMOS_V5")
+                    MsgBox("MRM을 성공적으로 활성 하였습니다.", 0, "MRM Activation")
+
+
+                Else        'VMM,cmm 설치 안되어있음
 
                     MsgBox("MRM을 성공적으로 활성 하지 못하였습니다." & Environment.NewLine & "Mitutoyo 측정 소프트웨어가 설치되어있는 컴퓨터에서 활성화 시켜 주세요" & Environment.NewLine & "프로그램의 문제해결, 문의사항은 Mitutoyo Korea에 문의 부탁드립니다.", 48, "MRM Activation")  '6 : YES  7 : NO
                     Me.Close()
@@ -828,7 +891,10 @@ Public Class Form1
             If QV_install_value = "Install completed" Then 'qv 설치되어있음
 
 
-            ElseIf CMM_install_value = "MCOSMOS" Then     'cmm 설치되어있음
+            ElseIf CMM_install_value_V41 = "MCOSMOS_V41" Then     'cmm 설치되어있음
+            ElseIf CMM_install_value_V42 = "MCOSMOS_V42" Then     'cmm 설치되어있음
+            ElseIf CMM_install_value_V43 = "MCOSMOS_V43" Then     'cmm 설치되어있음
+            ElseIf CMM_install_value_V50 = "" Then                  'V50은 기본값이 공백으로 지정 되어있어 공백값 취득함
 
             Else        'QV, cmm 설치 안되어있음
 
@@ -1431,7 +1497,7 @@ MID_DLL_ERROR:
                 Next
 
 
-                error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도,TP (2D)", ",")
+                error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도,TP (2D),Circularity", ",")
 
                 If shift_func_check = "True" Then
                     If shift_current_num = 1 Then   ' 처음에는 원본 성적서 열고 이후(2회이상)은 지정 성적서 오픈
@@ -3116,7 +3182,8 @@ SPE:
                         Selected_tab.BackColor = SystemColors.Window
                         ' TabControl2.SelectedTab.Controls.Add(add_Control(i).check_box(control_add_num))
                         Selected_tab.Controls.Add(add_Control(i).check_box(control_add_num))
-                        add_Control(i).check_box(control_add_num).Enabled = True
+                        add_Control(i).check_box(control_add_num).Enabled = False
+                        'add_Control(i).check_box(control_add_num).BackColor = Color.White
                         add_Control(i).check_box(control_add_num).Top = 25 * control_add_num
                         add_Control(i).check_box(control_add_num).Left = 20
                         add_Control(i).check_box(control_add_num).Height = 20
@@ -3308,7 +3375,7 @@ SPE:
 
         Data_sheet = "Data Sheet"
 
-        error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도,TP (2D)", ",")
+        error_arry = Split("TP (3D),원형,동심도,진직도,PA,VT,VG,런아웃,대칭,평면도,TP (2D),Circularity", ",")
 
         '=========================================================================
 
@@ -3587,6 +3654,7 @@ Out:
         Select_ini_dir = MRM_root_dir & "\MRM\Data\Resources\ini\" & Select_name & ".ini"
 
         Form8.ShowDialog()
+
         Form_Ans = Form8.Ans
         Change_name = Form8.Change_Name
         Origin_name = System.Diagnostics.Process.GetCurrentProcess().ProcessName        '실행중인 프로세스 이름 읽어오기, 파일명 읽기
